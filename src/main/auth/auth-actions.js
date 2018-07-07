@@ -8,70 +8,70 @@ const REMOVE_USER = 'REMOVE_USER';
 const FAILED_LOGIN_WITH_COOKIES = 'FAILED_LOGIN_WITH_COOKIES';
 
 function addUser(user) {
-  return {
-    type: ADD_USER,
-    user
-  };
+    return {
+        type: ADD_USER,
+        user
+    };
 }
 
 function removeUser() {
-  return {
-    type: REMOVE_USER,
-    user: {}
-  };
+    return {
+        type: REMOVE_USER,
+        user: {}
+    };
 }
 
 function addUserError(user) {
-  return {
-    type: ADD_USER_ERROR,
-    user
-  };
+    return {
+        type: ADD_USER_ERROR,
+        user
+    };
 }
 
 export function login(user) {
     /** Until server up*/
     if (user.email === 'email' && user.password === 'password') {
         return dispatch => {
-          dispatch(addUser('user'));
+            dispatch(addUser('user'));
         };
     }
 
     return dispatch => {
-      userService.login(user).then(response => {
-        dispatch(addUser(response.data));
-      });
-  };
+        userService.login(user).then(response => {
+            dispatch(addUser(response.data));
+        });
+    };
 }
 
 export function logout() {
     /** Until server up*/
     return dispatch => {
-            dispatch(removeUser());
+        dispatch(removeUser());
     };
 
-  return dispatch => {
-    userService.logout().then(response => {
-      dispatch(removeUser());
-    });
-  };
+    return dispatch => {
+        userService.logout().then(() => {
+            dispatch(removeUser());
+        });
+    };
 }
 
 function loginWithCookies() {
-  return {
-    type: FAILED_LOGIN_WITH_COOKIES,
-  }
+    return {
+        type: FAILED_LOGIN_WITH_COOKIES,
+    }
 }
 
 export function isAuthorized() {
-  return dispatch => {
-    userService
-      .isAuthorized()
-      .then(res => {
-        dispatch(addUser(res.data));
-      })
-      .catch(err => {
-        dispatch(loginWithCookies());
-        console.log(err)
-      });
-  };
+    return dispatch => {
+        userService
+            .isAuthorized()
+            .then(res => {
+                dispatch(addUser(res.data));
+            })
+            .catch(err => {
+                dispatch(loginWithCookies());
+                console.log(err)
+            });
+    };
 }
