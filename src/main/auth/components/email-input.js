@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import { Form, Button } from "semantic-ui-react";
 import PropTypes from 'prop-types';
+import "./registration.css";
 
 export default class EmailInputForm extends React.Component {
     constructor(props) {
@@ -28,13 +30,19 @@ export default class EmailInputForm extends React.Component {
                     />
                 </Form.Field>
 
-                <Button
-                    color="google plus"
-                    floated="right"
-                    onClick={this.onNextClicked}
-                >
-                    Next
-                </Button>
+                <div>
+                    <Link to="/registration" className="link-container">
+                        Create account
+                    </Link>
+                    
+                    <Button
+                        color="google plus"
+                        floated="right"
+                        onClick={this.onNextClicked}
+                    >
+                        Next
+                    </Button>
+                </div>
             </Form>
         );
     }

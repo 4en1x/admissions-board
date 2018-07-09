@@ -74,7 +74,7 @@ class SignInComponent extends React.Component {
                         <Image src={logos.logo1} height="40px" verticalAlign="bottom" />
                     </div>
                     {form}
-                    </div>
+                </div>
             </div>
         );
     }

@@ -9,6 +9,7 @@ import { reducer as reduxFormReducer } from 'redux-form';
 import thunk from 'redux-thunk';
 
 import SignInComponent from './main/auth/sign-in/sign-in.component';
+import RegistrationComponent from './main/auth/registration/registration.component'
 import App from './main/app/App';
 import checkAuth from './main/auth/auth-component';
 import authReducer from './main/auth/auth-reducer';
@@ -35,6 +36,7 @@ ReactDOM.render(
         <Router>
             <Switch>
                 <Route path="/login" component={SignInComponent} />
+                <Route path="/registration" component={RegistrationComponent} />
                 <Route path="/" component={checkAuth(App)} />
             </Switch>
         </Router>

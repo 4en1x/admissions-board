@@ -5,12 +5,19 @@ axios.defaults.withCredentials = true;
 const ADD_USER = 'ADD_USER';
 const ADD_USER_ERROR = 'ADD_USER_ERROR';
 const REMOVE_USER = 'REMOVE_USER';
+const REGISTRATION = 'REGISTRATION';
 const FAILED_LOGIN_WITH_COOKIES = 'FAILED_LOGIN_WITH_COOKIES';
 
 function addUser(user) {
     return {
         type: ADD_USER,
         user
+    };
+}
+
+function registerUser() {
+    return {
+        type: REGISTRATION
     };
 }
 
@@ -52,6 +59,14 @@ export function logout() {
     return dispatch => {
         userService.logout().then(() => {
             dispatch(removeUser());
+        });
+    };
+}
+
+export function register(user) {
+    return dispatch => {
+        userService.register(user).then(() => {
+            dispatch(registerUser());
         });
     };
 }
