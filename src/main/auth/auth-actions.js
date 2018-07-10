@@ -37,7 +37,7 @@ function addUserError(user) {
 
 export function login(user) {
     /** Until server up*/
-    if (user.email === 'email' && user.password === 'password') {
+    if (user.username === 'user' && user.password === 'password') {
         return dispatch => {
             dispatch(addUser('user'));
         };

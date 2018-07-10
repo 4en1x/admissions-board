@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import { Dropdown, Icon } from 'semantic-ui-react';
+import { Dropdown, Icon, Modal, Button, Flag } from 'semantic-ui-react';
+import { translate } from 'react-i18next';
 
 const trigger = name =>
     <span>
@@ -8,17 +9,36 @@ const trigger = name =>
         {name}
     </span>;
 
-const options = [
-    { value: 'something else', text: 'something else' },
-    { value: 'sign-out', text: 'Sign Out' }
-];
+class DropDownTrigger extends React.Component {
+    constructor(props) {
+        super(props);
 
-export default class DropDownTrigger extends React.Component {
-    logoutAndNotification = (event, value) => {
+        this.state = {
+            modal_language: false,
+            options:[
+                { value: 'select-language', text: this.props.t("dropDownMenu.selectLan") },
+                { value: 'sign-out', text: this.props.t("dropDownMenu.signOut") }
+            ]
+        }
+    }
+
+    triggerDropDown = (event, value) => {
         if (value.value === 'sign-out') {
             this.props.itemSelected(event, value);
         }
+
+        if (value.value === 'select-language') {
+            this.setState({modal_language: true});
+        }
     };
+
+    onClose = () => this.setState({
+        modal_language: false,
+        options:[
+            { value: 'select-language', text: this.props.t("dropDownMenu.selectLan") },
+            { value: 'sign-out', text: this.props.t("dropDownMenu.signOut") }
+        ]
+    });
 
     static defaultProps = {
         user: {}
@@ -30,17 +50,44 @@ export default class DropDownTrigger extends React.Component {
                 name: PropTypes.string,
                 surname: PropTypes.string
             }),
-            itemSelected: PropTypes.func
+            itemSelected: PropTypes.func,
+            i18n : PropTypes.shape({}),
+            t : PropTypes.func,
         }
     };
 
     render() {
+        const { t, i18n } = this.props;
+
         return (
-            <Dropdown
-                trigger={trigger(this.props.user.name)}
-                onChange={this.logoutAndNotification}
-                options={options}
-            />
+            <div>
+                <Dropdown
+                    trigger={trigger(this.props.user.name)}
+                    onChange={this.triggerDropDown}
+                    options={this.state.options}
+                />
+
+                <Modal
+                    open={this.state.modal_language}
+                >
+                    <Modal.Header>{t("dropDownMenu.selectLan")}</Modal.Header>
+                    <Modal.Content>
+                        <Modal.Description>
+                            <Flag name='de' onClick={() => i18n.changeLanguage('de')}>de</Flag>
+                            <Flag name='gb' onClick={() => i18n.changeLanguage('en')}>en</Flag>
+                            <Flag name='cn' onClick={() => i18n.changeLanguage('cn')}>cn</Flag>
+                        </Modal.Description>
+                    </Modal.Content>
+                    <Modal.Actions>
+                        <Button onClick={this.onClose} negative>
+                            {t("dropDownMenu.closeBtn")}
+                        </Button>
+                    </Modal.Actions>
+                </Modal>
+                
+            </div>
         );
     }
 }
+
+export default translate('common')(DropDownTrigger);

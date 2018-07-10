@@ -2,15 +2,20 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import { Form, Button } from "semantic-ui-react";
 import PropTypes from 'prop-types';
-import "./registration.css";
+import "./login-input.css";
 
-export default class EmailInputForm extends React.Component {
+export default class LoginInputForm extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            username: "",
+            password: "",
+        }
     }
 
-    onNextClicked = () => {
-        this.props.inputHandle(this.input.value);
+    onSubmitClicked = () => {
+        this.props.inputHandle(this.state.username, this.state.password);
     };
 
     static get propTypes() {
@@ -24,9 +29,16 @@ export default class EmailInputForm extends React.Component {
             <Form size="large">
                 <Form.Field>
                     <input
-                        type="email"
-                        placeholder="email"
-                        ref={input => (this.input = input)}
+                        placeholder="username"
+                        onChange={event => this.setState({username: event.target.value})}
+                    />
+                </Form.Field>
+
+                <Form.Field>
+                    <input
+                        placeholder="password"
+                        type="password"
+                        onChange={event => this.setState({password: event.target.value})}
                     />
                 </Form.Field>
 
@@ -38,7 +50,7 @@ export default class EmailInputForm extends React.Component {
                     <Button
                         color="google plus"
                         floated="right"
-                        onClick={this.onNextClicked}
+                        onClick={this.onSubmitClicked}
                     >
                         Next
                     </Button>

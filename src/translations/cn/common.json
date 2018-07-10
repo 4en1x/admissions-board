@@ -1,0 +1,11 @@
+{
+  "dropDownMenu": {
+    "selectLan": "选择语言",
+    "closeBtn": "关",
+    "signOut": "登出"
+  },
+  "facultyTable": {
+    "register":"注册教师",
+    "reqSubjects":"所需科目"
+  }
+}

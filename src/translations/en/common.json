@@ -1,0 +1,11 @@
+{
+  "dropDownMenu": {
+    "selectLan": "Select Language",
+    "closeBtn": "Close",
+    "signOut": "Sign Out"
+  },
+  "facultyTable": {
+    "register":"Register to Faculty",
+    "reqSubjects":"Required subjects"
+  }
+}

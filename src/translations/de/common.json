@@ -1,0 +1,11 @@
+{
+  "dropDownMenu": {
+    "selectLan": "Sprache auswählen",
+    "closeBtn": "Schließen",
+    "signOut": "Ausloggen"
+  },
+  "facultyTable": {
+    "register":"Anmeldung zur Fakultät",
+    "reqSubjects":"Erforderliche Fächer"
+  }
+}

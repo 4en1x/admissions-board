@@ -1,50 +1,31 @@
 import React from "react";
-import EmailInputForm from "../components/email-input";
-import PasswordInputForm from "../components/password-input";
+import InputForm from "../components/login-input";
 import { Image } from "semantic-ui-react";
 import logos from "../../../assets/images";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionCreators from '../auth-actions';
-import userService from '../../../service/user-service';
 import PropTypes from 'prop-types';
 import "./sign-in.css";
-
-const EMAIL = "EMAIL";
-const PASSWORD = "PASSWORD";
 
 class SignInComponent extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            currentState: EMAIL,
             isLoading: false
         };
     }
 
-    emailInputHandle = value => {
-        this.email = value;
+    inputHandle = (username, password) => {
+        this.username = username;
+        this.password = password;
 
         this.setState({
             isLoading: true
         });
 
-        /** Until server up*/
-        if (value === 'email') {
-            this.setState({ currentState: PASSWORD, isLoading: false })
-        }
-
-        /** Until server up*/
-        /*
-        userService.checkEmail({email: value}).then(res => {
-            this.setState({ currentState: PASSWORD, isLoading: false });
-        });
-        */
-    };
-
-    passwordInputHandle = value => {
-        this.props.login({ email: this.email, password: value });
+        this.props.login({ username: this.username, password: this.password });
     };
 
     static get propTypes() {
@@ -55,25 +36,19 @@ class SignInComponent extends React.Component {
             }),
         }
     };
-    
-    render() {
-        let form = <EmailInputForm inputHandle={this.emailInputHandle} />;
 
-        if (this.state.currentState !== EMAIL) {
-            form = <PasswordInputForm inputHandle={this.passwordInputHandle} />;
-        }
-        
+    render() {
         if (!this.props.auth.isAuthError) {
             return <Redirect to={{pathname: "/"}}/>;
         }
-        
+
         return (
             <div className="auth-container parent-size">
                 <div className="auth-form">
                     <div className="auth-form-header">
                         <Image src={logos.logo1} height="40px" verticalAlign="bottom" />
                     </div>
-                    {form}
+                    <InputForm inputHandle={this.inputHandle} />
                 </div>
             </div>
         );
