@@ -2,6 +2,8 @@ import React from "react";
 import { Form, Button, Checkbox, Header, Icon, Message } from "semantic-ui-react";
 import PropTypes from 'prop-types';
 import { reduxForm } from "redux-form";
+import LanguageDropDown from '../../../components/languageDropDown/languageDropDown.component';
+import { translate } from 'react-i18next';
 import "./registration.css";
 
 class RegistrationForm extends React.Component {
@@ -13,7 +15,9 @@ class RegistrationForm extends React.Component {
             options: this.props.data.options,
             subjects:[],
             submitting: true,
-            errorSubmittingMessage: ""
+            errorSubmittingMessage: "",
+            errorSubmittingMessagePasswords: this.props.t("registration.errorSubmittingMessagePasswords") ,
+            errorSubmittingMessageTerms: this.props.t("registration.errorSubmittingMessageTerms")
         };
     }
 
@@ -38,6 +42,7 @@ class RegistrationForm extends React.Component {
     static get propTypes() {
         return {
             onSubmit: PropTypes.func,
+            t : PropTypes.func,
             data: PropTypes.shape({
                 options: PropTypes.arrayOf(PropTypes.shape({
                     key: PropTypes.number,
@@ -46,6 +51,13 @@ class RegistrationForm extends React.Component {
                 }))
             })
         }
+    };
+
+    componentWillReceiveProps = () => {
+        this.setState({
+            errorSubmittingMessagePasswords: this.props.t("registration.errorSubmittingMessagePasswords") ,
+            errorSubmittingMessageTerms: this.props.t("registration.errorSubmittingMessageTerms")
+        })
     };
 
     changeAverageRating = event => this.setState({ averageRating: event.target.value });
@@ -61,12 +73,12 @@ class RegistrationForm extends React.Component {
     
     prepareData = () => {
         if (this.state.password !== this.state.repeated_password) {
-            this.setState({submitting: false, errorSubmittingMessage:"Passwords do not match"});
+            this.setState({submitting: false, errorSubmittingMessage: this.state.errorSubmittingMessagePasswords});
             return;
         }
 
         if (!this.state.terms) {
-            this.setState({submitting: false, errorSubmittingMessage:"You didn't agree to the Terms and Conditions"});
+            this.setState({submitting: false, errorSubmittingMessage: this.state.errorSubmittingMessageTerms});
             return;
         }
 
@@ -86,16 +98,19 @@ class RegistrationForm extends React.Component {
     }
 
     render() {
+        const { t } = this.props;
+
         return (
             <div className="registration-container parent-size">
+                <LanguageDropDown/>
                 <div className="registration-form">
                     <Form size="large" onSubmit={this.prepareData}>
-                        <Header size='huge' textAlign="center">Registration form</Header>
+                        <Header size='huge' textAlign="center">{t("registration.name")}</Header>
     
                         <Form.Input
                             type='email'
-                            label='Email'
-                            placeholder='something@something.else'
+                            label={t("registration.labels.email")}
+                            placeholder={t("registration.placeholders.email")}
                             width={16}
                             onChange={(event, obj) => this.setState({email: obj.value})}
                             required
@@ -103,8 +118,8 @@ class RegistrationForm extends React.Component {
 
                         <Form.Input
                             type='username'
-                            label='Username'
-                            placeholder='Username'
+                            label={t("registration.labels.username")}
+                            placeholder={t("registration.placeholders.username")}
                             width={16}
                             onChange={(event, obj) => this.setState({username: obj.value})}
                             required
@@ -112,18 +127,18 @@ class RegistrationForm extends React.Component {
 
                         <Form.Group>
                             <Form.Input
-                                label='Enter Password'
+                                label={t("registration.labels.password")}
                                 type='password'
-                                placeholder='Password'
+                                placeholder={t("registration.placeholders.password")}
                                 width={8}
                                 onChange={(event, obj) => this.setState({password: obj.value})}
                                 required
                             />
 
                             <Form.Input
-                                label='Repeat Password'
+                                label={t("registration.labels.repeatPassword")}
                                 type='password'
-                                placeholder='Password'
+                                placeholder={t("registration.placeholders.repeatPassword")}
                                 width={8}
                                 onChange={(event, obj) => this.setState({repeated_password: obj.value})}
                                 required
@@ -132,7 +147,7 @@ class RegistrationForm extends React.Component {
 
                         <Form.Field
                             control={Checkbox}
-                            label={{ children: 'I agree to the Terms and Conditions' }}
+                            label={{ children: t("registration.agreeCheckbox") }}
                             width={13}
                             onChange={(event, obj) => this.setState({terms: obj.checked})}
                             required
@@ -140,12 +155,12 @@ class RegistrationForm extends React.Component {
 
                         <Message
                             error = {this.state.submitting}
-                            header='Action Forbidden'
+                            header={t("registration.errorMessage")}
                             content={this.state.errorSubmittingMessage}
                         />
 
                         <Button color="google plus" type="submit" floated ="right">
-                            <Icon name='checkmark' /> Register
+                            <Icon name='checkmark' /> {t("registration.registerButton")}
                         </Button>
                     </Form>
                 </div>
@@ -154,4 +169,4 @@ class RegistrationForm extends React.Component {
     }
 }
 
-export default reduxForm({ form: "RegistrationForm" })(RegistrationForm);
+export default reduxForm({ form: "RegistrationForm" })(translate('common')(RegistrationForm));

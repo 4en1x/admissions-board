@@ -6,6 +6,7 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionCreators from '../auth-actions';
 import PropTypes from 'prop-types';
+import LanguageDropDown from '../../../components/languageDropDown/languageDropDown.component';
 import "./sign-in.css";
 
 class SignInComponent extends React.Component {
@@ -44,6 +45,7 @@ class SignInComponent extends React.Component {
 
         return (
             <div className="auth-container parent-size">
+                <LanguageDropDown/>
                 <div className="auth-form">
                     <div className="auth-form-header">
                         <Image src={logos.logo1} height="40px" verticalAlign="bottom" />

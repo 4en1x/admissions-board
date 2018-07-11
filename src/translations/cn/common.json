@@ -7,5 +7,36 @@
   "facultyTable": {
     "register":"注册教师",
     "reqSubjects":"所需科目"
+  },
+  "languageDropDown": {
+    "name": "选择语言"
+  },
+  "login-input": {
+    "placeholders":{
+      "username": "用户名",
+      "password": "密码"
+    },
+    "nextButton": "下一个",
+    "createAccount": "创建帐号"
+  },
+  "registration": {
+    "name": "报名表格",
+    "placeholders":{
+      "username": "用户名",
+      "password": "密码",
+      "repeatPassword":"密码",
+      "email": "something@something.else"
+    },
+    "labels":{
+      "username": "用户名",
+      "password": "输入密码",
+      "repeatPassword":"重复输入密码",
+      "email": "电子邮件"
+    },
+    "agreeCheckbox": "我同意这条款和条件",
+    "errorMessage": "行动被禁止",
+    "registerButton": "寄存器",
+    "errorSubmittingMessagePasswords": "密码不匹配",
+    "errorSubmittingMessageTerms": "您不同意条款和条件"
   }
 }

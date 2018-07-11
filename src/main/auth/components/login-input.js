@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import { Form, Button } from "semantic-ui-react";
+import { translate } from 'react-i18next';
 import PropTypes from 'prop-types';
 import "./login-input.css";
 
-export default class LoginInputForm extends React.Component {
+class LoginInputForm extends React.Component {
     constructor(props) {
         super(props);
 
@@ -20,23 +21,26 @@ export default class LoginInputForm extends React.Component {
 
     static get propTypes() {
         return {
-            inputHandle: PropTypes.func
+            inputHandle: PropTypes.func,
+            t : PropTypes.func,
         }
     };
 
     render() {
+        const { t } = this.props;
+
         return (
             <Form size="large">
                 <Form.Field>
                     <input
-                        placeholder="username"
+                        placeholder={t("login-input.placeholders.username")}
                         onChange={event => this.setState({username: event.target.value})}
                     />
                 </Form.Field>
 
                 <Form.Field>
                     <input
-                        placeholder="password"
+                        placeholder={t("login-input.placeholders.password")}
                         type="password"
                         onChange={event => this.setState({password: event.target.value})}
                     />
@@ -44,7 +48,7 @@ export default class LoginInputForm extends React.Component {
 
                 <div>
                     <Link to="/registration" className="link-container">
-                        Create account
+                        {t("login-input.createAccount")}
                     </Link>
                     
                     <Button
@@ -52,10 +56,12 @@ export default class LoginInputForm extends React.Component {
                         floated="right"
                         onClick={this.onSubmitClicked}
                     >
-                        Next
+                        {t("login-input.nextButton")}
                     </Button>
                 </div>
             </Form>
         );
     }
 }
+
+export default translate('common')(LoginInputForm);

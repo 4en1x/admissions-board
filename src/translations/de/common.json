@@ -7,5 +7,36 @@
   "facultyTable": {
     "register":"Anmeldung zur Fakultät",
     "reqSubjects":"Erforderliche Fächer"
+  },
+  "languageDropDown": {
+    "name": "Sprache auswählen"
+  },
+  "login-input": {
+    "placeholders":{
+      "username": "nutzername",
+      "password": "passwort"
+    },
+    "nextButton": "Nächster",
+    "createAccount": "Benutzerkonto anlegen"
+  },
+  "registration": {
+    "name": "Anmeldeformular",
+    "placeholders":{
+      "username": "Nutzername",
+      "password": "Passwort",
+      "repeatPassword":"Passwort",
+      "email": "something@something.else"
+    },
+    "labels":{
+      "username": "Nutzername",
+      "password": "Passwort eingeben",
+      "repeatPassword":"Passwort wiederholen",
+      "email": "Email"
+    },
+    "agreeCheckbox": "Ich stimme den AGB zu",
+    "errorMessage": "Aktion verboten",
+    "registerButton": "Registrieren",
+    "errorSubmittingMessagePasswords": "Passwörter stimmen nicht überein",
+    "errorSubmittingMessageTerms": "Sie haben den Allgemeinen Geschäftsbedingungen nicht zugestimmt"
   }
 }

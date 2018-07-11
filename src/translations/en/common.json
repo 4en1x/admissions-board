@@ -7,5 +7,36 @@
   "facultyTable": {
     "register":"Register to Faculty",
     "reqSubjects":"Required subjects"
+  },
+  "languageDropDown": {
+    "name": "Select language"
+  },
+  "login-input": {
+    "placeholders":{
+      "username": "username",
+      "password": "password"
+    },
+    "nextButton": "Next",
+    "createAccount": "Create account"
+  },
+  "registration": {
+    "name": "Registration form",
+    "placeholders":{
+      "username": "Username",
+      "password": "Password",
+      "repeatPassword":"Password",
+      "email": "something@something.else"
+    },
+    "labels":{
+      "username": "Username",
+      "password": "Enter Password",
+      "repeatPassword":"Repeat Password",
+      "email": "Email"
+    },
+    "agreeCheckbox": "I agree to the Terms and Conditions",
+    "errorMessage": "Action Forbidden",
+    "registerButton": "Register",
+    "errorSubmittingMessagePasswords": "Passwords do not match",
+    "errorSubmittingMessageTerms": "You didn't agree to the Terms and Conditions"
   }
 }
