@@ -3,6 +3,14 @@
     margin: 1em;
 }
 
-.faculty-table {
+.faculty-pagination {
+    width: 100%;
+    margin: 1em;
     text-align: center;
+}
+
+.countTable {
+    width:10%;
+    display: inline !important;
+    margin: 1% !important;
 }

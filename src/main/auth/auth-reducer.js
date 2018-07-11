@@ -4,6 +4,7 @@ const authReducer = (
 ) => {
     switch (action.type) {
         case 'ADD_USER':
+            console.log('1')
             return Object.assign({}, state, action.user, { isAuthError: false, tryLoginWithCookies: false });
 
         case 'ADD_USER_ERROR':

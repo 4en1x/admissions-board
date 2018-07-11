@@ -2,11 +2,14 @@
   "dropDownMenu": {
     "selectLan": "Sprache auswählen",
     "closeBtn": "Schließen",
-    "signOut": "Ausloggen"
+    "signOut": "Ausloggen",
+    "cabinet": "Persönliches Kabinett"
   },
   "facultyTable": {
     "register":"Anmeldung zur Fakultät",
-    "reqSubjects":"Erforderliche Fächer"
+    "reqSubjects":"Erforderliche Fächer",
+    "recruitmentPlan": "Einstellungsplan",
+    "requestsSubmitted": "Anzahl der eingereichten Anträge."
   },
   "languageDropDown": {
     "name": "Sprache auswählen"

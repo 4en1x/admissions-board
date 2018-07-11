@@ -39,7 +39,7 @@ export function login(user) {
     /** Until server up*/
     if (user.username === 'user' && user.password === 'password') {
         return dispatch => {
-            dispatch(addUser('user'));
+            dispatch(addUser({ name: 'user', role: 'admin' }));
         };
     }
 

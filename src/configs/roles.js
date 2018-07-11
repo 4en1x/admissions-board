@@ -2,7 +2,7 @@ const ROLES = {
     ADMIN: {
         ROLE: 'admin'
     },
-    
+
     USER: {
         ROLE: 'user'
     }

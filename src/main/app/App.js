@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../../components/header/header.components';
 import FacultyTable from '../faculty/faculty-table.component';
+import CabinetPage from '../cabinet/cabinet.component'
+import { Route, Switch } from 'react-router-dom';
 import { store } from '../../index';
 import { logout } from '../auth/auth-actions';
 import './App.css';
-import { translate, Trans } from 'react-i18next';
+import { translate } from 'react-i18next';
 
 class App extends Component {
     itemSelected = () => {
@@ -27,7 +29,6 @@ class App extends Component {
 
     render() {
         const user = this.props.user;
-        const { t, i18n } = this.props;
 
         return (
             <div>
@@ -36,7 +37,10 @@ class App extends Component {
                     itemSelected={this.itemSelected}
                 />
 
-                <FacultyTable/>
+                <Switch>
+                    <Route path="/cabinet" component={CabinetPage}/>
+                    <Route path="/" component={FacultyTable} />
+                </Switch>
             </div>
         );
     }

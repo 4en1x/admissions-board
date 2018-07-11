@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Dropdown, Icon, Modal, Button, Flag } from 'semantic-ui-react';
 import { translate } from 'react-i18next';
@@ -17,8 +18,10 @@ class DropDownTrigger extends React.Component {
             modal_language: false,
             options:[
                 { value: 'select-language', text: this.props.t("dropDownMenu.selectLan") },
-                { value: 'sign-out', text: this.props.t("dropDownMenu.signOut") }
-            ]
+                { value: 'sign-out', text: this.props.t("dropDownMenu.signOut") },
+                { value: 'cabinet', text: this.props.t("dropDownMenu.cabinet") }
+            ],
+            cabinet: false,
         }
     }
 
@@ -30,13 +33,18 @@ class DropDownTrigger extends React.Component {
         if (value.value === 'select-language') {
             this.setState({modal_language: true});
         }
+
+        if (value.value === 'cabinet') {
+            this.setState({cabinet: true});
+        }
     };
 
     onClose = () => this.setState({
         modal_language: false,
         options:[
             { value: 'select-language', text: this.props.t("dropDownMenu.selectLan") },
-            { value: 'sign-out', text: this.props.t("dropDownMenu.signOut") }
+            { value: 'sign-out', text: this.props.t("dropDownMenu.signOut") },
+            { value: 'cabinet', text: this.props.t("dropDownMenu.cabinet") }
         ]
     });
 
@@ -58,6 +66,8 @@ class DropDownTrigger extends React.Component {
 
     render() {
         const { t, i18n } = this.props;
+    
+        if (this.state.cabinet) return <Redirect to={`/cabinet`} />;
 
         return (
             <div>
@@ -67,9 +77,7 @@ class DropDownTrigger extends React.Component {
                     options={this.state.options}
                 />
 
-                <Modal
-                    open={this.state.modal_language}
-                >
+                <Modal open={this.state.modal_language}>
                     <Modal.Header>{t("dropDownMenu.selectLan")}</Modal.Header>
                     <Modal.Content>
                         <Modal.Description>

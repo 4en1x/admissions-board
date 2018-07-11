@@ -2,11 +2,14 @@
   "dropDownMenu": {
     "selectLan": "选择语言",
     "closeBtn": "关",
-    "signOut": "登出"
+    "signOut": "登出",
+    "cabinet": "个人内阁"
   },
   "facultyTable": {
     "register":"注册教师",
-    "reqSubjects":"所需科目"
+    "reqSubjects":"所需科目",
+    "recruitmentPlan": "招聘计划",
+    "requestsSubmitted": "招聘计划."
   },
   "languageDropDown": {
     "name": "选择语言"

@@ -37,7 +37,9 @@ body {
 }
 
 .content-thin {
-  width: calc(30% - 0.5em);
+  width: calc(30% - 1em);
+  right: 0;
+  position: absolute;
 }
 
 .content-tab {
