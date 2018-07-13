@@ -5,11 +5,24 @@
     "signOut": "登出",
     "cabinet": "个人内阁"
   },
-  "facultyTable": {
-    "register":"注册教师",
-    "reqSubjects":"所需科目",
-    "recruitmentPlan": "招聘计划",
-    "requestsSubmitted": "招聘计划."
+  "faculty": {
+    "table": {
+      "register": "注册教师",
+      "reqSubjects": "所需科目",
+      "recruitmentPlan": "招聘计划",
+      "requestsSubmitted": "招聘计划."
+    },
+    "edit": {
+      "name": "编辑教师",
+      "placeholders":{
+        "name": "学院名称"
+      },
+      "labels":{
+        "name": "请输入新的教员姓名",
+        "deleteCheckbox": "选择是否要删除已申请此教师的所有用户"
+      },
+      "editButton": "编辑"
+    }
   },
   "languageDropDown": {
     "name": "选择语言"

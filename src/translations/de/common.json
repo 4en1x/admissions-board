@@ -5,11 +5,24 @@
     "signOut": "Ausloggen",
     "cabinet": "Persönliches Kabinett"
   },
-  "facultyTable": {
-    "register":"Anmeldung zur Fakultät",
-    "reqSubjects":"Erforderliche Fächer",
-    "recruitmentPlan": "Einstellungsplan",
-    "requestsSubmitted": "Anzahl der eingereichten Anträge."
+  "faculty": {
+    "table": {
+      "register": "Anmeldung zur Fakultät",
+      "reqSubjects": "Erforderliche Fächer",
+      "recruitmentPlan": "Einstellungsplan",
+      "requestsSubmitted": "Anzahl der eingereichten Anträge."
+    },
+    "edit": {
+      "name": "Fakultät bearbeiten",
+      "placeholders":{
+        "name": "Name der Fakultät"
+      },
+      "labels":{
+        "name": "Bitte geben Sie einen neuen Fakultätsnamen ein",
+        "deleteCheckbox": "Wählen Sie diese Option, wenn Sie alle Benutzer löschen möchten, die sich bereits für diese Fakultät beworben haben"
+      },
+      "editButton": "Bearbeiten"
+    }
   },
   "languageDropDown": {
     "name": "Sprache auswählen"

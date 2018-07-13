@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 class RegistrationComponent extends React.Component {
     constructor(props) {
         super(props);
-        
+
         this.state = {
             submitted: false
         };
@@ -50,7 +50,7 @@ class RegistrationComponent extends React.Component {
         //if (!this.props.formValues) return <SemanticLoader />;
         
         return (
-            <div className="filter-container">
+            <div>
                 <RegistrationForm onSubmit={this.onSubmit} data={this.data} />
 
                 /*{this.state.submitted ? (

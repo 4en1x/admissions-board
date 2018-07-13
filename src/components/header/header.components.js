@@ -32,6 +32,7 @@ export default class HeaderComponent extends React.Component {
 
     render() {
         const user = this.props.user;
+
         return (
             <div className="header-component">
                 <div className="header-content">

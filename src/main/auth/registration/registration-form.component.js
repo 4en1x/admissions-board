@@ -53,7 +53,7 @@ class RegistrationForm extends React.Component {
         }
     };
 
-    componentWillReceiveProps = () => {
+    UNSAFE_componentWillReceiveProps = () => {
         this.setState({
             errorSubmittingMessagePasswords: this.props.t("registration.errorSubmittingMessagePasswords") ,
             errorSubmittingMessageTerms: this.props.t("registration.errorSubmittingMessageTerms")

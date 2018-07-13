@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Pagination, Icon, List, Header, Button, Divider, Segment, Label } from "semantic-ui-react";
 import { translate } from 'react-i18next';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import roles from '../../configs/roles'
 import './faculty-table.css';
 import FacultyFilter from './filter/candidates-filter.container';
@@ -54,6 +55,7 @@ class FacultyTable extends Component {
                 endIndex: 9,
 
             },
+            editPageClicked: false,
             prev: '0'
         };
     }
@@ -65,6 +67,7 @@ class FacultyTable extends Component {
         }
     };
 
+    onEditPageClick = () => this.setState({editPageClicked: true});
     onElementClick = (obj) => this.setPager(obj.activePage);
 
     setPager = (currentPage) => {
@@ -83,6 +86,10 @@ class FacultyTable extends Component {
     render() {
         const { t } = this.props;
 
+        if (this.state.editPageClicked) {
+            return <Redirect to={`/faculties/edit/0`} />
+        }
+
         return (
             <div>
                 <div className="content-thin">
@@ -97,17 +104,17 @@ class FacultyTable extends Component {
                                         <Segment>
                                             {item.available ? (
                                                 <List.Content floated='right'>
-                                                    <Button color='green' >{t("facultyTable.register")}</Button>
+                                                    <Button color='green' >{t("faculty.table.register")}</Button>
                                                 </List.Content>
                                             ) : (
                                                 <List.Content floated='right'>
-                                                    <Button color='red' disabled>{t("facultyTable.register")}</Button>
+                                                    <Button color='red' disabled>{t("faculty.table.register")}</Button>
                                                 </List.Content>
                                             )}
-                                
+
                                             <Header size='medium' textAlign="left">{item.name}</Header>
-                                            <Header as='h5' textAlign="left">{t("facultyTable.reqSubjects")}:</Header>
-                                
+                                            <Header as='h5' textAlign="left">{t("faculty.table.reqSubjects")}:</Header>
+
                                             <List>
                                                 {
                                                     this.state.faculties[item.key].subjects.map(subject => {
@@ -120,21 +127,21 @@ class FacultyTable extends Component {
                                                     })
                                                 }
                                             </List>
-                                
+
                                             <Divider section />
                                 
                                             <Header className="countTable" as='h4' color='green'>
-                                                {t("facultyTable.recruitmentPlan")} <Label  circular>{item.recruitmentPlan}</Label>
+                                                {t("faculty.table.recruitmentPlan")} <Label  circular>{item.recruitmentPlan}</Label>
                                             </Header>
                                 
                                             <Header className="countTable" as='h4' color='red'>
-                                                {t("facultyTable.requestsSubmitted")} <Label  circular>{item.requestsSubmitted}</Label>
+                                                {t("faculty.table.requestsSubmitted")} <Label  circular>{item.requestsSubmitted}</Label>
                                             </Header>
-                                
+
                                             {
                                                 this.props.role === roles.ADMIN.ROLE ? (
                                                     <List.Content floated='right'>
-                                                        <Icon name="edit" size="large" color="green"/>
+                                                        <Icon onClick={this.onEditPageClick} name="edit" size="large" color="green"/>
                                                         <Icon name="delete" size="large" color="red"/>
                                                     </List.Content>
                                                 ) : null

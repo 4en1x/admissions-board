@@ -50,7 +50,7 @@ class LoginInputForm extends React.Component {
                     <Link to="/registration" className="link-container">
                         {t("login-input.createAccount")}
                     </Link>
-                    
+
                     <Button
                         color="google plus"
                         floated="right"

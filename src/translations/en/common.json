@@ -5,11 +5,24 @@
     "signOut": "Sign Out",
     "cabinet": "Personal Cabinet"
   },
-  "facultyTable": {
-    "register": "Register to Faculty",
-    "reqSubjects": "Required subjects",
-    "recruitmentPlan": "Recruitment plan",
-    "requestsSubmitted": "Number of requests submitted."
+  "faculty": {
+    "table": {
+      "register": "Register to Faculty",
+      "reqSubjects": "Required subjects",
+      "recruitmentPlan": "Recruitment plan",
+      "requestsSubmitted": "Number of requests submitted."
+    },
+    "edit": {
+      "name": "Edit Faculty",
+      "placeholders":{
+        "name": "Faculty name"
+      },
+      "labels":{
+        "name": "Please type new faculty name",
+        "deleteCheckbox": "Select if you want to delete all users who already applied for this faculty"
+      },
+      "editButton": "Edit"
+    }
   },
   "languageDropDown": {
     "name": "Select language"

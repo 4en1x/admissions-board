@@ -30,7 +30,7 @@ class FacultiesFilterForm extends React.Component {
                 text: item
             }));
         });
-        
+
         return (
             <Form className="filter-form" onSubmit={handleSubmit(onSubmit)}>
                 <Field
@@ -48,7 +48,7 @@ class FacultiesFilterForm extends React.Component {
                 <Form.Field>
                     Please choose sort order:
                 </Form.Field>
-                <Checkbox checked={this.state.sortValue} onCheck={(e, checked) => this.handleChange(checked)} />
+
                 <Form.Field>
                     <Checkbox
                         radio
@@ -73,7 +73,7 @@ class FacultiesFilterForm extends React.Component {
             </Form>
         );
     }
-};
+}
 
 FacultiesFilterForm.defaultProps = {
     data: {}
