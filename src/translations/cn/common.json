@@ -28,6 +28,21 @@
       "editButton": "编辑",
       "errorSubmittingMessageSubjects": "你应该准确添加3个科目",
       "errorMessage": "行动被禁止"
+    },
+    "add": {
+      "name": "添加教师",
+      "placeholders":{
+        "name": "学院名称",
+        "recruitmentPlan": "0"
+      },
+      "labels":{
+        "name": "请输入新的教员姓名",
+        "recruitmentPlan": "请输入招聘计划",
+        "subjects": "主题"
+      },
+      "addButton": "加",
+      "errorSubmittingMessageSubjects": "你应该准确添加3个科目",
+      "errorMessage": "禁止行动"
     }
   },
   "languageDropDown": {

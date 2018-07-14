@@ -28,6 +28,21 @@
       "editButton": "Edit",
       "errorSubmittingMessageSubjects": "You should add 3 subjects exactly",
       "errorMessage": "Action Forbidden"
+    },
+    "add": {
+      "name": "Add Faculty",
+      "placeholders":{
+        "name": "Faculty name",
+        "recruitmentPlan": "0"
+      },
+      "labels":{
+        "name": "Please type new faculty name",
+        "recruitmentPlan": "Please type recruitment plan",
+        "subjects": "Subjects"
+      },
+      "addButton": "Add",
+      "errorSubmittingMessageSubjects": "You should add 3 subjects exactly",
+      "errorMessage": "Action Forbidden"
     }
   },
   "languageDropDown": {

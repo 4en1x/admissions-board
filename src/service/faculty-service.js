@@ -14,10 +14,15 @@ function editFaculty(data, id) {
     return axios.post(`/rest/faculty/edit/${id}`, data);
 }
 
+function addFaculty(data) {
+    return axios.post(`/rest/faculty/add`, data);
+}
+
 const facultyService = {
     getSubjectsList,
     getEditFormValues,
-    editFaculty
+    editFaculty,
+    addFaculty
 };
 
 export default facultyService;

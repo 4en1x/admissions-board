@@ -28,6 +28,21 @@
       "editButton": "Bearbeiten",
       "errorSubmittingMessageSubjects": "Sie sollten genau 3 Fächer hinzufügen",
       "errorMessage": "Aktion verboten"
+    },
+    "add": {
+      "name": "Fakultät hinzufügen",
+      "placeholders":{
+        "name": "Name der Fakultät",
+        "recruitmentPlan": "0"
+      },
+      "labels":{
+        "name": "Bitte geben Sie einen neuen Fakultätsnamen ein",
+        "recruitmentPlan": "Bitte geben Sie den Einstellungsplan ein",
+        "subjects": "Fächer"
+      },
+      "addButton": "Hinzufügen",
+      "errorSubmittingMessageSubjects": "Sie sollten genau 3 Fächer hinzufügen",
+      "errorMessage": "Aktion verboten"
     }
   },
   "languageDropDown": {
