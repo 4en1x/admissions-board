@@ -15,13 +15,19 @@
     "edit": {
       "name": "Fakultät bearbeiten",
       "placeholders":{
-        "name": "Name der Fakultät"
+        "name": "Name der Fakultät",
+        "recruitmentPlan": "0"
       },
       "labels":{
         "name": "Bitte geben Sie einen neuen Fakultätsnamen ein",
-        "deleteCheckbox": "Wählen Sie diese Option, wenn Sie alle Benutzer löschen möchten, die sich bereits für diese Fakultät beworben haben"
+        "deleteCheckbox": "Wählen Sie diese Option, wenn Sie alle Benutzer löschen möchten, die sich bereits für diese Fakultät beworben haben",
+        "recruitmentPlan": "Bitte geben Sie den Einstellungsplan ein",
+        "requestsSubmitted": "Anzahl der eingereichten Anträge",
+        "subjects": "Fächer"
       },
-      "editButton": "Bearbeiten"
+      "editButton": "Bearbeiten",
+      "errorSubmittingMessageSubjects": "Sie sollten genau 3 Fächer hinzufügen",
+      "errorMessage": "Aktion verboten"
     }
   },
   "languageDropDown": {

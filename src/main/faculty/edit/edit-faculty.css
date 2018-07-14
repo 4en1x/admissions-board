@@ -4,6 +4,10 @@
     overflow-y: scroll;
 }
 
+.recruitmentPlan {
+    padding-top: 10px;
+}
+
 .success-container {
     position: absolute;
     overflow: hidden;

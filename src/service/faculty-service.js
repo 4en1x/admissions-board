@@ -10,9 +10,14 @@ function getEditFormValues(id) {
     return axios.get(`/rest/faculty/${id}`);
 }
 
-const interviewService = {
+function editFaculty(data, id) {
+    return axios.post(`/rest/faculty/edit/${id}`, data);
+}
+
+const facultyService = {
     getSubjectsList,
-    getEditFormValues
+    getEditFormValues,
+    editFaculty
 };
 
-export default interviewService;
+export default facultyService;

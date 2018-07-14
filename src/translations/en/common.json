@@ -15,13 +15,19 @@
     "edit": {
       "name": "Edit Faculty",
       "placeholders":{
-        "name": "Faculty name"
+        "name": "Faculty name",
+        "recruitmentPlan": "0"
       },
       "labels":{
         "name": "Please type new faculty name",
-        "deleteCheckbox": "Select if you want to delete all users who already applied for this faculty"
+        "deleteCheckbox": "Select if you want to delete all users who already applied for this faculty",
+        "recruitmentPlan": "Please type recruitment plan",
+        "requestsSubmitted": "Number of requests submitted",
+        "subjects": "Subjects"
       },
-      "editButton": "Edit"
+      "editButton": "Edit",
+      "errorSubmittingMessageSubjects": "You should add 3 subjects exactly",
+      "errorMessage": "Action Forbidden"
     }
   },
   "languageDropDown": {

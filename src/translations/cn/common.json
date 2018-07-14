@@ -15,13 +15,19 @@
     "edit": {
       "name": "编辑教师",
       "placeholders":{
-        "name": "学院名称"
+        "name": "学院名称",
+        "recruitmentPlan": "0"
       },
       "labels":{
         "name": "请输入新的教员姓名",
-        "deleteCheckbox": "选择是否要删除已申请此教师的所有用户"
+        "deleteCheckbox": "选择是否要删除已申请此教师的所有用户",
+        "recruitmentPlan": "请输入招聘计划",
+        "requestsSubmitted": "提交的请求数",
+        "subjects": "主题"
       },
-      "editButton": "编辑"
+      "editButton": "编辑",
+      "errorSubmittingMessageSubjects": "你应该准确添加3个科目",
+      "errorMessage": "行动被禁止"
     }
   },
   "languageDropDown": {

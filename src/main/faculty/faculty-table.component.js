@@ -14,36 +14,36 @@ class FacultyTable extends Component {
 
         this.state = {
             faculties: [
-                { key: 0, value: '0', recruitmentPlan:120,requestsSubmitted:300, name: 'Faculty of Applied Mathematics and Computer Science', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { key: 1, value: '1', recruitmentPlan:90,requestsSubmitted:101,name: 'Faculty of Biology',available: false, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { key: 2, value: '2', recruitmentPlan:150,requestsSubmitted:167,name: 'Faculty of Radiophysics and Computer Technologies', available: false, subjects: ['Math', 'Geography', 'Belarussian language'] },
-                { key: 3, value: '3', recruitmentPlan:40,requestsSubmitted:20,name: 'Faculty of Mathematics and Mechanics', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { key: 4, value: '4', recruitmentPlan:90,requestsSubmitted:130,name: 'Faculty of International relations', available: true, subjects: ['Math', 'Chemistry'] },
-                { key: 5, value: '5', recruitmentPlan:80,requestsSubmitted:70,name: 'Faculty of History', available: false, subjects: ['Math', 'Chemistry', 'Belarussian language'] },
-                { key: 6, value: '6', recruitmentPlan:120,requestsSubmitted:300, name: 'Faculty of Applied Mathematics and Computer Science', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { key: 7, value: '7', recruitmentPlan:90,requestsSubmitted:101,name: 'Faculty of Biology',available: false, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { key: 8, value: '8', recruitmentPlan:150,requestsSubmitted:167,name: 'Faculty of Radiophysics and Computer Technologies', available: false, subjects: ['Math', 'Geography', 'Belarussian language'] },
-                { key: 9, value: '9', recruitmentPlan:40,requestsSubmitted:20,name: 'Faculty of Mathematics and Mechanics', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { key: 10, value: '10', recruitmentPlan:90,requestsSubmitted:130,name: 'Faculty of International relations', available: true, subjects: ['Math', 'Chemistry'] },
-                { key: 11, value: '11', recruitmentPlan:80,requestsSubmitted:70,name: 'Faculty of History', available: false, subjects: ['Math', 'Chemistry', 'Belarussian language'] },
-                { key: 12, value: '12', recruitmentPlan:120,requestsSubmitted:300, name: 'Faculty of Applied Mathematics and Computer Science', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { key: 13, value: '13', recruitmentPlan:90,requestsSubmitted:101,name: 'Faculty of Biology',available: false, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { key: 14, value: '14', recruitmentPlan:150,requestsSubmitted:167,name: 'Faculty of Radiophysics and Computer Technologies', available: false, subjects: ['Math', 'Geography', 'Belarussian language'] },
-                { key: 15, value: '15', recruitmentPlan:40,requestsSubmitted:20,name: 'Faculty of Mathematics and Mechanics', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { key: 16, value: '16', recruitmentPlan:90,requestsSubmitted:130,name: 'Faculty of International relations', available: true, subjects: ['Math', 'Chemistry'] },
-                { key: 17, value: '17', recruitmentPlan:80,requestsSubmitted:70,name: 'Faculty of History', available: false, subjects: ['Math', 'Chemistry', 'Belarussian language'] },
-                { key: 18, value: '18', recruitmentPlan:120,requestsSubmitted:300, name: 'Faculty of Applied Mathematics and Computer Science', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { key: 19, value: '19', recruitmentPlan:90,requestsSubmitted:101,name: 'Faculty of Biology',available: false, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { key: 20, value: '20', recruitmentPlan:150,requestsSubmitted:167,name: 'Faculty of Radiophysics and Computer Technologies', available: false, subjects: ['Math', 'Geography', 'Belarussian language'] },
-                { key: 21, value: '21', recruitmentPlan:40,requestsSubmitted:20,name: 'Faculty of Mathematics and Mechanics', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { key: 22, value: '22', recruitmentPlan:90,requestsSubmitted:130,name: 'Faculty of International relations', available: true, subjects: ['Math', 'Chemistry'] },
-                { key: 23, value: '23', recruitmentPlan:80,requestsSubmitted:70,name: 'Faculty of History', available: false, subjects: ['Math', 'Chemistry', 'Belarussian language'] },
-                { key: 24, value: '24', recruitmentPlan:120,requestsSubmitted:300, name: 'Faculty of Applied Mathematics and Computer Science', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { key: 25, value: '25', recruitmentPlan:90,requestsSubmitted:101,name: 'Faculty of Biology',available: false, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { key: 26, value: '26', recruitmentPlan:150,requestsSubmitted:167,name: 'Faculty of Radiophysics and Computer Technologies', available: false, subjects: ['Math', 'Geography', 'Belarussian language'] },
-                { key: 27, value: '27', recruitmentPlan:40,requestsSubmitted:20,name: 'Faculty of Mathematics and Mechanics', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { key: 28, value: '28', recruitmentPlan:90,requestsSubmitted:130,name: 'Faculty of International relations', available: true, subjects: ['Math', 'Chemistry'] },
-                { key: 29, value: '29', recruitmentPlan:80,requestsSubmitted:70,name: 'Faculty of History', available: false, subjects: ['Math', 'Chemistry', 'Belarussian language'] },
+                { id: 0, key: 0, value: '0', recruitmentPlan:120,requestsSubmitted:300, name: 'Faculty of Applied Mathematics and Computer Science', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { id: 1, key: 1, value: '1', recruitmentPlan:90,requestsSubmitted:101,name: 'Faculty of Biology',available: false, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { id: 2, key: 2, value: '2', recruitmentPlan:150,requestsSubmitted:167,name: 'Faculty of Radiophysics and Computer Technologies', available: false, subjects: ['Math', 'Geography', 'Belarussian language'] },
+                { id: 3, key: 3, value: '3', recruitmentPlan:40,requestsSubmitted:20,name: 'Faculty of Mathematics and Mechanics', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { id: 4, key: 4, value: '4', recruitmentPlan:90,requestsSubmitted:130,name: 'Faculty of International relations', available: true, subjects: ['Math', 'Chemistry'] },
+                { id: 5, key: 5, value: '5', recruitmentPlan:80,requestsSubmitted:70,name: 'Faculty of History', available: false, subjects: ['Math', 'Chemistry', 'Belarussian language'] },
+                { id: 6, key: 6, value: '6', recruitmentPlan:120,requestsSubmitted:300, name: 'Faculty of Applied Mathematics and Computer Science', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { id: 7, key: 7, value: '7', recruitmentPlan:90,requestsSubmitted:101,name: 'Faculty of Biology',available: false, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { id: 8, key: 8, value: '8', recruitmentPlan:150,requestsSubmitted:167,name: 'Faculty of Radiophysics and Computer Technologies', available: false, subjects: ['Math', 'Geography', 'Belarussian language'] },
+                { id: 9, key: 9, value: '9', recruitmentPlan:40,requestsSubmitted:20,name: 'Faculty of Mathematics and Mechanics', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { id: 10, key: 10, value: '10', recruitmentPlan:90,requestsSubmitted:130,name: 'Faculty of International relations', available: true, subjects: ['Math', 'Chemistry'] },
+                { id: 11, key: 11, value: '11', recruitmentPlan:80,requestsSubmitted:70,name: 'Faculty of History', available: false, subjects: ['Math', 'Chemistry', 'Belarussian language'] },
+                { id: 12, key: 12, value: '12', recruitmentPlan:120,requestsSubmitted:300, name: 'Faculty of Applied Mathematics and Computer Science', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { id: 13, key: 13, value: '13', recruitmentPlan:90,requestsSubmitted:101,name: 'Faculty of Biology',available: false, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { id: 14, key: 14, value: '14', recruitmentPlan:150,requestsSubmitted:167,name: 'Faculty of Radiophysics and Computer Technologies', available: false, subjects: ['Math', 'Geography', 'Belarussian language'] },
+                { id: 15, key: 15, value: '15', recruitmentPlan:40,requestsSubmitted:20,name: 'Faculty of Mathematics and Mechanics', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { id: 16, key: 16, value: '16', recruitmentPlan:90,requestsSubmitted:130,name: 'Faculty of International relations', available: true, subjects: ['Math', 'Chemistry'] },
+                { id: 17, key: 17, value: '17', recruitmentPlan:80,requestsSubmitted:70,name: 'Faculty of History', available: false, subjects: ['Math', 'Chemistry', 'Belarussian language'] },
+                { id: 18, key: 18, value: '18', recruitmentPlan:120,requestsSubmitted:300, name: 'Faculty of Applied Mathematics and Computer Science', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { id: 19, key: 19, value: '19', recruitmentPlan:90,requestsSubmitted:101,name: 'Faculty of Biology',available: false, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { id: 20, key: 20, value: '20', recruitmentPlan:150,requestsSubmitted:167,name: 'Faculty of Radiophysics and Computer Technologies', available: false, subjects: ['Math', 'Geography', 'Belarussian language'] },
+                { id: 21, key: 21, value: '21', recruitmentPlan:40,requestsSubmitted:20,name: 'Faculty of Mathematics and Mechanics', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { id: 22, key: 22, value: '22', recruitmentPlan:90,requestsSubmitted:130,name: 'Faculty of International relations', available: true, subjects: ['Math', 'Chemistry'] },
+                { id: 23, key: 23, value: '23', recruitmentPlan:80,requestsSubmitted:70,name: 'Faculty of History', available: false, subjects: ['Math', 'Chemistry', 'Belarussian language'] },
+                { id: 24, key: 24, value: '24', recruitmentPlan:120,requestsSubmitted:300, name: 'Faculty of Applied Mathematics and Computer Science', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { id: 25, key: 25, value: '25', recruitmentPlan:90,requestsSubmitted:101,name: 'Faculty of Biology',available: false, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { id: 26, key: 26, value: '26', recruitmentPlan:150,requestsSubmitted:167,name: 'Faculty of Radiophysics and Computer Technologies', available: false, subjects: ['Math', 'Geography', 'Belarussian language'] },
+                { id: 27, key: 27, value: '27', recruitmentPlan:40,requestsSubmitted:20,name: 'Faculty of Mathematics and Mechanics', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { id: 28, key: 28, value: '28', recruitmentPlan:90,requestsSubmitted:130,name: 'Faculty of International relations', available: true, subjects: ['Math', 'Chemistry'] },
+                { id: 29, key: 29, value: '29', recruitmentPlan:80,requestsSubmitted:70,name: 'Faculty of History', available: false, subjects: ['Math', 'Chemistry', 'Belarussian language'] },
             ],
             pager: {
                 totalItems: 30,
@@ -56,6 +56,7 @@ class FacultyTable extends Component {
 
             },
             editPageClicked: false,
+            editPageClickedId: 0,
             prev: '0'
         };
     }
@@ -67,7 +68,8 @@ class FacultyTable extends Component {
         }
     };
 
-    onEditPageClick = () => this.setState({editPageClicked: true});
+    onEditPageClick = (id) => this.setState({editPageClickedId: id, editPageClicked: true});
+
     onElementClick = (obj) => this.setPager(obj.activePage);
 
     setPager = (currentPage) => {
@@ -87,7 +89,7 @@ class FacultyTable extends Component {
         const { t } = this.props;
 
         if (this.state.editPageClicked) {
-            return <Redirect to={`/faculties/edit/0`} />
+            return <Redirect to={`/faculties/edit/${this.state.editPageClickedId}`} />
         }
 
         return (
@@ -141,7 +143,7 @@ class FacultyTable extends Component {
                                             {
                                                 this.props.role === roles.ADMIN.ROLE ? (
                                                     <List.Content floated='right'>
-                                                        <Icon onClick={this.onEditPageClick} name="edit" size="large" color="green"/>
+                                                        <Icon onClick={() => this.onEditPageClick(item.id)} name="edit" size="large" color="green"/>
                                                         <Icon name="delete" size="large" color="red"/>
                                                     </List.Content>
                                                 ) : null

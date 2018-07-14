@@ -6,6 +6,9 @@ const facultyReducer = (state = {}, action) => {
         case 'ADD_EDIT_FORM_VALUES':
             return { ...state, formValues: action.data };
 
+        case 'ADD_FILTER_VALUES':
+            return { ...state, filter: action.data };
+
         default:
             return state;
     }

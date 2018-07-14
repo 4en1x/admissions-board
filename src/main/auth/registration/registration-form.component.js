@@ -17,27 +17,10 @@ class RegistrationForm extends React.Component {
             submitting: true,
             errorSubmittingMessage: "",
             errorSubmittingMessagePasswords: this.props.t("registration.errorSubmittingMessagePasswords") ,
-            errorSubmittingMessageTerms: this.props.t("registration.errorSubmittingMessageTerms")
+            errorSubmittingMessageTerms: this.props.t("registration.errorSubmittingMessageTerms"),
+            currentLanguage: this.props.i18n.language,
         };
     }
-
-    subjectsChange = (subjects) => {
-        let newSubjects = [];
-
-        subjects.forEach(subject => {
-            let newSubject = this.state.options.find((opt) => opt.value === subject);
-            let rating = 0;
-
-            if (this.state.subjects[this.getIndexByKey(newSubject.key)]) {
-                rating = this.state.subjects[this.getIndexByKey(newSubject.key)].rating;
-            }
-            
-            newSubjects = newSubjects.concat(Object.assign(newSubject, {rating}));
-        });
-
-        this.setState({subjects: newSubjects});
-
-    };
 
     static get propTypes() {
         return {
@@ -49,28 +32,30 @@ class RegistrationForm extends React.Component {
                     value: PropTypes.string,
                     text: PropTypes.string
                 }))
-            })
+            }),
+            i18n: PropTypes.shape({
+                language: PropTypes.string,
+            }),
         }
     };
 
-    UNSAFE_componentWillReceiveProps = () => {
-        this.setState({
-            errorSubmittingMessagePasswords: this.props.t("registration.errorSubmittingMessagePasswords") ,
-            errorSubmittingMessageTerms: this.props.t("registration.errorSubmittingMessageTerms")
-        })
-    };
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.currentLanguage !== prevProps.i18n.language) {
+            let newErrorSubmittingMessage = this.props.t("registration.errorSubmittingMessagePasswords");
 
-    changeAverageRating = event => this.setState({ averageRating: event.target.value });
+            if (prevState.errorSubmittingMessage === prevState.errorSubmittingMessageTerms) {
+                newErrorSubmittingMessage = this.props.t("registration.errorSubmittingMessageTerms")
+            }
 
-    changeRating = (obj, key) => {
-        this.setState((prevState) => {
-            let newSubjects = prevState.subjects;
-            newSubjects[this.getIndexByKey(key)].rating = obj.value;
+            this.setState({
+                errorSubmittingMessage: newErrorSubmittingMessage,
+                errorSubmittingMessagePasswords: this.props.t("registration.errorSubmittingMessagePasswords") ,
+                errorSubmittingMessageTerms: this.props.t("registration.errorSubmittingMessageTerms"),
+                currentLanguage: prevProps.i18n.language
+            })
+        }
+    }
 
-            return { subjects: newSubjects }
-        });
-    };
-    
     prepareData = () => {
         if (this.state.password !== this.state.repeated_password) {
             this.setState({submitting: false, errorSubmittingMessage: this.state.errorSubmittingMessagePasswords});
@@ -92,10 +77,6 @@ class RegistrationForm extends React.Component {
         
         this.props.onSubmit(data);
     };
-
-    getIndexByKey(key) {
-        return this.state.subjects.findIndex((subject) => subject.key === key)
-    }
 
     render() {
         const { t } = this.props;

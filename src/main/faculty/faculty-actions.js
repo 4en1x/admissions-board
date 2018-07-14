@@ -2,6 +2,7 @@ import facultyService from '../../service/faculty-service';
 
 const ADD_SUBJECT_VALUES = 'ADD_SUBJECT_VALUES';
 const ADD_EDIT_FORM_VALUES = 'ADD_EDIT_FORM_VALUES';
+const ADD_FILTER_VALUES = 'ADD_FILTER_VALUES';
 
 function addSubjectsValues(subjects) {
     return {
@@ -13,6 +14,13 @@ function addSubjectsValues(subjects) {
 function addEditFormValues(data) {
     return {
         type: ADD_EDIT_FORM_VALUES,
+        data
+    };
+}
+
+function addFilterValues(data) {
+    return {
+        type: ADD_FILTER_VALUES,
         data
     };
 }
@@ -33,22 +41,58 @@ export function getSubjectsList() {
     };
 }
 
-export function getEditFormValues() {
+export function getFilter() {
+    /*while server down*/
+
+    return dispatch => {
+        console.log('lalalala');
+        dispatch(addFilterValues({
+            statuses: [
+                "one",
+                "two",
+                "three"
+            ],
+            subjects: [
+                "one",
+                "two",
+                "three",
+                "one1",
+                "two1",
+                "three1",
+                "one2",
+                "two2",
+                "three2"
+            ]
+        }));
+    };
+
+    return dispatch => {
+        console.log('lalalala');
+        facultyService.getFilter().then(res => {
+            dispatch(addFilterValues(res.data));
+        });
+    };
+}
+
+export function getEditFormValues(id) {
     /*while server down*/
     
     return dispatch => {
         console.log('lalalala');
         dispatch(addEditFormValues({
+            id: 2,
             name: 'some name for the faculty',
             subjects: [
                 'math','math2','math4'
-            ]
+            ],
+            recruitmentPlan: 120,
+            requestsSubmitted: 90,
         }));
     };
     
     return dispatch => {
         console.log('lalalala');
-        facultyService.getEditFormValues().then(res => {
+        facultyService.getEditFormValues(id).then(res => {
             dispatch(addEditFormValues(res.data));
         });
     };
