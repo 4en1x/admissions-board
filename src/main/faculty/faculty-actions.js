@@ -1,4 +1,5 @@
 import facultyService from '../../service/faculty-service';
+import subjectService from '../../service/subject-service'
 
 const ADD_SUBJECT_VALUES = 'ADD_SUBJECT_VALUES';
 const ADD_EDIT_FORM_VALUES = 'ADD_EDIT_FORM_VALUES';
@@ -34,8 +35,7 @@ export function getSubjectsList() {
     };
     
     return dispatch => {
-        console.log('lalalala');
-        facultyService.getSubjectsList().then(res => {
+        subjectService.getSubjectsList().then(res => {
             dispatch(addSubjectsValues(res.data));
         });
     };
@@ -67,7 +67,6 @@ export function getFilter() {
     };
 
     return dispatch => {
-        console.log('lalalala');
         facultyService.getFilter().then(res => {
             dispatch(addFilterValues(res.data));
         });
@@ -91,7 +90,6 @@ export function getEditFormValues(id) {
     };
     
     return dispatch => {
-        console.log('lalalala');
         facultyService.getEditFormValues(id).then(res => {
             dispatch(addEditFormValues(res.data));
         });

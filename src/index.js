@@ -15,6 +15,7 @@ import checkAuth from './main/auth/auth-component';
 
 import authReducer from './main/auth/auth-reducer';
 import facultyReducer from './main/faculty/faculty-reducer';
+import entrantReducer from './main/entrant/entrant-reducer';
 
 import {I18nextProvider} from 'react-i18next';
 import i18next from 'i18next';
@@ -31,6 +32,7 @@ const persistedState = loadState();
 const reducer = combineReducers({
     auth: authReducer,
     faculty: facultyReducer,
+    entrant: entrantReducer,
     form: reduxFormReducer
 });
 

@@ -45,6 +45,34 @@
       "errorMessage": "Action Forbidden"
     }
   },
+  "entrant": {
+    "edit": {
+      "name": "Here you can edit your information",
+      "placeholders":{
+        "email": "something@something.else",
+        "username": "Username",
+        "name": "First name",
+        "surname": "Second name",
+        "password": "Password",
+        "repeatPassword":"Password"
+      },
+      "labels":{
+        "email": "Email",
+        "username": "Username",
+        "name": "First name",
+        "surname": "Second name",
+        "subjects": "Then choose three subjects:",
+        "password": "Enter Password",
+        "repeatPassword":"Repeat Password"
+      },
+      "editButton": "Edit",
+      "errorSubmittingMessageSubjects": "You should add 3 subjects exactly",
+      "errorSubmittingMessagePasswords": "Passwords do not match",
+      "errorMessage": "Action Forbidden",
+      "averageScoreMessage": "Please, specify your average score",
+      "scoreMessage": "Please, specify your score for"
+    }
+  },
   "languageDropDown": {
     "name": "Select language"
   },

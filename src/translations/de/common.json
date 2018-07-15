@@ -45,6 +45,34 @@
       "errorMessage": "Aktion verboten"
     }
   },
+  "entrant": {
+    "edit": {
+      "name": "Hier können Sie Ihre Informationen bearbeiten",
+      "placeholders":{
+        "email": "something@something.else",
+        "username": "Nutzername",
+        "name": "Vorname",
+        "surname": "Nachname",
+        "password": "Passwort",
+        "repeatPassword":"Passwort"
+      },
+      "labels":{
+        "email": "Email",
+        "username": "Nutzername",
+        "name": "Vorname",
+        "surname": "Nachname",
+        "password": "Passwort",
+        "repeatPassword":"Passwort",
+        "subjects": "Dann wähle drei Themen:"
+      },
+      "editButton": "Edit",
+      "errorSubmittingMessageSubjects": "Sie sollten genau 3 Fächer hinzufügen",
+      "errorSubmittingMessagePasswords": "Passwörter stimmen nicht überein",
+      "errorMessage": "Aktion verboten",
+      "averageScoreMessage": "Bitte geben Sie Ihre durchschnittliche Punktzahl an",
+      "scoreMessage": "Bitte geben Sie Ihre Punktzahl für"
+    }
+  },
   "languageDropDown": {
     "name": "Sprache auswählen"
   },

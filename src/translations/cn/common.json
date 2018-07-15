@@ -45,6 +45,34 @@
       "errorMessage": "禁止行动"
     }
   },
+  "entrant": {
+    "edit": {
+      "name": "在这里，您可以编辑您的信息",
+      "placeholders":{
+        "email": "something@something.else",
+        "username": "用户名",
+        "name": "名字",
+        "surname": "姓",
+        "password": "密码",
+        "repeatPassword":"密码"
+      },
+      "labels":{
+        "email": "电子邮件",
+        "username": "用户名",
+        "name": "名字",
+        "surname": "姓",
+        "password": "密码",
+        "repeatPassword":"密码",
+        "subjects": "然后选择三个科目:"
+      },
+      "editButton": "编辑",
+      "errorSubmittingMessageSubjects": "你应该准确添加3个科目",
+      "errorSubmittingMessagePasswords": "密码不匹配",
+      "errorMessage": "行动被禁止",
+      "averageScoreMessage": "请指定您的平均分数",
+      "scoreMessage": "请指定您的分数"
+    }
+  },
   "languageDropDown": {
     "name": "选择语言"
   },

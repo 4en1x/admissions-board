@@ -37,9 +37,15 @@ function addUserError(user) {
 
 export function login(user) {
     /** Until server up*/
+    if (user.username === 'admin' && user.password === 'password') {
+        return dispatch => {
+            dispatch(addUser({ name: 'admin', role: 'admin', id: 1 }));
+        };
+    }
+
     if (user.username === 'user' && user.password === 'password') {
         return dispatch => {
-            dispatch(addUser({ name: 'user', role: 'admin' }));
+            dispatch(addUser({ name: 'user', role: 'user', id: 1 }));
         };
     }
 
