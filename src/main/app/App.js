@@ -16,14 +16,10 @@ class App extends Component {
         store.dispatch(logout());
     };
 
-    static defaultProps = {
-        user: {}
-    };
-
     static get propTypes() {
         return {
             user: PropTypes.shape({
-                name: PropTypes.string,
+                login: PropTypes.string,
                 role: PropTypes.string
             }),
         }
@@ -35,7 +31,7 @@ class App extends Component {
         return (
             <div>
                 <Header
-                    user={{ name: user.name, role: user.role }}
+                    user={{ login: user.login, role: user.role }}
                     itemSelected={this.itemSelected}
                 />
 

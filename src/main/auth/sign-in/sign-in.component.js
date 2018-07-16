@@ -18,15 +18,15 @@ class SignInComponent extends React.Component {
         };
     }
 
-    inputHandle = (username, password) => {
-        this.username = username;
+    inputHandle = (login, password) => {
+        this.login = login;
         this.password = password;
 
         this.setState({
             isLoading: true
         });
 
-        this.props.login({ username: this.username, password: this.password });
+        this.props.login({ login: this.login, password: this.password });
     };
 
     static get propTypes() {

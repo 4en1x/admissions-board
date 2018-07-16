@@ -51,8 +51,7 @@ class DropDownTrigger extends React.Component {
     static get propTypes() {
         return {
             user: PropTypes.shape({
-                name: PropTypes.string,
-                surname: PropTypes.string
+                login: PropTypes.string,
             }),
             itemSelected: PropTypes.func,
             i18n : PropTypes.shape({}),
@@ -71,7 +70,7 @@ class DropDownTrigger extends React.Component {
         return (
             <div>
                 <Dropdown
-                    trigger={trigger(this.props.user.name)}
+                    trigger={trigger(this.props.user.login)}
                     onChange={this.triggerDropDown}
                     options={this.state.options}
                 />
@@ -91,7 +90,6 @@ class DropDownTrigger extends React.Component {
                         </Button>
                     </Modal.Actions>
                 </Modal>
-                
             </div>
         );
     }

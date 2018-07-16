@@ -12,7 +12,6 @@ class RegistrationForm extends React.Component {
 
         this.state = {
             averageRating: 0,
-            options: this.props.data.options,
             subjects:[],
             submitting: true,
             errorSubmittingMessage: "",
@@ -26,13 +25,6 @@ class RegistrationForm extends React.Component {
         return {
             onSubmit: PropTypes.func,
             t : PropTypes.func,
-            data: PropTypes.shape({
-                options: PropTypes.arrayOf(PropTypes.shape({
-                    key: PropTypes.number,
-                    value: PropTypes.string,
-                    text: PropTypes.string
-                }))
-            }),
             i18n: PropTypes.shape({
                 language: PropTypes.string,
             }),
@@ -71,7 +63,7 @@ class RegistrationForm extends React.Component {
 
         let data = {
             email: this.state.email,
-            username: this.state.username,
+            login: this.state.username,
             password: this.state.password,
         };
         

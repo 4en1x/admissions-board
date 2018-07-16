@@ -26,7 +26,7 @@ class CabinetPage extends Component {
             getSubjectsList: PropTypes.func,
             getEditFormValues: PropTypes.func,
             user: PropTypes.shape({
-                name: PropTypes.string,
+                login: PropTypes.string,
                 role: PropTypes.string,
                 id: PropTypes.number,
             }),

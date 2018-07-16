@@ -16,16 +16,9 @@ export default class HeaderComponent extends React.Component {
         };
     }
 
-    static defaultProps = {
-        user: {}
-    };
-
     static get propTypes() {
         return {
-            user: PropTypes.shape({
-                name: PropTypes.string,
-                surname: PropTypes.string
-            }),
+            user: PropTypes.shape({}),
             itemSelected: PropTypes.func
         }
     };

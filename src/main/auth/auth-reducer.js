@@ -1,20 +1,16 @@
 const authReducer = (
-    state = { name: '', role: '', isAuthError: true, tryLoginWithCookies: true },
+    state = { name: '', role: '', isAuthError: true },
     action
 ) => {
     switch (action.type) {
         case 'ADD_USER':
-            console.log('1')
-            return Object.assign({}, state, action.user, { isAuthError: false, tryLoginWithCookies: false });
+            return Object.assign({}, state, action.user, { isAuthError: false });
 
         case 'ADD_USER_ERROR':
-            return Object.assign({}, state, {isAuthError: true, tryLoginWithCookies: false });
+            return Object.assign({}, state, {isAuthError: true });
 
         case 'REMOVE_USER':
             return Object.assign({}, state, action.user, { isAuthError: true });
-
-        case 'FAILED_LOGIN_WITH_COOKIES':
-            return Object.assign({}, state, { tryLoginWithCookies: false });
 
         default:
             return state;
