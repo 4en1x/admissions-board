@@ -103,5 +103,10 @@
     "registerButton": "寄存器",
     "errorSubmittingMessagePasswords": "密码不匹配",
     "errorSubmittingMessageTerms": "您不同意条款和条件"
+  },
+  "admin-panel": {
+    "name": "管理面板",
+    "addFacultyButton": "添加教师",
+    "changeListOfSubjectsButton": "更改主题列表"
   }
 }

@@ -103,5 +103,10 @@
     "registerButton": "Register",
     "errorSubmittingMessagePasswords": "Passwords do not match",
     "errorSubmittingMessageTerms": "You didn't agree to the Terms and Conditions"
+  },
+  "admin-panel": {
+    "name": "Admin Panel",
+    "addFacultyButton": "Add Faculty",
+    "changeListOfSubjectsButton": "Change list of subjects"
   }
 }

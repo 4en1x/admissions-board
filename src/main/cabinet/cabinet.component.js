@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
-import EditEntrant from '../entrant/edit/edit-entrant.component'
-import entrantService from '../../service/entrant-service'
+import EditEntrant from '../entrant/edit/edit-entrant.component';
+import AdminPanel from './admin-panel/admin-panel.component';
+import entrantService from '../../service/entrant-service';
 
 import { connect } from 'react-redux';
 import SemanticLoader from '../../components/loaders/semantic-loader';
-import * as actionCreators from '../entrant/entrant-actions'
+import * as actionCreators from '../entrant/entrant-actions';
+import roles from '../../configs/roles'
 
 class CabinetPage extends Component {
     constructor(props) {
@@ -34,7 +36,7 @@ class CabinetPage extends Component {
     };
 
     onSubmit = (data) => {
-        entrantService.editEntrant(data, this.props.user.id);
+        entrantService.editEntrant(data, this.props.user.id).then((response) => console.log(response));
         this.setState({submitted: true})
     };
 
@@ -52,6 +54,9 @@ class CabinetPage extends Component {
 
         return (
             <div>
+                {
+                    this.props.user.role === roles.ADMIN.ROLE ? <AdminPanel/> : null
+                }
                 <EditEntrant
                     onSubmit={this.onSubmit}
                     subjects={this.props.subjects}

@@ -103,5 +103,10 @@
     "registerButton": "Registrieren",
     "errorSubmittingMessagePasswords": "Passwörter stimmen nicht überein",
     "errorSubmittingMessageTerms": "Sie haben den Allgemeinen Geschäftsbedingungen nicht zugestimmt"
+  },
+  "admin-panel": {
+    "name": "Administrationsmenü",
+    "addFacultyButton": "Fakultät hinzufügen",
+    "changeListOfSubjectsButton": "Ändern Sie die Liste der Themen"
   }
 }

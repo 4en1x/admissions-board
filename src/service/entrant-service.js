@@ -7,7 +7,7 @@ function getEditFormValues(id) {
 }
 
 function editEntrant(data, id) {
-    return axios.post(`/rest/entrant/edit/${id}`, data);
+    return axios.post(`http://localhost:8081/entrant/edit/${id}`, data);
 }
 
 const entrantService = {
