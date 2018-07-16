@@ -48,10 +48,6 @@ class DropDownTrigger extends React.Component {
         ]
     });
 
-    static defaultProps = {
-        user: {}
-    };
-
     static get propTypes() {
         return {
             user: PropTypes.shape({
@@ -67,7 +63,10 @@ class DropDownTrigger extends React.Component {
     render() {
         const { t, i18n } = this.props;
     
-        if (this.state.cabinet) return <Redirect to={`/cabinet`} />;
+        if (this.state.cabinet) {
+            this.setState({cabinet: false});
+            return <Redirect to={`/cabinet`} />;
+        }
 
         return (
             <div>

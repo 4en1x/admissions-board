@@ -138,13 +138,11 @@ class EditEntrantForm extends React.Component {
             username: this.state.username,
             name: this.state.name,
             surname: this.state.surname,
-            averageRating: this.state.averageRating,
-            subjects: this.state.subjects
         };
 
         if (this.props.role === roles.USER.ROLE) {
-            this.data.averageRating = this.state.averageRating;
-            this.data.subjects = this.state.subjects;
+            data.averageRating = this.state.averageRating;
+            data.subjects = this.state.subjects;
         }
 
         if (this.state.password) {
