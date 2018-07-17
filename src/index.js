@@ -16,6 +16,7 @@ import checkAuth from './main/auth/auth-component';
 import authReducer from './main/auth/auth-reducer';
 import facultyReducer from './main/faculty/faculty-reducer';
 import entrantReducer from './main/entrant/entrant-reducer';
+import cabinetReducer from './main/cabinet/cabinet-reducer';
 
 import {I18nextProvider} from 'react-i18next';
 import i18next from 'i18next';
@@ -33,7 +34,8 @@ const reducer = combineReducers({
     auth: authReducer,
     faculty: facultyReducer,
     entrant: entrantReducer,
-    form: reduxFormReducer
+    form: reduxFormReducer,
+    cabinet: cabinetReducer,
 });
 
 i18next.init({

@@ -108,5 +108,10 @@
     "name": "Administrationsmenü",
     "addFacultyButton": "Fakultät hinzufügen",
     "changeListOfSubjectsButton": "Ändern Sie die Liste der Themen"
+  },
+  "subjects-edit":{
+    "name": "Themen bearbeiten",
+    "submitButton": "Einreichen",
+    "addButton": "Fügen Sie der Liste ein neues Thema hinzu"
   }
 }

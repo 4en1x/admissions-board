@@ -108,5 +108,10 @@
     "name": "管理面板",
     "addFacultyButton": "添加教师",
     "changeListOfSubjectsButton": "更改主题列表"
+  },
+  "subjects-edit":{
+    "name": "编辑主题",
+    "submitButton": "提交",
+    "addButton": "添加新主题到列表"
   }
 }

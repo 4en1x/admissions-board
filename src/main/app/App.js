@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import Header from '../../components/header/header.components';
 import FacultyTable from '../faculty/faculty-table.component';
 import CabinetPage from '../cabinet/cabinet.component'
 import FacultyEdit from '../faculty/edit/edit-faculty.component'
 import FacultyAdd from '../faculty/add/add-faculty.component'
+import EditSubjects from '../cabinet/subjects/subjects.component'
+
 import { Route, Switch } from 'react-router-dom';
 import { store } from '../../index';
 import { logout } from '../auth/auth-actions';
@@ -37,6 +40,7 @@ class App extends Component {
 
                 <Switch>
                     <Route path="/cabinet" component={CabinetPage}/>
+                    <Route path="/editSubjects" component={EditSubjects}/>
                     <Route path="/faculties/edit/:id" component={FacultyEdit}/>
                     <Route path="/faculties/add" component={FacultyAdd}/>
                     <Route path="/" component={FacultyTable} />

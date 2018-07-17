@@ -24,11 +24,17 @@ class AdminPanel extends React.Component {
 
     onAddFacultyClicked = () => this.setState({ addFacultyButtonPressed: true});
 
+    onEditListOfSubjectsClicked = () => this.setState({ changeListOfSubjectsButtonPressed: true});
+
     render() {
         const { t } = this.props;
 
         if (this.state.addFacultyButtonPressed) {
             return <Redirect to={`/faculties/add`} />;
+        }
+
+        if (this.state.changeListOfSubjectsButtonPressed) {
+            return <Redirect to={`/editSubjects`} />;
         }
 
         return (
@@ -37,7 +43,7 @@ class AdminPanel extends React.Component {
 
                 <Button basic fluid color='teal' onClick={this.onAddFacultyClicked}>{t("admin-panel.addFacultyButton")}</Button>
                 <br></br>
-                <Button basic fluid color='teal'>{t("admin-panel.changeListOfSubjectsButton")}</Button>
+                <Button basic fluid color='teal' onClick={this.onEditListOfSubjectsClicked}>{t("admin-panel.changeListOfSubjectsButton")}</Button>
             </div>
         );
     }

@@ -108,5 +108,10 @@
     "name": "Admin Panel",
     "addFacultyButton": "Add Faculty",
     "changeListOfSubjectsButton": "Change list of subjects"
+  },
+  "subjects-edit":{
+    "name": "Edit subjects",
+    "submitButton": "Submit",
+    "addButton": "Add new Subject to list"
   }
 }
