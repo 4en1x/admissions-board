@@ -62,7 +62,8 @@ class AddFacultyForm extends React.Component {
         let data = {
             name: this.state.name,
             subjects: this.state.newSubjects,
-            recruitmentPlan: this.state.recruitmentPlan,
+            entry_plan: this.state.recruitmentPlan,
+            time: (new Date(this.state.date)).getTime()
         };
 
         this.props.onSubmit(data, this.state.id);
@@ -103,6 +104,14 @@ class AddFacultyForm extends React.Component {
                             placeholder={t("faculty.add.placeholders.recruitmentPlan")}
                             width={16}
                             onChange={(event, obj) => this.setState({recruitmentPlan: obj.value})}
+                        />
+
+                        <Form.Input
+                            type="date"
+                            className="recruitmentPlan"
+                            label={t("faculty.add.labels.date")}
+                            width={16}
+                            onChange={(event, obj) => this.setState({date: obj.value})}
                         />
 
                         <Message

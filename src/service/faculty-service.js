@@ -14,6 +14,14 @@ function editFaculty(data, id) {
     return axios.post(`/rest/faculty/edit/${id}`, data);
 }
 
+function deleteFaculty(id) {
+    return axios.post(`/rest/faculty/delete/${id}`);
+}
+
+function registerToFaculty(data) {
+    return axios.post(`/rest/faculty/register`, data);
+}
+
 function addFaculty(data) {
     return axios.post(`/rest/faculty/add`, data);
 }
@@ -22,7 +30,9 @@ const facultyService = {
     getSubjectsList,
     getEditFormValues,
     editFaculty,
-    addFaculty
+    addFaculty,
+    deleteFaculty,
+    registerToFaculty
 };
 
 export default facultyService;

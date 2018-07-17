@@ -17,10 +17,10 @@ class EditFacultyForm extends React.Component {
             id: this.props.formValues.id,
             name: this.props.formValues.name,
             newSubjects: this.props.formValues.subjects,
-            recruitmentPlan: this.props.formValues.recruitmentPlan,
-            requestsSubmitted: this.props.formValues.requestsSubmitted,
+            recruitmentPlan: this.props.formValues.entry_plan,
+            requestsSubmitted: this.props.formValues.amount_entrant,
+            date: this.props.formValues.time,
             errorSubmittingMessageSubjects: this.props.t("faculty.edit.errorSubmittingMessageSubjects"),
-            deleteRequestsSubmitted: false,
             currentLanguage: this.props.i18n.language,
         };
     }
@@ -37,8 +37,9 @@ class EditFacultyForm extends React.Component {
                 id: PropTypes.number,
                 name: PropTypes.string,
                 subjects: PropTypes.arrayOf(PropTypes.string),
-                recruitmentPlan: PropTypes.number,
-                requestsSubmitted: PropTypes.number,
+                entry_plan: PropTypes.number,
+                amount_entrant: PropTypes.number,
+                time: PropTypes.number,
             })
         }
     };
@@ -80,12 +81,9 @@ class EditFacultyForm extends React.Component {
         let data = {
             name: this.state.name,
             subjects: this.state.newSubjects,
-            recruitmentPlan: this.state.recruitmentPlan,
+            entry_plan: this.state.recruitmentPlan,
+            time: (new Date(this.state.date)).getTime()
         };
-
-        if(this.state.deleteRequestsSubmitted) {
-            data.deleteRequestsSubmitted = true;
-        }
 
         this.props.onSubmit(data, this.state.id);
     };
@@ -131,19 +129,20 @@ class EditFacultyForm extends React.Component {
                         />
 
                         <Form.Input
+                            type="date"
+                            className="recruitmentPlan"
+                            label={t("faculty.add.labels.date")}
+                            width={16}
+                            defaultValue={(new Date(this.state.date)).toISOString().slice(0, 10)}
+                            onChange={(event, obj) => this.setState({date: obj.value})}
+                        />
+
+                        <Form.Input
                             type="number"
                             label={t("faculty.edit.labels.requestsSubmitted")}
                             width={16}
                             value={this.state.requestsSubmitted}
                             readOnly
-                        />
-
-                        <Form.Field
-                            control={Checkbox}
-                            toggle
-                            label={{ children: t("faculty.edit.labels.deleteCheckbox") }}
-                            width={13}
-                            onChange={(event, obj) => this.setState({deleteRequestsSubmitted: obj.checked})}
                         />
 
                         <Message

@@ -2,7 +2,7 @@ import facultyService from '../../service/faculty-service';
 import subjectService from '../../service/subject-service'
 
 const ADD_SUBJECT_VALUES = 'ADD_SUBJECT_VALUES';
-const ADD_EDIT_FORM_VALUES = 'ADD_EDIT_FORM_VALUES';
+const ADD_EDIT_FORM_VALUES_FACULTY = 'ADD_EDIT_FORM_VALUES_FACULTY';
 const ADD_FILTER_VALUES = 'ADD_FILTER_VALUES';
 
 function addSubjectsValues(subjects) {
@@ -14,7 +14,7 @@ function addSubjectsValues(subjects) {
 
 function addEditFormValues(data) {
     return {
-        type: ADD_EDIT_FORM_VALUES,
+        type: ADD_EDIT_FORM_VALUES_FACULTY,
         data
     };
 }
@@ -84,8 +84,9 @@ export function getEditFormValues(id) {
             subjects: [
                 'math','math2','math4'
             ],
-            recruitmentPlan: 120,
-            requestsSubmitted: 90,
+            entry_plan: 120,
+            amount_entrant: 90,
+            time: 123123123
         }));
     };
     

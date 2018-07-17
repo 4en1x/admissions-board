@@ -10,7 +10,8 @@
       "register": "注册教师",
       "reqSubjects": "所需科目",
       "recruitmentPlan": "招聘计划",
-      "requestsSubmitted": "招聘计划."
+      "requestsSubmitted": "招聘计划.",
+      "deadline":"请求截止日期"
     },
     "edit": {
       "name": "编辑教师",
@@ -38,7 +39,8 @@
       "labels":{
         "name": "请输入新的教员姓名",
         "recruitmentPlan": "请输入招聘计划",
-        "subjects": "主题"
+        "subjects": "主题",
+        "date": "请输入提交截止日期"
       },
       "addButton": "加",
       "errorSubmittingMessageSubjects": "你应该准确添加3个科目",

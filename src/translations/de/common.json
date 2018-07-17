@@ -10,7 +10,8 @@
       "register": "Anmeldung zur Fakultät",
       "reqSubjects": "Erforderliche Fächer",
       "recruitmentPlan": "Einstellungsplan",
-      "requestsSubmitted": "Anzahl der eingereichten Anträge."
+      "requestsSubmitted": "Anzahl der eingereichten Anträge.",
+      "deadline":"Frist für Anfragen"
     },
     "edit": {
       "name": "Fakultät bearbeiten",
@@ -38,7 +39,8 @@
       "labels":{
         "name": "Bitte geben Sie einen neuen Fakultätsnamen ein",
         "recruitmentPlan": "Bitte geben Sie den Einstellungsplan ein",
-        "subjects": "Fächer"
+        "subjects": "Fächer",
+        "date": "Bitte geben Sie den Abgabetermin für die Einreichung ein"
       },
       "addButton": "Hinzufügen",
       "errorSubmittingMessageSubjects": "Sie sollten genau 3 Fächer hinzufügen",

@@ -10,7 +10,8 @@
       "register": "Register to Faculty",
       "reqSubjects": "Required subjects",
       "recruitmentPlan": "Recruitment plan",
-      "requestsSubmitted": "Number of requests submitted."
+      "requestsSubmitted": "Number of requests submitted.",
+      "deadline":"Deadline for requests"
     },
     "edit": {
       "name": "Edit Faculty",
@@ -38,7 +39,8 @@
       "labels":{
         "name": "Please type new faculty name",
         "recruitmentPlan": "Please type recruitment plan",
-        "subjects": "Subjects"
+        "subjects": "Subjects",
+        "date": "Please type the deadline for the submission"
       },
       "addButton": "Add",
       "errorSubmittingMessageSubjects": "You should add 3 subjects exactly",

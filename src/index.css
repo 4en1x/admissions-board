@@ -36,6 +36,10 @@ body {
   width: calc(70% - 0.5em);
 }
 
+.content-all {
+  width: calc(100% - 2em);
+}
+
 .content-thin {
   width: calc(30% - 1em);
   right: 0;
