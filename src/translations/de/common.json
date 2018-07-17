@@ -11,7 +11,8 @@
       "reqSubjects": "Erforderliche Fächer",
       "recruitmentPlan": "Einstellungsplan",
       "requestsSubmitted": "Anzahl der eingereichten Anträge.",
-      "deadline":"Frist für Anfragen"
+      "deadline":"Frist für Anfragen",
+      "getSheet": "Holen Sie sich ein Blatt"
     },
     "edit": {
       "name": "Fakultät bearbeiten",
@@ -115,5 +116,9 @@
     "name": "Themen bearbeiten",
     "submitButton": "Einreichen",
     "addButton": "Fügen Sie der Liste ein neues Thema hinzu"
+  },
+  "entrant-faculty": {
+    "name": "Sie bewerben sich derzeit für diese Fakultät",
+    "unsubscribeButton":"Abmelden"
   }
 }

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Pagination, Icon, List, Header, Button, Divider, Segment, Label } from "semantic-ui-react";
+import { Pagination, Icon, List, Button, Segment } from "semantic-ui-react";
 import { translate } from 'react-i18next';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import roles from '../../configs/roles'
 import './faculty-table.css';
 import FacultyFilter from './filter/candidates-filter.container';
+import Faculty from './faculty.component'
 import facultyService from '../../service/faculty-service'
 
 class FacultyTable extends Component {
@@ -15,36 +16,36 @@ class FacultyTable extends Component {
 
         this.state = {
             faculties: [
-                { time: 1222222222, id: 0, key: 0, value: '0', recruitmentPlan:120,requestsSubmitted:300, name: 'Faculty of Applied Mathematics and Computer Science', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { time: 1222222222,id: 1, key: 1, value: '1', recruitmentPlan:90,requestsSubmitted:101,name: 'Faculty of Biology',available: false, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { time: 1222222222,id: 2, key: 2, value: '2', recruitmentPlan:150,requestsSubmitted:167,name: 'Faculty of Radiophysics and Computer Technologies', available: false, subjects: ['Math', 'Geography', 'Belarussian language'] },
-                { time: 1222222222,id: 3, key: 3, value: '3', recruitmentPlan:40,requestsSubmitted:20,name: 'Faculty of Mathematics and Mechanics', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { time: 1222222222,id: 4, key: 4, value: '4', recruitmentPlan:90,requestsSubmitted:130,name: 'Faculty of International relations', available: true, subjects: ['Math', 'Chemistry'] },
-                { time: 1222222222,id: 5, key: 5, value: '5', recruitmentPlan:80,requestsSubmitted:70,name: 'Faculty of History', available: false, subjects: ['Math', 'Chemistry', 'Belarussian language'] },
-                { time: 1222222222,id: 6, key: 6, value: '6', recruitmentPlan:120,requestsSubmitted:300, name: 'Faculty of Applied Mathematics and Computer Science', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { time: 1222222222,id: 7, key: 7, value: '7', recruitmentPlan:90,requestsSubmitted:101,name: 'Faculty of Biology',available: false, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { time: 1222222222,id: 8, key: 8, value: '8', recruitmentPlan:150,requestsSubmitted:167,name: 'Faculty of Radiophysics and Computer Technologies', available: false, subjects: ['Math', 'Geography', 'Belarussian language'] },
-                { time: 1222222222,id: 9, key: 9, value: '9', recruitmentPlan:40,requestsSubmitted:20,name: 'Faculty of Mathematics and Mechanics', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { time: 1222222222,id: 10, key: 10, value: '10', recruitmentPlan:90,requestsSubmitted:130,name: 'Faculty of International relations', available: true, subjects: ['Math', 'Chemistry'] },
-                { time: 1222222222,id: 11, key: 11, value: '11', recruitmentPlan:80,requestsSubmitted:70,name: 'Faculty of History', available: false, subjects: ['Math', 'Chemistry', 'Belarussian language'] },
-                { time: 1222222222,id: 12, key: 12, value: '12', recruitmentPlan:120,requestsSubmitted:300, name: 'Faculty of Applied Mathematics and Computer Science', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { time: 1222222222,id: 13, key: 13, value: '13', recruitmentPlan:90,requestsSubmitted:101,name: 'Faculty of Biology',available: false, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { time: 1222222222,id: 14, key: 14, value: '14', recruitmentPlan:150,requestsSubmitted:167,name: 'Faculty of Radiophysics and Computer Technologies', available: false, subjects: ['Math', 'Geography', 'Belarussian language'] },
-                { time: 1222222222,id: 15, key: 15, value: '15', recruitmentPlan:40,requestsSubmitted:20,name: 'Faculty of Mathematics and Mechanics', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { time: 1222222222,id: 16, key: 16, value: '16', recruitmentPlan:90,requestsSubmitted:130,name: 'Faculty of International relations', available: true, subjects: ['Math', 'Chemistry'] },
-                { time: 1222222222,id: 17, key: 17, value: '17', recruitmentPlan:80,requestsSubmitted:70,name: 'Faculty of History', available: false, subjects: ['Math', 'Chemistry', 'Belarussian language'] },
-                { time: 1222222222,id: 18, key: 18, value: '18', recruitmentPlan:120,requestsSubmitted:300, name: 'Faculty of Applied Mathematics and Computer Science', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { time: 1222222222,id: 19, key: 19, value: '19', recruitmentPlan:90,requestsSubmitted:101,name: 'Faculty of Biology',available: false, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { time: 1222222222,id: 20, key: 20, value: '20', recruitmentPlan:150,requestsSubmitted:167,name: 'Faculty of Radiophysics and Computer Technologies', available: false, subjects: ['Math', 'Geography', 'Belarussian language'] },
-                { time: 1222222222,id: 21, key: 21, value: '21', recruitmentPlan:40,requestsSubmitted:20,name: 'Faculty of Mathematics and Mechanics', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { time: 1222222222,id: 22, key: 22, value: '22', recruitmentPlan:90,requestsSubmitted:130,name: 'Faculty of International relations', available: true, subjects: ['Math', 'Chemistry'] },
-                { time: 1222222222,id: 23, key: 23, value: '23', recruitmentPlan:80,requestsSubmitted:70,name: 'Faculty of History', available: false, subjects: ['Math', 'Chemistry', 'Belarussian language'] },
-                { time: 1222222222,id: 24, key: 24, value: '24', recruitmentPlan:120,requestsSubmitted:300, name: 'Faculty of Applied Mathematics and Computer Science', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { time: 1222222222,id: 25, key: 25, value: '25', recruitmentPlan:90,requestsSubmitted:101,name: 'Faculty of Biology',available: false, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { time: 1222222222,id: 26, key: 26, value: '26', recruitmentPlan:150,requestsSubmitted:167,name: 'Faculty of Radiophysics and Computer Technologies', available: false, subjects: ['Math', 'Geography', 'Belarussian language'] },
-                { time: 1222222222,id: 27, key: 27, value: '27', recruitmentPlan:40,requestsSubmitted:20,name: 'Faculty of Mathematics and Mechanics', available: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
-                { time: 1222222222,id: 28, key: 28, value: '28', recruitmentPlan:90,requestsSubmitted:130,name: 'Faculty of International relations', available: true, subjects: ['Math', 'Chemistry'] },
-                { time: 1222222222,id: 29, key: 29, value: '29', recruitmentPlan:80,requestsSubmitted:70,name: 'Faculty of History', available: false, subjects: ['Math', 'Chemistry', 'Belarussian language'] },
+                { time: 1222222222, id: 0, key: 0, value: '0', entry_plan:120,amount_entrant:300, name: 'Faculty of Applied Mathematics and Computer Science', is_Unavailable: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { time: 1222222222,id: 1, key: 1, value: '1', entry_plan:90,amount_entrant:101,name: 'Faculty of Biology',is_Unavailable: false, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { time: 1222222222,id: 2, key: 2, value: '2', entry_plan:150,amount_entrant:167,name: 'Faculty of Radiophysics and Computer Technologies', is_Unavailable: false, subjects: ['Math', 'Geography', 'Belarussian language'] },
+                { time: 1222222222,id: 3, key: 3, value: '3', entry_plan:40,amount_entrant:20,name: 'Faculty of Mathematics and Mechanics', is_Unavailable: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { time: 1222222222,id: 4, key: 4, value: '4', entry_plan:90,amount_entrant:130,name: 'Faculty of International relations', is_Unavailable: true, subjects: ['Math', 'Chemistry'] },
+                { time: 1222222222,id: 5, key: 5, value: '5', entry_plan:80,amount_entrant:70,name: 'Faculty of History', is_Unavailable: false, subjects: ['Math', 'Chemistry', 'Belarussian language'] },
+                { time: 1222222222,id: 6, key: 6, value: '6', entry_plan:120,amount_entrant:300, name: 'Faculty of Applied Mathematics and Computer Science', is_Unavailable: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { time: 1222222222,id: 7, key: 7, value: '7', entry_plan:90,amount_entrant:101,name: 'Faculty of Biology',is_Unavailable: false, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { time: 1222222222,id: 8, key: 8, value: '8', entry_plan:150,amount_entrant:167,name: 'Faculty of Radiophysics and Computer Technologies', is_Unavailable: false, subjects: ['Math', 'Geography', 'Belarussian language'] },
+                { time: 1222222222,id: 9, key: 9, value: '9', entry_plan:40,amount_entrant:20,name: 'Faculty of Mathematics and Mechanics', is_Unavailable: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { time: 1222222222,id: 10, key: 10, value: '10', entry_plan:90,amount_entrant:130,name: 'Faculty of International relations', is_Unavailable: true, subjects: ['Math', 'Chemistry'] },
+                { time: 1222222222,id: 11, key: 11, value: '11', entry_plan:80,amount_entrant:70,name: 'Faculty of History', is_Unavailable: false, subjects: ['Math', 'Chemistry', 'Belarussian language'] },
+                { time: 1222222222,id: 12, key: 12, value: '12', entry_plan:120,amount_entrant:300, name: 'Faculty of Applied Mathematics and Computer Science', is_Unavailable: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { time: 1222222222,id: 13, key: 13, value: '13', entry_plan:90,amount_entrant:101,name: 'Faculty of Biology',is_Unavailable: false, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { time: 1222222222,id: 14, key: 14, value: '14', entry_plan:150,amount_entrant:167,name: 'Faculty of Radiophysics and Computer Technologies', is_Unavailable: false, subjects: ['Math', 'Geography', 'Belarussian language'] },
+                { time: 1222222222,id: 15, key: 15, value: '15', entry_plan:40,amount_entrant:20,name: 'Faculty of Mathematics and Mechanics', is_Unavailable: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { time: 1222222222,id: 16, key: 16, value: '16', entry_plan:90,amount_entrant:130,name: 'Faculty of International relations', is_Unavailable: true, subjects: ['Math', 'Chemistry'] },
+                { time: 1222222222,id: 17, key: 17, value: '17', entry_plan:80,amount_entrant:70,name: 'Faculty of History', is_Unavailable: false, subjects: ['Math', 'Chemistry', 'Belarussian language'] },
+                { time: 1222222222,id: 18, key: 18, value: '18', entry_plan:120,amount_entrant:300, name: 'Faculty of Applied Mathematics and Computer Science', is_Unavailable: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { time: 1222222222,id: 19, key: 19, value: '19', entry_plan:90,amount_entrant:101,name: 'Faculty of Biology',is_Unavailable: false, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { time: 1222222222,id: 20, key: 20, value: '20', entry_plan:150,amount_entrant:167,name: 'Faculty of Radiophysics and Computer Technologies', is_Unavailable: false, subjects: ['Math', 'Geography', 'Belarussian language'] },
+                { time: 1222222222,id: 21, key: 21, value: '21', entry_plan:40,amount_entrant:20,name: 'Faculty of Mathematics and Mechanics', is_Unavailable: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { time: 1222222222,id: 22, key: 22, value: '22', entry_plan:90,amount_entrant:130,name: 'Faculty of International relations', is_Unavailable: true, subjects: ['Math', 'Chemistry'] },
+                { time: 1222222222,id: 23, key: 23, value: '23', entry_plan:80,amount_entrant:70,name: 'Faculty of History', is_Unavailable: false, subjects: ['Math', 'Chemistry', 'Belarussian language'] },
+                { time: 1222222222,id: 24, key: 24, value: '24', entry_plan:120,amount_entrant:300, name: 'Faculty of Applied Mathematics and Computer Science', is_Unavailable: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { time: 1222222222,id: 25, key: 25, value: '25', entry_plan:90,amount_entrant:101,name: 'Faculty of Biology',is_Unavailable: false, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { time: 1222222222,id: 26, key: 26, value: '26', entry_plan:150,amount_entrant:167,name: 'Faculty of Radiophysics and Computer Technologies', is_Unavailable: false, subjects: ['Math', 'Geography', 'Belarussian language'] },
+                { time: 1222222222,id: 27, key: 27, value: '27', entry_plan:40,amount_entrant:20,name: 'Faculty of Mathematics and Mechanics', is_Unavailable: true, subjects: ['Math', 'Russian language', 'Belarussian language'] },
+                { time: 1222222222,id: 28, key: 28, value: '28', entry_plan:90,amount_entrant:130,name: 'Faculty of International relations', is_Unavailable: true, subjects: ['Math', 'Chemistry'] },
+                { time: 1222222222,id: 29, key: 29, value: '29', entry_plan:80,amount_entrant:70,name: 'Faculty of History', is_Unavailable: false, subjects: ['Math', 'Chemistry', 'Belarussian language'] },
             ],
             pager: {
                 totalItems: 30,
@@ -127,58 +128,38 @@ class FacultyTable extends Component {
                                 this.state.faculties.slice(this.state.pager.startIndex, this.state.pager.endIndex).map(item => {
                                     return <List.Item key ={item.key}>
                                         <Segment>
-                                            {item.available ? (
+                                            {this.props.role === roles.ADMIN.ROLE ? (item.is_Unavailable ?(
                                                 <List.Content floated='right'>
-                                                    <Button onClick={() => this.onFacultyRegister(item.id)} color='green' >
-                                                        {t("faculty.table.register")}
+                                                    <Button color='yellow' disabled>
+                                                        {t("faculty.table.getSheet")}
                                                     </Button>
                                                 </List.Content>
                                             ) : (
+                                                <List.Content floated='right'>
+                                                    <Button color='yellow' >
+                                                        {t("faculty.table.getSheet")}
+                                                    </Button>
+                                                </List.Content>
+                                            )):item.is_Unavailable ? (
                                                 <List.Content floated='right'>
                                                     <Button onClick={() => this.onFacultyRegister(item.id)}color='red' disabled>
                                                         {t("faculty.table.register")}
                                                     </Button>
                                                 </List.Content>
+                                            ) : (
+                                                <List.Content floated='right'>
+                                                    <Button onClick={() => this.onFacultyRegister(item.id)} color='green' >
+                                                        {t("faculty.table.register")}
+                                                    </Button>
+                                                </List.Content>
                                             )}
 
-                                            <Header size='medium' textAlign="left">{item.name}</Header>
-                                            <Header as='h5' textAlign="left">{t("faculty.table.reqSubjects")}:</Header>
-
-                                            <List>
-                                                {
-                                                    this.state.faculties[item.key].subjects.map(subject => {
-                                                        return <List.Item key ={subject}>
-                                                            <List.Icon name='marker' />
-                                                            <List.Content>
-                                                                <List.Header>{subject}</List.Header>
-                                                            </List.Content>
-                                                        </List.Item>
-                                                    })
-                                                }
-                                            </List>
-
-                                            <Divider section />
-                                
-                                            <Header className="countTable" as='h4' color='green'>
-                                                {t("faculty.table.recruitmentPlan")} <Label  circular>{item.recruitmentPlan}</Label>
-                                            </Header>
-                                
-                                            <Header className="countTable" as='h4' color='red'>
-                                                {t("faculty.table.requestsSubmitted")} <Label  circular>{item.requestsSubmitted}</Label>
-                                            </Header>
-
-                                            <Header className="countTable" as='h4'>
-                                                {t("faculty.table.deadline")}: {(new Date(item.time)).toISOString().slice(0, 10)}
-                                            </Header>
-
-                                            {
-                                                this.props.role === roles.ADMIN.ROLE ? (
-                                                    <List.Content floated='right'>
-                                                        <Icon onClick={() => this.onEditPageClick(item.id)} name="edit" size="large" color="green"/>
-                                                        <Icon onClick={() => this.onDeleteElementClick(item.id)} name="delete" size="large" color="red"/>
-                                                    </List.Content>
-                                                ) : null
-                                            }
+                                            <Faculty
+                                                faculty={item}
+                                                role={this.props.role}
+                                                onEditPageClick={this.onEditPageClick}
+                                                onDeleteElementClick={this.onDeleteElementClick}
+                                            />
                                         </Segment>
                                     </List.Item>
                                 })

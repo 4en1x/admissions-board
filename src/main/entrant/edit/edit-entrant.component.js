@@ -14,12 +14,12 @@ class EditEntrantForm extends React.Component {
 
         this.state = {
             allSubjects: this.prepareDataForDropDown(this.props.subjects),
-            subjects: this.props.formValues.subjects || [],
+            subjects: this.props.formValues.marks || [],
             email: this.props.formValues.email || "",
-            name: this.props.formValues.name || "",
+            name: this.props.formValues.first_name || "",
             surname: this.props.formValues.surname || "",
-            username: this.props.formValues.username || "",
-            averageRating: this.props.formValues.averageRating || 0,
+            username: this.props.formValues.login || "",
+            averageRating: this.props.formValues.certificate || 0,
             submitting: true,
             errorSubmittingMessage: "",
             errorSubmittingMessageSubjects: this.props.t("entrant.edit.errorSubmittingMessageSubjects"),
@@ -45,14 +45,14 @@ class EditEntrantForm extends React.Component {
                 language: PropTypes.string,
             }),
             formValues: PropTypes.shape({
-                name: PropTypes.string,
+                first_name: PropTypes.string,
                 surname: PropTypes.string,
-                username: PropTypes.string,
+                login: PropTypes.string,
                 email: PropTypes.string,
                 averageRating: PropTypes.number,
-                subjects: PropTypes.arrayOf(PropTypes.shape({
+                marks: PropTypes.arrayOf(PropTypes.shape({
                     subject: PropTypes.string,
-                    rating: PropTypes.number,
+                    value: PropTypes.number,
                 })),
             }),
             role: PropTypes.string,
@@ -67,7 +67,7 @@ class EditEntrantForm extends React.Component {
                 if (item.subject === subject) {
                     return {
                         subject: item.subject,
-                        rating: parseInt(obj.value)
+                        value: parseInt(obj.value)
                     }
                 }
 
@@ -90,15 +90,15 @@ class EditEntrantForm extends React.Component {
         return  keys.map(key => {
             const name =  this.state.allSubjects.find((subject) => subject.key === key).text;
             const item = this.state.subjects.find((data) => data.subject === name)
-            let rating = 0;
+            let value = 0;
 
             if (item) {
-                rating = item.rating
+                value = item.value
             }
 
             return  {
                 subject: name,
-                rating: rating,
+                value: value,
             }
         })
     }
@@ -135,14 +135,14 @@ class EditEntrantForm extends React.Component {
         
         let data = {
             email: this.state.email,
-            username: this.state.username,
-            name: this.state.name,
+            login: this.state.username,
+            first_name: this.state.name,
             surname: this.state.surname,
         };
 
         if (this.props.role === roles.USER.ROLE) {
-            data.averageRating = this.state.averageRating;
-            data.subjects = this.state.subjects;
+            data.certificate = this.state.averageRating;
+            data.marks = this.state.subjects;
         }
 
         if (this.state.password) {
@@ -221,7 +221,6 @@ class EditEntrantForm extends React.Component {
                                     type='range'
                                     min={0}
                                     max={100}
-                                    value={this.state.rating}
                                     defaultValue={this.state.averageRating}
                                     onChange={this.changeAverageRating}
                                     className="ui blue range"
@@ -244,11 +243,11 @@ class EditEntrantForm extends React.Component {
                                         let key = this.getKeysByNames([item])[0]
                                         return <div key ={key}>
                                             <Form.Input
-                                                label={`${t("entrant.edit.scoreMessage")} ${item.subject}: ${item.rating}`}
+                                                label={`${t("entrant.edit.scoreMessage")} ${item.subject}: ${item.value}`}
                                                 type='range'
                                                 min={0}
                                                 max={100}
-                                                value={item.rating}
+                                                value={item.value}
                                                 onChange={(event, obj) => this.changeRating(obj, item.subject)}
                                                 className="ui blue range"
                                                 width={12}

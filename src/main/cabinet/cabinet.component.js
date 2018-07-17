@@ -4,12 +4,18 @@ import { Redirect } from 'react-router-dom';
 
 import EditEntrant from '../entrant/edit/edit-entrant.component';
 import AdminPanel from './admin-panel/admin-panel.component';
+import Faculty from '../faculty/faculty.component'
 import entrantService from '../../service/entrant-service';
+
+import { Button, Header, Segment } from "semantic-ui-react";
+import { translate } from 'react-i18next';
 
 import { connect } from 'react-redux';
 import SemanticLoader from '../../components/loaders/semantic-loader';
 import * as actionCreators from '../entrant/entrant-actions';
+
 import roles from '../../configs/roles'
+import './cabinet.css'
 
 class CabinetPage extends Component {
     constructor(props) {
@@ -30,22 +36,35 @@ class CabinetPage extends Component {
                 role: PropTypes.string,
                 id: PropTypes.number,
             }),
+            t: PropTypes.func,
             subjects: PropTypes.arrayOf(PropTypes.string),
             formValues: PropTypes.shape({}),
+            getEntrantFaculty: PropTypes.func,
+            entrantFaculty: PropTypes.shape({
+                is_Unavailable: PropTypes.bool,
+            }),
         }
     };
 
     onSubmit = (data) => {
-        entrantService.editEntrant(data, this.props.user.id).then((response) => console.log(response));
+        entrantService.editEntrant(data, this.props.user.id);
         this.setState({submitted: true})
     };
 
     componentDidMount() {
         this.props.getSubjectsList();
         this.props.getEditFormValues(this.props.user.id);
+        this.props.getEntrantFaculty(this.props.user.id);
     }
-
+    
+    unsubscribe = () => {
+        entrantService.unsubscribe(this.props.user.id);
+        this.setState({submitted: true})
+    };
+    
     render() {
+        const { t } = this.props;
+
         if (this.state.submitted) return <Redirect to={`/`} />;
 
         if (!this.props.formValues || !this.props.subjects) {
@@ -55,7 +74,27 @@ class CabinetPage extends Component {
         return (
             <div>
                 {
-                    this.props.user.role === roles.ADMIN.ROLE ? <AdminPanel/> : null
+                    this.props.user.role === roles.ADMIN.ROLE ?
+                        <AdminPanel/> :
+                        this.props.entrantFaculty ?
+                            <div className="entrant-faculty">
+                                <Header size='huge' textAlign="center">{t("entrant-faculty.name")}:</Header>
+                                <Segment>
+                                    <Faculty faculty={this.props.entrantFaculty} role={this.props.user.role}/>
+                                </Segment>
+                                {
+                                    !this.props.entrantFaculty.is_Unavailable ? (
+                                        <Button color="google plus" onClick={this.unsubscribe} floated ="right">
+                                            {t("entrant-faculty.unsubscribeButton")}
+                                        </Button>
+                                    ) : (
+                                        <Button color="google plus" disabled floated ="right">
+                                            {t("entrant-faculty.unsubscribeButton")}
+                                        </Button>
+                                    )
+                                }
+                            </div>
+                            :null
                 }
                 <EditEntrant
                     onSubmit={this.onSubmit}
@@ -68,13 +107,13 @@ class CabinetPage extends Component {
     }
 }
 
-
 const mapStateToProps = state => {
     return {
         formValues: state.entrant.formValues,
         subjects: state.entrant.subjects,
-        user: state.auth
+        user: state.auth,
+        entrantFaculty: state.entrant.entrantFaculty
     };
 };
 
-export default connect(mapStateToProps, actionCreators)(CabinetPage);
+export default translate('common')(connect(mapStateToProps, actionCreators)(CabinetPage));

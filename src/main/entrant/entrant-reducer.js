@@ -6,6 +6,9 @@ const entrantReducer = (state = {}, action) => {
         case 'ADD_EDIT_FORM_VALUES':
             return { ...state, formValues: action.data };
 
+        case 'GET_ENTRANT_FACULTY':
+            return { ...state, entrantFaculty: action.faculty };
+
         default:
             return state;
     }

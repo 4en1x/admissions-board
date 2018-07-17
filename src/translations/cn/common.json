@@ -11,7 +11,8 @@
       "reqSubjects": "所需科目",
       "recruitmentPlan": "招聘计划",
       "requestsSubmitted": "招聘计划.",
-      "deadline":"请求截止日期"
+      "deadline":"请求截止日期",
+      "getSheet": "获取表格"
     },
     "edit": {
       "name": "编辑教师",
@@ -115,5 +116,9 @@
     "name": "编辑主题",
     "submitButton": "提交",
     "addButton": "添加新主题到列表"
+  },
+  "entrant-faculty": {
+    "name": "你目前申请了这个系",
+    "unsubscribeButton":"退订"
   }
 }

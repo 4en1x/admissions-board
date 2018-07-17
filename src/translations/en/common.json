@@ -11,7 +11,8 @@
       "reqSubjects": "Required subjects",
       "recruitmentPlan": "Recruitment plan",
       "requestsSubmitted": "Number of requests submitted.",
-      "deadline":"Deadline for requests"
+      "deadline":"Deadline for requests",
+      "getSheet": "Get Sheet"
     },
     "edit": {
       "name": "Edit Faculty",
@@ -115,5 +116,9 @@
     "name": "Edit subjects",
     "submitButton": "Submit",
     "addButton": "Add new Subject to list"
+  },
+  "entrant-faculty": {
+    "name": "You currently applied for this faculty",
+    "unsubscribeButton":"Unsubscribe"
   }
 }
