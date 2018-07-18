@@ -1,10 +1,10 @@
 const ROLES = {
     ADMIN: {
-        ROLE: 'admin',
+        ROLE: 'ADMIN',
     },
 
     USER: {
-        ROLE: 'entrant',
+        ROLE: 'ENTRANT',
     },
 };
 

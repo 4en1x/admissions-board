@@ -31,13 +31,13 @@ export function login(user) {
     /** Until server up */
     if (user.login === 'admin' && user.password === 'password') {
         return (dispatch) => {
-            dispatch(addUser({ login: 'admin', role: 'admin', id: 1 }));
+            dispatch(addUser({ login: 'admin', role: 'ADMIN', id: 1 }));
         };
     }
 
     if (user.login === 'entrant' && user.password === 'password') {
         return (dispatch) => {
-            dispatch(addUser({ login: 'entrant', role: 'entrant', id: 1 }));
+            dispatch(addUser({ login: 'entrant', role: 'ENTRANT', id: 1 }));
         };
     }
 
