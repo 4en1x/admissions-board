@@ -10,7 +10,7 @@ import EditSubjects from '../cabinet/subjects/subjects.component';
 import EntrantSheet from '../sheet/sheet-table.component';
 
 import { Route, Switch } from 'react-router-dom';
-import { store } from '../../index';
+import store from '../../index';
 import { logout } from '../auth/auth-actions';
 import './App.css';
 import { translate } from 'react-i18next';

@@ -7,9 +7,11 @@ import { combineReducers, createStore, applyMiddleware } from 'redux';
 import { reducer as reduxFormReducer } from 'redux-form';
 
 import thunk from 'redux-thunk';
+import { I18nextProvider } from 'react-i18next';
+import i18next from 'i18next';
 
 import SignInComponent from './main/auth/sign-in/sign-in.component';
-import RegistrationComponent from './main/auth/registration/registration.component'
+import RegistrationComponent from './main/auth/registration/registration.component';
 import App from './main/app/App';
 import checkAuth from './main/auth/auth-component';
 
@@ -18,11 +20,9 @@ import facultyReducer from './main/faculty/faculty-reducer';
 import entrantReducer from './main/entrant/entrant-reducer';
 import cabinetReducer from './main/cabinet/cabinet-reducer';
 
-import {I18nextProvider} from 'react-i18next';
-import i18next from 'i18next';
-import common_de from "./translations/de/common.json";
-import common_en from "./translations/en/common.json";
-import common_cn from "./translations/cn/common.json";
+import commonDe from './translations/de/common.json';
+import commonEn from './translations/en/common.json';
+import commonCn from './translations/cn/common.json';
 
 import { loadState, saveState } from './localStorage';
 
@@ -43,13 +43,13 @@ i18next.init({
     lng: 'en',
     resources: {
         en: {
-            common: common_en
+            common: commonEn,
         },
         de: {
-            common: common_de
+            common: commonDe,
         },
         cn: {
-            common: common_cn
+            common: commonCn,
         },
     },
 });
@@ -72,7 +72,7 @@ ReactDOM.render(
             </Router>
         </Provider>
     </I18nextProvider>,
-    document.getElementById('root')
+    document.getElementById('root'),
 );
 
-export { store };
+export default store;

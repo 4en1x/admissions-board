@@ -3,7 +3,7 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 
 function getSubjectsList() {
-    return axios.get(`/rest/subjects`);
+    return axios.get('/rest/subjects');
 }
 
 function getEditFormValues(id) {
@@ -23,11 +23,11 @@ function deleteFaculty(id) {
 }
 
 function registerToFaculty(data) {
-    return axios.post(`/rest/faculty/register`, data);
+    return axios.post('/rest/faculty/register', data);
 }
 
 function addFaculty(data) {
-    return axios.post(`/rest/faculty/add`, data);
+    return axios.post('/rest/faculty/add', data);
 }
 
 const facultyService = {
@@ -37,7 +37,7 @@ const facultyService = {
     addFaculty,
     deleteFaculty,
     registerToFaculty,
-    getSheet
+    getSheet,
 };
 
 export default facultyService;

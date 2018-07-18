@@ -22,7 +22,7 @@ const entrantService = {
     getEditFormValues,
     editEntrant,
     getEntrantFaculty,
-    unsubscribe
+    unsubscribe,
 };
 
 export default entrantService;

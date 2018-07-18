@@ -1,30 +1,30 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Table } from "semantic-ui-react";
+import { Table } from 'semantic-ui-react';
 import { translate } from 'react-i18next';
 import { connect } from 'react-redux';
 import './sheet.css';
-import SheetRow from './sheet-row.component'
+import SheetRow from './sheet-row.component';
 import SemanticLoader from '../../components/loaders/semantic-loader';
-import * as actionCreators from "../faculty/faculty-actions";
+import * as actionCreators from '../faculty/faculty-actions';
 
 
 class FacultyTable extends Component {
     constructor(props) {
         super(props);
-        
+
         this.state = {
-        
+
         };
     }
-    
+
     componentDidMount() {
         this.props.sheetGetEntrants(this.props.match.params.id);
     }
-    
+
     static get propTypes() {
         return {
-            t : PropTypes.func,
+            t: PropTypes.func,
             entrants: PropTypes.arrayOf(PropTypes.shape({})),
             match: PropTypes.shape({
                 params: PropTypes.shape({
@@ -32,12 +32,12 @@ class FacultyTable extends Component {
                 }),
             }),
             sheetGetEntrants: PropTypes.func,
-        }
-    };
-    
+        };
+    }
+
     render() {
         const { t } = this.props;
-    
+
         if (!this.props.entrants) {
             return <SemanticLoader />;
         }
@@ -55,7 +55,7 @@ class FacultyTable extends Component {
                         <Table.HeaderCell>Enrolled / not enrolled</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
-        
+
                 <Table.Body>
                     {
                         this.props.entrants.map(entrant => <SheetRow key={entrant.id} entrant={entrant}/>)
@@ -66,10 +66,8 @@ class FacultyTable extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        entrants: state.faculty.sheetEntrants,
-    };
-};
+const mapStateToProps = state => ({
+    entrants: state.faculty.sheetEntrants,
+});
 
 export default connect(mapStateToProps, actionCreators)(translate('common')(FacultyTable));
