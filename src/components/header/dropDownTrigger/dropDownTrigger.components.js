@@ -1,53 +1,19 @@
 import React from "react";
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Dropdown, Icon, Modal, Button, Flag } from 'semantic-ui-react';
+import { Dropdown, Icon, Flag, Menu, Popup } from 'semantic-ui-react';
 import { translate } from 'react-i18next';
-
-const trigger = name =>
-    <span>
-        <Icon name="user" />
-        {name}
-    </span>;
 
 class DropDownTrigger extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            modal_language: false,
-            options:[
-                { value: 'select-language', text: this.props.t("dropDownMenu.selectLan") },
-                { value: 'sign-out', text: this.props.t("dropDownMenu.signOut") },
-                { value: 'cabinet', text: this.props.t("dropDownMenu.cabinet") }
-            ],
             cabinet: false,
+            mainPage: false,
         }
     }
-
-    triggerDropDown = (event, value) => {
-        if (value.value === 'sign-out') {
-            this.props.itemSelected(event, value);
-        }
-
-        if (value.value === 'select-language') {
-            this.setState({modal_language: true});
-        }
-
-        if (value.value === 'cabinet') {
-            this.setState({cabinet: true});
-        }
-    };
-
-    onClose = () => this.setState({
-        modal_language: false,
-        options:[
-            { value: 'select-language', text: this.props.t("dropDownMenu.selectLan") },
-            { value: 'sign-out', text: this.props.t("dropDownMenu.signOut") },
-            { value: 'cabinet', text: this.props.t("dropDownMenu.cabinet") }
-        ]
-    });
-
+    
     static get propTypes() {
         return {
             user: PropTypes.shape({
@@ -67,29 +33,46 @@ class DropDownTrigger extends React.Component {
             return <Redirect to={`/cabinet`} />;
         }
 
+        if (this.state.mainPage) {
+            this.setState({mainPage: false});
+            return <Redirect to={`/`} />;
+        }
+
         return (
             <div>
-                <Dropdown
-                    trigger={trigger(this.props.user.login)}
-                    onChange={this.triggerDropDown}
-                    options={this.state.options}
+                <Popup
+                    trigger={
+                        <span>
+                            <Icon name="user" />
+                            {this.props.user.login}
+                        </span>
+                    }
+                    content={
+                        <Menu vertical>
+                            <Menu.Item onClick={() => this.setState({mainPage: true})}>
+                                {t("dropDownMenu.mainPage") }
+                            </Menu.Item>
+                            
+                            <Menu.Item onClick={(event, value) => this.props.itemSelected(event, value)}>
+                                {t("dropDownMenu.signOut") }
+                            </Menu.Item>
+        
+                            <Menu.Item onClick={() => this.setState({cabinet: true})}>
+                                {t("dropDownMenu.cabinet")}
+                            </Menu.Item>
+        
+                            <Dropdown item text={t("dropDownMenu.selectLan")}>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item><Flag name='de' onClick={() => i18n.changeLanguage('de')}>de</Flag></Dropdown.Item>
+                                    <Dropdown.Item><Flag name='gb' onClick={() => i18n.changeLanguage('en')}>en</Flag></Dropdown.Item>
+                                    <Dropdown.Item><Flag name='cn' onClick={() => i18n.changeLanguage('cn')}>cn</Flag></Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </Menu>
+                    }
+                    on='click'
                 />
-
-                <Modal open={this.state.modal_language}>
-                    <Modal.Header>{t("dropDownMenu.selectLan")}</Modal.Header>
-                    <Modal.Content>
-                        <Modal.Description>
-                            <Flag name='de' onClick={() => i18n.changeLanguage('de')}>de</Flag>
-                            <Flag name='gb' onClick={() => i18n.changeLanguage('en')}>en</Flag>
-                            <Flag name='cn' onClick={() => i18n.changeLanguage('cn')}>cn</Flag>
-                        </Modal.Description>
-                    </Modal.Content>
-                    <Modal.Actions>
-                        <Button onClick={this.onClose} negative>
-                            {t("dropDownMenu.closeBtn")}
-                        </Button>
-                    </Modal.Actions>
-                </Modal>
+                
             </div>
         );
     }

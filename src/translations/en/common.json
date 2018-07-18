@@ -3,7 +3,8 @@
     "selectLan": "Select Language",
     "closeBtn": "Close",
     "signOut": "Sign Out",
-    "cabinet": "Personal Cabinet"
+    "cabinet": "Personal Cabinet",
+    "mainPage": "Main Page"
   },
   "faculty": {
     "table": {
