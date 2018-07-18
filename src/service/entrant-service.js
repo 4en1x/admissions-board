@@ -3,19 +3,19 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 
 function getEditFormValues(id) {
-    return axios.get(`/rest/entrant/${id}`);
+    return axios.get(`http://localhost:8888/committee/entrant/${id}`);
 }
 
 function getEntrantFaculty(id) {
-    return axios.get(`/rest/entrant/${id}/faculty`);
+    return axios.get(`http://localhost:8888/committee/entrant/${id}/faculty`);
 }
 
 function unsubscribe(id) {
-    return axios.get(`/rest/entrant/${id}/unsubscribe`);
+    return axios.get(`http://localhost:8888/committee/entrant/${id}/unsubscribe`);
 }
 
 function editEntrant(data, id) {
-    return axios.post(`http://localhost:8081/entrant/edit/${id}`, data);
+    return axios.post(`http://localhost:8888/committee/entrant/edit/${id}`, data);
 }
 
 const entrantService = {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { Route, Switch } from 'react-router-dom';
 import Header from '../../components/header/header.components';
 import FacultyTable from '../faculty/faculty-table.component';
 import CabinetPage from '../cabinet/cabinet.component';
@@ -9,11 +10,9 @@ import FacultyAdd from '../faculty/add/add-faculty.component';
 import EditSubjects from '../cabinet/subjects/subjects.component';
 import EntrantSheet from '../sheet/sheet-table.component';
 
-import { Route, Switch } from 'react-router-dom';
 import store from '../../index';
 import { logout } from '../auth/auth-actions';
 import './App.css';
-import { translate } from 'react-i18next';
 
 class App extends Component {
     itemSelected = () => {
@@ -24,13 +23,13 @@ class App extends Component {
         return {
             user: PropTypes.shape({
                 login: PropTypes.string,
-                role: PropTypes.string
+                role: PropTypes.string,
             }),
-        }
-    };
+        };
+    }
 
     render() {
-        const user = this.props.user;
+        const { user } = this.props;
 
         return (
             <div>
@@ -52,4 +51,4 @@ class App extends Component {
     }
 }
 
-export default translate('common')(App);
+export default App;

@@ -1,20 +1,20 @@
-import React from "react";
-import InputForm from "../components/login-input";
-import { Image } from "semantic-ui-react";
-import logos from "../../../assets/images";
-import { Redirect } from "react-router-dom";
-import { connect } from "react-redux";
-import * as actionCreators from '../auth-actions';
+import React from 'react';
+import { Image } from 'semantic-ui-react';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import * as actionCreators from '../auth-actions';
+import logos from '../../../assets/images';
+import InputForm from '../components/login-input';
 import LanguageDropDown from '../../../components/languageDropDown/languageDropDown.component';
-import "./sign-in.css";
+import './sign-in.css';
 
 class SignInComponent extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            isLoading: false
+            isLoading: false,
         };
     }
 
@@ -23,7 +23,7 @@ class SignInComponent extends React.Component {
         this.password = password;
 
         this.setState({
-            isLoading: true
+            isLoading: true,
         });
 
         this.props.login({ login: this.login, password: this.password });
@@ -33,14 +33,14 @@ class SignInComponent extends React.Component {
         return {
             login: PropTypes.func,
             auth: PropTypes.shape({
-                isAuthError: PropTypes.bool
+                isAuthError: PropTypes.bool,
             }),
-        }
-    };
+        };
+    }
 
     render() {
         if (!this.props.auth.isAuthError) {
-            return <Redirect to={{pathname: "/"}}/>;
+            return <Redirect to={{ pathname: '/' }}/>;
         }
 
         return (
@@ -58,7 +58,7 @@ class SignInComponent extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    auth: state.auth
+    auth: state.auth,
 });
 
 export default connect(mapStateToProps, actionCreators)(SignInComponent);

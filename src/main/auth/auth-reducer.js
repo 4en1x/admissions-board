@@ -1,19 +1,19 @@
 const authReducer = (
     state = { name: '', role: '', isAuthError: true },
-    action
+    action,
 ) => {
     switch (action.type) {
-        case 'ADD_USER':
-            return Object.assign({}, state, action.user, { isAuthError: false });
+    case 'ADD_USER':
+        return Object.assign({}, state, action.user, { isAuthError: false });
 
-        case 'ADD_USER_ERROR':
-            return Object.assign({}, state, {isAuthError: true });
+    case 'ADD_USER_ERROR':
+        return Object.assign({}, state, { isAuthError: true });
 
-        case 'REMOVE_USER':
-            return Object.assign({}, state, action.user, { isAuthError: true });
+    case 'REMOVE_USER':
+        return Object.assign({}, state, action.user, { isAuthError: true });
 
-        default:
-            return state;
+    default:
+        return state;
     }
 };
 

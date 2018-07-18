@@ -1,12 +1,14 @@
-import React from "react";
-import { Form, Button, Header, Icon, Message } from "semantic-ui-react";
+import React from 'react';
+import {
+    Form, Button, Header, Icon, Message,
+} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { Field, reduxForm } from "redux-form";
-import "./edit-entrant.css";
+import { Field, reduxForm } from 'redux-form';
+import './edit-entrant.css';
 import { translate } from 'react-i18next';
-import roles from '../../../configs/roles'
+import roles from '../../../configs/roles';
 
-import DropdownComponent from "../../../components/filter/components/dropdown.component";
+import DropdownComponent from '../../../components/filter/components/dropdown.component';
 
 class EditEntrantForm extends React.Component {
     constructor(props) {
@@ -15,15 +17,15 @@ class EditEntrantForm extends React.Component {
         this.state = {
             allSubjects: this.prepareDataForDropDown(this.props.subjects),
             subjects: this.props.formValues.marks || [],
-            email: this.props.formValues.email || "",
-            name: this.props.formValues.first_name || "",
-            surname: this.props.formValues.surname || "",
-            username: this.props.formValues.login || "",
+            email: this.props.formValues.email || '',
+            name: this.props.formValues.first_name || '',
+            surname: this.props.formValues.surname || '',
+            username: this.props.formValues.login || '',
             averageRating: this.props.formValues.certificate || 0,
             submitting: true,
-            errorSubmittingMessage: "",
-            errorSubmittingMessageSubjects: this.props.t("entrant.edit.errorSubmittingMessageSubjects"),
-            errorSubmittingMessagePasswords: this.props.t("entrant.edit.errorSubmittingMessagePasswords") ,
+            errorSubmittingMessage: '',
+            errorSubmittingMessageSubjects: this.props.t('entrant.edit.errorSubmittingMessageSubjects'),
+            errorSubmittingMessagePasswords: this.props.t('entrant.edit.errorSubmittingMessagePasswords'),
             currentLanguage: this.props.i18n.language,
         };
     }
@@ -33,7 +35,7 @@ class EditEntrantForm extends React.Component {
             return [];
         }
 
-        return data.map((item, index) => {return {key: index, value: index, text: item}})
+        return data.map((item, index) => ({ key: index, value: index, text: item }));
     };
 
     static get propTypes() {
@@ -49,91 +51,87 @@ class EditEntrantForm extends React.Component {
                 surname: PropTypes.string,
                 login: PropTypes.string,
                 email: PropTypes.string,
-                averageRating: PropTypes.number,
+                certificate: PropTypes.number,
                 marks: PropTypes.arrayOf(PropTypes.shape({
                     subject: PropTypes.string,
                     value: PropTypes.number,
                 })),
             }),
             role: PropTypes.string,
-        }
-    };
+        };
+    }
 
     changeAverageRating = event => this.setState({ averageRating: event.target.value });
 
     changeRating = (obj, subject) => {
         this.setState((prevState) => {
-            let newSubjects = prevState.subjects.map( item =>{
+            const newSubjects = prevState.subjects.map((item) => {
                 if (item.subject === subject) {
                     return {
                         subject: item.subject,
-                        value: parseInt(obj.value)
-                    }
+                        value: parseInt(obj.value, 10),
+                    };
                 }
 
                 return item;
             });
 
-            return { subjects: newSubjects }
+            return { subjects: newSubjects };
         });
     };
 
     getKeysByNames(names) {
-        return names.map(name => {
-            return this.state.allSubjects.find((subject) => {
-                return subject.text === name.subject
-            }).key
-        })
+        return names.map(name => this.state.allSubjects.find(subject => subject.text === name.subject).key);
     }
 
     getSubjectsByKeys(keys) {
-        return  keys.map(key => {
-            const name =  this.state.allSubjects.find((subject) => subject.key === key).text;
-            const item = this.state.subjects.find((data) => data.subject === name)
+        return keys.map((key) => {
+            const name = this.state.allSubjects.find(subject => subject.key === key).text;
+            const item = this.state.subjects.find(data => data.subject === name);
             let value = 0;
 
             if (item) {
-                value = item.value
+                value = item.value;
             }
 
-            return  {
+            return {
                 subject: name,
-                value: value,
-            }
-        })
+                value,
+            };
+        });
     }
 
     componentDidUpdate(prevProps, prevState) {
         if (this.state.currentLanguage !== prevProps.i18n.language) {
-            let newErrorSubmittingMessage = this.props.t("entrant.edit.errorSubmittingMessagePasswords");
+            let newErrorSubmittingMessage = this.props.t('entrant.edit.errorSubmittingMessagePasswords');
 
             if (prevState.errorSubmittingMessage === prevState.errorSubmittingMessageSubjects) {
-                newErrorSubmittingMessage = this.props.t("entrant.edit.errorSubmittingMessageSubjects")
+                newErrorSubmittingMessage = this.props.t('entrant.edit.errorSubmittingMessageSubjects');
             }
 
             this.setState({
                 errorSubmittingMessage: newErrorSubmittingMessage,
-                errorSubmittingMessagePasswords: this.props.t("entrant.edit.errorSubmittingMessagePasswords") ,
-                errorSubmittingMessageSubjects: this.props.t("entrant.edit.errorSubmittingMessageSubjects"),
-                currentLanguage: prevProps.i18n.language
-            })
+                errorSubmittingMessagePasswords: this.props.t('entrant.edit.errorSubmittingMessagePasswords'),
+                errorSubmittingMessageSubjects: this.props.t('entrant.edit.errorSubmittingMessageSubjects'),
+                currentLanguage: prevProps.i18n.language,
+            });
         }
     }
 
     prepareData = () => {
         if (this.state.password !== this.state.repeated_password) {
-            this.setState({submitting: false, errorSubmittingMessage: this.state.errorSubmittingMessagePasswords});
+            this.setState({ submitting: false, errorSubmittingMessage: this.state.errorSubmittingMessagePasswords });
             return;
         }
 
         if (this.state.subjects.length !== 3 && this.props.role === roles.USER.ROLE) {
-            this.setState({submitting: false, errorSubmittingMessage: this.state.errorSubmittingMessageSubjects});
+            this.setState({ submitting: false, errorSubmittingMessage: this.state.errorSubmittingMessageSubjects });
             return;
         }
 
-        this.setState({submitting: true});
-        
-        let data = {
+        this.setState({ submitting: true });
+
+        const data = {
             email: this.state.email,
             login: this.state.username,
             first_name: this.state.name,
@@ -158,114 +156,114 @@ class EditEntrantForm extends React.Component {
         return (
             <div className="entrant-edit-form">
                 <Form size="large" onSubmit={this.prepareData}>
-                    <Header size='huge' textAlign="center">{t("entrant.edit.name")}</Header>
+                    <Header size='huge' textAlign="center">{t('entrant.edit.name')}</Header>
 
                     <Form.Input
                         type='email'
-                        label={t("entrant.edit.labels.email")}
-                        placeholder={t("entrant.edit.placeholders.email")}
+                        label={t('entrant.edit.labels.email')}
+                        placeholder={t('entrant.edit.placeholders.email')}
                         width={16}
                         defaultValue={this.state.email}
-                        onChange={(event, obj) => this.setState({email: obj.value})}
+                        onChange={(event, obj) => this.setState({ email: obj.value })}
                     />
 
                     <Form.Input
                         type='username'
-                        label={t("entrant.edit.labels.username")}
-                        placeholder={t("entrant.edit.placeholders.username")}
+                        label={t('entrant.edit.labels.username')}
+                        placeholder={t('entrant.edit.placeholders.username')}
                         width={16}
                         defaultValue={this.state.username}
-                        onChange={(event, obj) => this.setState({username: obj.value})}
+                        onChange={(event, obj) => this.setState({ username: obj.value })}
                     />
 
                     <Form.Group>
                         <Form.Input
-                            label={t("entrant.edit.labels.name")}
-                            placeholder={t("entrant.edit.placeholders.name")}
+                            label={t('entrant.edit.labels.name')}
+                            placeholder={t('entrant.edit.placeholders.name')}
                             width={8}
                             defaultValue={this.state.name}
-                            onChange={(event, obj) => this.setState({name: obj.value})}
+                            onChange={(event, obj) => this.setState({ name: obj.value })}
                         />
 
                         <Form.Input
-                            label={t("entrant.edit.labels.surname")}
-                            placeholder={t("entrant.edit.placeholders.surname")}
+                            label={t('entrant.edit.labels.surname')}
+                            placeholder={t('entrant.edit.placeholders.surname')}
                             width={8}
                             defaultValue={this.state.surname}
-                            onChange={(event, obj) => this.setState({surname: obj.value})}
+                            onChange={(event, obj) => this.setState({ surname: obj.value })}
                         />
                     </Form.Group>
 
                     <Form.Group>
                         <Form.Input
-                            label={t("entrant.edit.labels.password")}
+                            label={t('entrant.edit.labels.password')}
                             type='password'
-                            placeholder={t("entrant.edit.placeholders.password")}
+                            placeholder={t('entrant.edit.placeholders.password')}
                             width={8}
-                            onChange={(event, obj) => this.setState({password: obj.value})}
+                            onChange={(event, obj) => this.setState({ password: obj.value })}
                         />
 
                         <Form.Input
-                            label={t("entrant.edit.labels.repeatPassword")}
+                            label={t('entrant.edit.labels.repeatPassword')}
                             type='password'
-                            placeholder={t("entrant.edit.placeholders.repeatPassword")}
+                            placeholder={t('entrant.edit.placeholders.repeatPassword')}
                             width={8}
-                            onChange={(event, obj) => this.setState({repeated_password: obj.value})}
+                            onChange={(event, obj) => this.setState({ repeated_password: obj.value })}
                         />
                     </Form.Group>
 
                     {
                         this.props.role === roles.USER.ROLE ? (<div>
-                                <Form.Input
-                                    label={`${t("entrant.edit.averageScoreMessage")}: ${this.state.averageRating}`}
-                                    type='range'
-                                    min={40}
-                                    max={100}
-                                    defaultValue={this.state.averageRating}
-                                    onChange={this.changeAverageRating}
-                                    className="ui blue range"
-                                    width={12}
-                                />
+                            <Form.Input
+                                label={`${t('entrant.edit.averageScoreMessage')}: ${this.state.averageRating}`}
+                                type='range'
+                                min={40}
+                                max={100}
+                                defaultValue={this.state.averageRating}
+                                onChange={this.changeAverageRating}
+                                className="ui blue range"
+                                width={12}
+                            />
 
-                                <Field
-                                    name="subjects"
-                                    label={t("entrant.edit.labels.subjects")}
-                                    items={this.state.allSubjects}
-                                    defaultItems={this.getKeysByNames(this.state.subjects)}
-                                    onChange={(event, obj) => this.setState({subjects: this.getSubjectsByKeys(obj)})}
-                                    component={DropdownComponent}
-                                />
+                            <Field
+                                name="subjects"
+                                label={t('entrant.edit.labels.subjects')}
+                                items={this.state.allSubjects}
+                                defaultItems={this.getKeysByNames(this.state.subjects)}
+                                onChange={(event, obj) => this.setState({ subjects: this.getSubjectsByKeys(obj) })}
+                                component={DropdownComponent}
+                            />
 
-                                <br/>
+                            <br/>
 
-                                {
-                                    this.state.subjects.map(item => {
-                                        let key = this.getKeysByNames([item])[0]
-                                        return <div key ={key}>
-                                            <Form.Input
-                                                label={`${t("entrant.edit.scoreMessage")} ${item.subject}: ${item.value}`}
-                                                type='range'
-                                                min={20}
-                                                max={100}
-                                                value={item.value}
-                                                onChange={(event, obj) => this.changeRating(obj, item.subject)}
-                                                className="ui blue range"
-                                                width={12}
-                                            />
-                                        </div>
-                                    })
-                                }
-                            </div>
-                        ):null}
+                            {
+                                this.state.subjects.map((item) => {
+                                    const key = this.getKeysByNames([item])[0];
+                                    return <div key ={key}>
+                                        <Form.Input
+                                            label={`${t('entrant.edit.scoreMessage')} ${item.subject}: ${item.value}`}
+                                            type='range'
+                                            min={20}
+                                            max={100}
+                                            value={item.value}
+                                            onChange={(event, obj) => this.changeRating(obj, item.subject)}
+                                            className="ui blue range"
+                                            width={12}
+                                        />
+                                    </div>;
+                                })
+                            }
+                        </div>
+                        ) : null}
 
                     <Message
                         error={this.state.submitting}
-                        header={t("faculty.edit.errorMessage")}
+                        header={t('faculty.edit.errorMessage')}
                         content={this.state.errorSubmittingMessage}
                     />
 
                     <Button color="google plus" type="submit" floated ="right">
-                        <Icon name='checkmark' /> {t("faculty.edit.editButton")}
+                        <Icon name='checkmark' /> {t('faculty.edit.editButton')}
                     </Button>
                 </Form>
             </div>
@@ -273,4 +271,4 @@ class EditEntrantForm extends React.Component {
     }
 }
 
-export default reduxForm({ form: "EditEntrantForm" })(translate('common')(EditEntrantForm));
+export default reduxForm({ form: 'EditEntrantForm' })(translate('common')(EditEntrantForm));

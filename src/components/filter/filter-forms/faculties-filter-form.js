@@ -1,33 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
+import { Button, Form, Checkbox } from 'semantic-ui-react';
 import DropdownComponent from '../components/dropdown.component';
-import { Button, Form, Checkbox } from "semantic-ui-react";
 
 class FacultiesFilterForm extends React.Component {
     constructor(props) {
         super(props);
-        
+
         this.state = {
-            sortValue: true
-        }
+            sortValue: true,
+        };
     }
 
-    handleChange = () => this.setState((prevState) => {
-        return {
-            sortValue: !prevState.sortValue
-        }
-    });
+    handleChange = () => this.setState(prevState => ({
+        sortValue: !prevState.sortValue,
+    }));
 
     render() {
         const { handleSubmit, onSubmit, data } = this.props;
         const clone = Object.assign({}, data);
-        Object.keys(clone).forEach(prop => {
+        Object.keys(clone).forEach((prop) => {
             const items = clone[prop];
             clone[prop] = items.map(item => ({
                 key: item,
                 value: item,
-                text: item
+                text: item,
             }));
         });
 
@@ -76,7 +74,7 @@ class FacultiesFilterForm extends React.Component {
 }
 
 FacultiesFilterForm.defaultProps = {
-    data: {}
+    data: {},
 };
 
 FacultiesFilterForm.propTypes = {
@@ -84,8 +82,8 @@ FacultiesFilterForm.propTypes = {
     onSubmit: PropTypes.func.isRequired,
     data: PropTypes.shape({
         statuses: PropTypes.arrayOf(PropTypes.string),
-        
-    })
+
+    }),
 };
 
 export default reduxForm({ form: 'CandidatesFilterForm' })(FacultiesFilterForm);

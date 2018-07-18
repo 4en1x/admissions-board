@@ -1,10 +1,10 @@
 const cabinetReducer = (state = {}, action) => {
     switch (action.type) {
-        case 'POST_SUBJECTS':
-            return { ...state };
+    case 'POST_SUBJECTS':
+        return { ...state };
 
-        default:
-            return state;
+    default:
+        return state;
     }
 };
 

@@ -1,11 +1,11 @@
 const ROLES = {
     ADMIN: {
-        ROLE: 'admin'
+        ROLE: 'admin',
     },
 
     USER: {
-        ROLE: 'user'
-    }
+        ROLE: 'user',
+    },
 };
 
 export default ROLES;

@@ -8,24 +8,22 @@ import FacultiesFilterForm from '../../../components/filter/filter-forms/faculti
 import './filter.css';
 
 class FilterComponent extends React.Component {
-
     componentDidMount() {
-      this.props.getFilter();
+        this.props.getFilter();
     }
 
-    onSubmitClicked = filter => {
+    onSubmitClicked = (filter) => {
         console.log(filter);
-        console.log(this.props.form);
-        //this.props.addFilter(filter);
+        // this.props.addFilter(filter);
     };
 
     static get propTypes() {
         return {
             onSubmit: PropTypes.func,
             getFilter: PropTypes.func,
-            filter: PropTypes.shape({})
-        }
-    };
+            filter: PropTypes.shape({}),
+        };
+    }
 
     render() {
         return (
@@ -40,10 +38,8 @@ class FilterComponent extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        filter: state.faculty.filter
-    };
-};
+const mapStateToProps = state => ({
+    filter: state.faculty.filter,
+});
 
 export default connect(mapStateToProps, { getFilter })(FilterComponent);

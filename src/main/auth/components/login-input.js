@@ -1,18 +1,18 @@
-import React from "react";
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Form, Button } from "semantic-ui-react";
+import { Form, Button } from 'semantic-ui-react';
 import { translate } from 'react-i18next';
 import PropTypes from 'prop-types';
-import "./login-input.css";
+import './login-input.css';
 
 class LoginInputForm extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            username: "",
-            password: "",
-        }
+            username: '',
+            password: '',
+        };
     }
 
     onSubmitClicked = () => {
@@ -22,9 +22,9 @@ class LoginInputForm extends React.Component {
     static get propTypes() {
         return {
             inputHandle: PropTypes.func,
-            t : PropTypes.func,
-        }
-    };
+            t: PropTypes.func,
+        };
+    }
 
     render() {
         const { t } = this.props;
@@ -33,22 +33,22 @@ class LoginInputForm extends React.Component {
             <Form size="large">
                 <Form.Field>
                     <input
-                        placeholder={t("login-input.placeholders.username")}
-                        onChange={event => this.setState({username: event.target.value})}
+                        placeholder={t('login-input.placeholders.username')}
+                        onChange={event => this.setState({ username: event.target.value })}
                     />
                 </Form.Field>
 
                 <Form.Field>
                     <input
-                        placeholder={t("login-input.placeholders.password")}
+                        placeholder={t('login-input.placeholders.password')}
                         type="password"
-                        onChange={event => this.setState({password: event.target.value})}
+                        onChange={event => this.setState({ password: event.target.value })}
                     />
                 </Form.Field>
 
                 <div>
                     <Link to="/registration" className="link-container">
-                        {t("login-input.createAccount")}
+                        {t('login-input.createAccount')}
                     </Link>
 
                     <Button
@@ -56,7 +56,7 @@ class LoginInputForm extends React.Component {
                         floated="right"
                         onClick={this.onSubmitClicked}
                     >
-                        {t("login-input.nextButton")}
+                        {t('login-input.nextButton')}
                     </Button>
                 </div>
             </Form>

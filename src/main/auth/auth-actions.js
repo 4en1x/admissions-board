@@ -1,5 +1,6 @@
 import axios from 'axios';
 import userService from '../../service/user-service';
+
 axios.defaults.withCredentials = true;
 
 const ADD_USER = 'ADD_USER';
@@ -9,51 +10,51 @@ const REGISTRATION = 'REGISTRATION';
 function addUser(user) {
     return {
         type: ADD_USER,
-        user
+        user,
     };
 }
 
 function registerUser() {
     return {
-        type: REGISTRATION
+        type: REGISTRATION,
     };
 }
 
 function removeUser() {
     return {
         type: REMOVE_USER,
-        user: {}
+        user: {},
     };
 }
 
 export function login(user) {
-    /** Until server up*/
+    /** Until server up */
     if (user.login === 'admin' && user.password === 'password') {
-        return dispatch => {
+        return (dispatch) => {
             dispatch(addUser({ login: 'admin', role: 'admin', id: 1 }));
         };
     }
 
     if (user.login === 'user' && user.password === 'password') {
-        return dispatch => {
+        return (dispatch) => {
             dispatch(addUser({ login: 'user', role: 'user', id: 1 }));
         };
     }
 
-    return dispatch => {
-        userService.login(user).then(response => {
+    return (dispatch) => {
+        userService.login(user).then((response) => {
             dispatch(addUser(response.data));
         });
     };
 }
 
 export function logout() {
-    /** Until server up*/
-    return dispatch => {
+    /** Until server up */
+    return (dispatch) => {
         dispatch(removeUser());
     };
 
-    return dispatch => {
+    return (dispatch) => {
         userService.logout().then(() => {
             dispatch(removeUser());
         });
@@ -61,10 +62,9 @@ export function logout() {
 }
 
 export function register(user) {
-    return dispatch => {
+    return (dispatch) => {
         userService.register(user).then(() => {
             dispatch(registerUser());
         });
     };
 }
-

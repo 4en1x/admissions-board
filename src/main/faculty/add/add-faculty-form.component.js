@@ -1,11 +1,13 @@
-import React from "react";
-import { Form, Button, Header, Icon, Message } from "semantic-ui-react";
+import React from 'react';
+import {
+    Form, Button, Header, Icon, Message,
+} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import { translate } from 'react-i18next';
-import "./add-faculty.css";
+import './add-faculty.css';
 
-import DropdownComponent from "../../../components/filter/components/dropdown.component";
+import DropdownComponent from '../../../components/filter/components/dropdown.component';
 
 class AddFacultyForm extends React.Component {
     constructor(props) {
@@ -14,10 +16,10 @@ class AddFacultyForm extends React.Component {
         this.state = {
             submitting: true,
             subjects: this.prepareDataForDropDown(this.props.subjects),
-            name: "",
+            name: '',
             newSubjects: [],
             recruitmentPlan: 0,
-            errorSubmittingMessageSubjects: this.props.t("faculty.add.errorSubmittingMessageSubjects"),
+            errorSubmittingMessageSubjects: this.props.t('faculty.add.errorSubmittingMessageSubjects'),
             currentLanguage: this.props.i18n.language,
         };
     }
@@ -29,48 +31,48 @@ class AddFacultyForm extends React.Component {
             subjects: PropTypes.arrayOf(PropTypes.string),
             i18n: PropTypes.shape({
                 language: PropTypes.string,
-            })
-        }
-    };
+            }),
+        };
+    }
 
     prepareDataForDropDown = (data) => {
         if (!data) {
             return [];
         }
 
-        return data.map((item, index) => {return {key: index, value: index, text: item}})
+        return data.map((item, index) => ({ key: index, value: index, text: item }));
     };
 
     componentDidUpdate(prevProps) {
         if (this.state.currentLanguage !== prevProps.i18n.language) {
             this.setState({
-                errorSubmittingMessageSubjects: this.props.t("faculty.add.errorSubmittingMessageSubjects"),
-                errorSubmittingMessage: this.props.t("faculty.add.errorSubmittingMessageSubjects"),
-                currentLanguage: prevProps.i18n.language
-            })
+                errorSubmittingMessageSubjects: this.props.t('faculty.add.errorSubmittingMessageSubjects'),
+                errorSubmittingMessage: this.props.t('faculty.add.errorSubmittingMessageSubjects'),
+                currentLanguage: prevProps.i18n.language,
+            });
         }
     }
 
     prepareData = () => {
         if (this.state.newSubjects.length !== 3) {
-            this.setState({submitting: false, errorSubmittingMessage: this.state.errorSubmittingMessageSubjects});
+            this.setState({ submitting: false, errorSubmittingMessage: this.state.errorSubmittingMessageSubjects });
             return;
         }
 
-        this.setState({submitting: true});
+        this.setState({ submitting: true });
 
-        let data = {
+        const data = {
             name: this.state.name,
             subjects: this.state.newSubjects,
             entry_plan: this.state.recruitmentPlan,
-            time: (new Date(this.state.date)).getTime()
+            time: (new Date(this.state.date)).getTime(),
         };
 
         this.props.onSubmit(data, this.state.id);
     };
 
     getSubjectsByKeys(keys) {
-        return keys.map(key => this.state.subjects.find((subject) => subject.key === key).text)
+        return keys.map(key => this.state.subjects.find(subject => subject.key === key).text);
     }
 
     render() {
@@ -80,48 +82,48 @@ class AddFacultyForm extends React.Component {
             <div className="registration-container parent-size">
                 <div className="registration-form">
                     <Form size="large" onSubmit={this.prepareData}>
-                        <Header size='huge' textAlign="center">{t("faculty.add.name")}</Header>
+                        <Header size='huge' textAlign="center">{t('faculty.add.name')}</Header>
 
                         <Form.Input
-                            label={t("faculty.add.labels.name")}
-                            placeholder={t("faculty.add.placeholders.name")}
+                            label={t('faculty.add.labels.name')}
+                            placeholder={t('faculty.add.placeholders.name')}
                             width={16}
-                            onChange={(event, obj) => this.setState({name: obj.value})}
+                            onChange={(event, obj) => this.setState({ name: obj.value })}
                         />
 
                         <Field
                             name="subjects"
-                            label={t("faculty.add.labels.subjects")}
+                            label={t('faculty.add.labels.subjects')}
                             items={this.state.subjects}
-                            onChange={(event, obj) => this.setState({newSubjects: this.getSubjectsByKeys(obj)})}
+                            onChange={(event, obj) => this.setState({ newSubjects: this.getSubjectsByKeys(obj) })}
                             component={DropdownComponent}
                         />
 
                         <Form.Input
                             type="number"
                             className="recruitmentPlan"
-                            label={t("faculty.add.labels.recruitmentPlan")}
-                            placeholder={t("faculty.add.placeholders.recruitmentPlan")}
+                            label={t('faculty.add.labels.recruitmentPlan')}
+                            placeholder={t('faculty.add.placeholders.recruitmentPlan')}
                             width={16}
-                            onChange={(event, obj) => this.setState({recruitmentPlan: obj.value})}
+                            onChange={(event, obj) => this.setState({ recruitmentPlan: obj.value })}
                         />
 
                         <Form.Input
                             type="date"
                             className="recruitmentPlan"
-                            label={t("faculty.add.labels.date")}
+                            label={t('faculty.add.labels.date')}
                             width={16}
-                            onChange={(event, obj) => this.setState({date: obj.value})}
+                            onChange={(event, obj) => this.setState({ date: obj.value })}
                         />
 
                         <Message
                             error={this.state.submitting}
-                            header={t("faculty.add.errorMessage")}
+                            header={t('faculty.add.errorMessage')}
                             content={this.state.errorSubmittingMessage}
                         />
 
                         <Button color="google plus" type="submit" floated ="right">
-                            <Icon name='checkmark' /> {t("faculty.add.addButton")}
+                            <Icon name='checkmark' /> {t('faculty.add.addButton')}
                         </Button>
                     </Form>
                 </div>
@@ -130,4 +132,4 @@ class AddFacultyForm extends React.Component {
     }
 }
 
-export default reduxForm({ form: "AddFacultyForm" })(translate('common')(AddFacultyForm));
+export default reduxForm({ form: 'AddFacultyForm' })(translate('common')(AddFacultyForm));

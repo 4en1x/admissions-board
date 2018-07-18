@@ -8,10 +8,10 @@ export default function checkAuth(Component) {
         static get propTypes() {
             return {
                 auth: PropTypes.shape({
-                    isAuthError: PropTypes.bool
+                    isAuthError: PropTypes.bool,
                 }),
-            }
-        };
+            };
+        }
 
         render() {
             const user = this.props.auth;
@@ -22,7 +22,7 @@ export default function checkAuth(Component) {
 
     function mapStateToProps(state) {
         return {
-            auth: state.auth
+            auth: state.auth,
         };
     }
 

@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import EditFacultyForm from './edit-faculty-form.component';
 import SemanticLoader from '../../../components/loaders/semantic-loader';
-import * as actionCreators from '../faculty-actions'
-import facultyService from '../../../service/faculty-service'
+import * as actionCreators from '../faculty-actions';
+import facultyService from '../../../service/faculty-service';
 
 class EditFaculty extends React.Component {
     constructor(props) {
@@ -31,12 +31,12 @@ class EditFaculty extends React.Component {
                     id: PropTypes.string,
                 }),
             }),
-        }
-    };
+        };
+    }
 
     onSubmit = (data, id) => {
         facultyService.editFaculty(data, id);
-        this.setState({submitted: true})
+        this.setState({ submitted: true });
     };
 
     componentDidMount() {
@@ -45,7 +45,7 @@ class EditFaculty extends React.Component {
     }
 
     render() {
-        if (this.state.submitted) return <Redirect to={`/`} />;
+        if (this.state.submitted) return <Redirect to={'/'} />;
 
         if (!this.props.formValues || !this.props.subjects) {
             return <SemanticLoader />;
@@ -62,11 +62,9 @@ class EditFaculty extends React.Component {
 }
 
 
-const mapStateToProps = state => {
-    return {
-        formValues: state.faculty.formValues,
-        subjects: state.faculty.subjects,
-    };
-};
+const mapStateToProps = state => ({
+    formValues: state.faculty.formValues,
+    subjects: state.faculty.subjects,
+});
 
 export default connect(mapStateToProps, actionCreators)(EditFaculty);
