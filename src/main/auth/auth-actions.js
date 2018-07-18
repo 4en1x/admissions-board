@@ -35,9 +35,9 @@ export function login(user) {
         };
     }
 
-    if (user.login === 'user' && user.password === 'password') {
+    if (user.login === 'entrant' && user.password === 'password') {
         return (dispatch) => {
-            dispatch(addUser({ login: 'user', role: 'user', id: 1 }));
+            dispatch(addUser({ login: 'entrant', role: 'entrant', id: 1 }));
         };
     }
 

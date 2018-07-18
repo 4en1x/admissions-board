@@ -4,7 +4,7 @@ const ROLES = {
     },
 
     USER: {
-        ROLE: 'user',
+        ROLE: 'entrant',
     },
 };
 
