@@ -121,5 +121,19 @@
   "entrant-faculty": {
     "name": "You currently applied for this faculty",
     "unsubscribeButton":"Unsubscribe"
+  },
+  "sheet": {
+    "name": "Results of entrance process for",
+    "id": "Id",
+    "email": "Email",
+    "username": "Username",
+    "first_name": "First Name",
+    "second_name": "Second name",
+    "score": "Score",
+    "enrolled": "Enrolled / not enrolled",
+    "labels": {
+      "enrolled": "Enrolled",
+      "notEnrolled": "Not enrolled"
+    }
   }
 }

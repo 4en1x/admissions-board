@@ -121,5 +121,19 @@
   "entrant-faculty": {
     "name": "Sie bewerben sich derzeit für diese Fakultät",
     "unsubscribeButton":"Abmelden"
+  },
+  "sheet": {
+    "name": "Ergebnisse des Eingangsprozesses für",
+    "id": "Id",
+    "email": "Email",
+    "username": "Nutzername",
+    "first_name": "Vorname",
+    "second_name": "Zweitname",
+    "score": "Ergebnis",
+    "enrolled": "Eingeschrieben / nicht angemeldet",
+    "labels": {
+      "enrolled": "Eingeschrieben",
+      "notEnrolled": "Nicht eingeschrieben"
+    }
   }
 }

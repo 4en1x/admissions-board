@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Table } from 'semantic-ui-react';
+import { Table, Header } from 'semantic-ui-react';
 import { translate } from 'react-i18next';
 import { connect } from 'react-redux';
 import './sheet.css';
@@ -32,42 +32,50 @@ class FacultyTable extends Component {
                 }),
             }),
             sheetGetEntrants: PropTypes.func,
+            facultyName: PropTypes.string,
         };
     }
 
     render() {
         const { t } = this.props;
 
-        if (!this.props.entrants) {
+        if (!this.props.entrants || !this.props.facultyName) {
             return <SemanticLoader />;
         }
 
         return (
-            <Table celled>
-                <Table.Header>
-                    <Table.Row>
-                        <Table.HeaderCell>Id</Table.HeaderCell>
-                        <Table.HeaderCell>Email</Table.HeaderCell>
-                        <Table.HeaderCell>Username</Table.HeaderCell>
-                        <Table.HeaderCell>First Name</Table.HeaderCell>
-                        <Table.HeaderCell>Second Name</Table.HeaderCell>
-                        <Table.HeaderCell>Score</Table.HeaderCell>
-                        <Table.HeaderCell>Enrolled / not enrolled</Table.HeaderCell>
-                    </Table.Row>
-                </Table.Header>
+            <div className="sheetHeader">
+                <Header size='huge' textAlign="center">
+                    {t('sheet.name')} {this.props.facultyName}
+                </Header>
 
-                <Table.Body>
-                    {
-                        this.props.entrants.map(entrant => <SheetRow key={entrant.id} entrant={entrant}/>)
-                    }
-                </Table.Body>
-            </Table>
+                <Table celled>
+                    <Table.Header>
+                        <Table.Row>
+                            <Table.HeaderCell>{t('sheet.id')}</Table.HeaderCell>
+                            <Table.HeaderCell>{t('sheet.email')}</Table.HeaderCell>
+                            <Table.HeaderCell>{t('sheet.username')}</Table.HeaderCell>
+                            <Table.HeaderCell>{t('sheet.first_name')}</Table.HeaderCell>
+                            <Table.HeaderCell>{t('sheet.second_name')}</Table.HeaderCell>
+                            <Table.HeaderCell>{t('sheet.score')}</Table.HeaderCell>
+                            <Table.HeaderCell>{t('sheet.enrolled')}</Table.HeaderCell>
+                        </Table.Row>
+                    </Table.Header>
+
+                    <Table.Body>
+                        {
+                            this.props.entrants.map(entrant => <SheetRow key={entrant.id} entrant={entrant}/>)
+                        }
+                    </Table.Body>
+                </Table>
+            </div>
         );
     }
 }
 
 const mapStateToProps = state => ({
     entrants: state.faculty.sheetEntrants,
+    facultyName: state.faculty.facultyName,
 });
 
 export default connect(mapStateToProps, actionCreators)(translate('common')(FacultyTable));

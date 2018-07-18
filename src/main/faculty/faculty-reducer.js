@@ -10,7 +10,7 @@ const facultyReducer = (state = {}, action) => {
         return { ...state, filter: action.data };
 
     case 'ADD_ENTRANT_SHEET_VALUES':
-        return { ...state, sheetEntrants: action.data };
+        return { ...state, sheetEntrants: action.data.entrants, facultyName: action.data.facultyName };
 
     default:
         return state;

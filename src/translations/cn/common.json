@@ -121,5 +121,19 @@
   "entrant-faculty": {
     "name": "你目前申请了这个系",
     "unsubscribeButton":"退订"
+  },
+  "sheet": {
+    "name": "进入过程的结果",
+    "id": "编号",
+    "email": "电子邮件",
+    "username": "用户名",
+    "first_name": "名字",
+    "second_name": "姓",
+    "score": "得分了",
+    "enrolled": "已注册/未注册",
+    "labels": {
+      "enrolled": "就读",
+      "notEnrolled": "没有注册"
+    }
   }
 }

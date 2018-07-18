@@ -33,8 +33,8 @@ class SheetRow extends Component {
                 <Table.Cell>{this.state.entrant.score}</Table.Cell>
                 {
                     this.state.entrant.enrolled
-                        ? (<Table.Cell positive>Enrolled</Table.Cell>)
-                        : (<Table.Cell negative>Not enrolled</Table.Cell>)
+                        ? (<Table.Cell positive>{t('sheet.labels.enrolled')}</Table.Cell>)
+                        : (<Table.Cell negative>{t('sheet.labels.notEnrolled')}</Table.Cell>)
                 }
             </Table.Row>
         );
