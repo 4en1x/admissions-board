@@ -59,6 +59,8 @@ class FacultyTable extends Component {
             },
             editPageClicked: false,
             editPageClickedId: 0,
+            sheetPageClicked: false,
+            sheetPageClickedId: 0,
             prev: '0'
         };
     }
@@ -72,6 +74,7 @@ class FacultyTable extends Component {
     };
 
     onEditPageClick = (id) => this.setState({editPageClickedId: id, editPageClicked: true});
+    onSheetClick = (id) => this.setState({sheetPageClickedId: id, sheetPageClicked: true});
 
     onElementClick = (obj) => this.setPager(obj.activePage);
 
@@ -106,6 +109,10 @@ class FacultyTable extends Component {
             return <Redirect to={`/faculties/edit/${this.state.editPageClickedId}`} />
         }
 
+        if (this.state.sheetPageClicked) {
+            return <Redirect to={`/faculties/${this.state.sheetPageClickedId}/sheet`} />
+        }
+
         let mainClassName = "content-all";
         if(this.props.role === roles.ADMIN.ROLE) {
             mainClassName = "content-wide";
@@ -136,13 +143,13 @@ class FacultyTable extends Component {
                                                 </List.Content>
                                             ) : (
                                                 <List.Content floated='right'>
-                                                    <Button color='yellow' >
+                                                    <Button onClick={() => this.onSheetClick(item.id)} color='yellow' >
                                                         {t("faculty.table.getSheet")}
                                                     </Button>
                                                 </List.Content>
                                             )):item.is_Unavailable ? (
                                                 <List.Content floated='right'>
-                                                    <Button onClick={() => this.onFacultyRegister(item.id)}color='red' disabled>
+                                                    <Button color='red' disabled>
                                                         {t("faculty.table.register")}
                                                     </Button>
                                                 </List.Content>

@@ -15,8 +15,6 @@ function unsubscribe(id) {
 }
 
 function editEntrant(data, id) {
-    console.log(data)
-    console.log(id)
     return axios.post(`http://localhost:8081/entrant/edit/${id}`, data);
 }
 

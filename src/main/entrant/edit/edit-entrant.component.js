@@ -219,7 +219,7 @@ class EditEntrantForm extends React.Component {
                                 <Form.Input
                                     label={`${t("entrant.edit.averageScoreMessage")}: ${this.state.averageRating}`}
                                     type='range'
-                                    min={0}
+                                    min={40}
                                     max={100}
                                     defaultValue={this.state.averageRating}
                                     onChange={this.changeAverageRating}
@@ -245,7 +245,7 @@ class EditEntrantForm extends React.Component {
                                             <Form.Input
                                                 label={`${t("entrant.edit.scoreMessage")} ${item.subject}: ${item.value}`}
                                                 type='range'
-                                                min={0}
+                                                min={20}
                                                 max={100}
                                                 value={item.value}
                                                 onChange={(event, obj) => this.changeRating(obj, item.subject)}

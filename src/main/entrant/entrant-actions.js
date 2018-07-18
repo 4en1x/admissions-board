@@ -70,7 +70,7 @@ export function getEditFormValues(id) {
     return dispatch => {
         console.log('lalalala');
         dispatch(addEditFormValues({
-            certificate: 34,
+            certificate: 100,
             first_name: 'some name',
             surname: 'some surname',
             login: 'user',

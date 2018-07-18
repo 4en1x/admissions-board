@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 
 import Header from '../../components/header/header.components';
 import FacultyTable from '../faculty/faculty-table.component';
-import CabinetPage from '../cabinet/cabinet.component'
-import FacultyEdit from '../faculty/edit/edit-faculty.component'
-import FacultyAdd from '../faculty/add/add-faculty.component'
-import EditSubjects from '../cabinet/subjects/subjects.component'
+import CabinetPage from '../cabinet/cabinet.component';
+import FacultyEdit from '../faculty/edit/edit-faculty.component';
+import FacultyAdd from '../faculty/add/add-faculty.component';
+import EditSubjects from '../cabinet/subjects/subjects.component';
+import EntrantSheet from '../sheet/sheet-table.component';
 
 import { Route, Switch } from 'react-router-dom';
 import { store } from '../../index';
@@ -42,6 +43,7 @@ class App extends Component {
                     <Route path="/cabinet" component={CabinetPage}/>
                     <Route path="/editSubjects" component={EditSubjects}/>
                     <Route path="/faculties/edit/:id" component={FacultyEdit}/>
+                    <Route path="/faculties/:id/sheet" component={EntrantSheet}/>
                     <Route path="/faculties/add" component={FacultyAdd}/>
                     <Route path="/" component={FacultyTable} />
                 </Switch>

@@ -9,6 +9,9 @@ const facultyReducer = (state = {}, action) => {
         case 'ADD_FILTER_VALUES':
             return { ...state, filter: action.data };
 
+        case 'ADD_ENTRANT_SHEET_VALUES':
+            return { ...state, sheetEntrants: action.data };
+
         default:
             return state;
     }

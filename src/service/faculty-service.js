@@ -10,6 +10,10 @@ function getEditFormValues(id) {
     return axios.get(`/rest/faculty/${id}`);
 }
 
+function getSheet(id) {
+    return axios.get(`/rest/faculty/${id}/sheet`);
+}
+
 function editFaculty(data, id) {
     return axios.post(`/rest/faculty/edit/${id}`, data);
 }
@@ -32,7 +36,8 @@ const facultyService = {
     editFaculty,
     addFaculty,
     deleteFaculty,
-    registerToFaculty
+    registerToFaculty,
+    getSheet
 };
 
 export default facultyService;
