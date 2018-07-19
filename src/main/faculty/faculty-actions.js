@@ -6,7 +6,10 @@ const ADD_EDIT_FORM_VALUES_FACULTY = 'ADD_EDIT_FORM_VALUES_FACULTY';
 const ADD_FILTER_VALUES = 'ADD_FILTER_VALUES';
 const ADD_ENTRANT_SHEET_VALUES = 'ADD_ENTRANT_SHEET_VALUES';
 
-function addSubjectsValues(subjects) {
+function addSubjectsValues(data) {
+    let { subjects } = data;
+    subjects = subjects.map(subject => subject.name);
+
     return {
         type: ADD_SUBJECT_VALUES,
         subjects,
@@ -39,7 +42,16 @@ export function getSubjectsList() {
 
     return (dispatch) => {
         console.log('lalalala');
-        dispatch(addSubjectsValues(['math', 'math2', 'math3', 'math4', 'math5', 'math6']));
+        dispatch(addSubjectsValues({
+            subjects: [
+                { id: 1, name: 'math' },
+                { id: 1, name: 'math2' },
+                { id: 1, name: 'math3' },
+                { id: 1, name: 'math4' },
+                { id: 1, name: 'math5' },
+                { id: 1, name: 'math6' },
+            ],
+        }));
     };
 
     return (dispatch) => {

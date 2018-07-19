@@ -5,7 +5,10 @@ const ADD_SUBJECT_VALUES = 'ADD_SUBJECT_VALUES';
 const ADD_EDIT_FORM_VALUES = 'ADD_EDIT_FORM_VALUES';
 const GET_ENTRANT_FACULTY = 'GET_ENTRANT_FACULTY';
 
-function addSubjectsValues(subjects) {
+function addSubjectsValues(data) {
+    let { subjects } = data;
+    subjects = subjects.map(subject => subject.name);
+
     return {
         type: ADD_SUBJECT_VALUES,
         subjects,
@@ -55,7 +58,16 @@ export function getSubjectsList() {
 
     return (dispatch) => {
         console.log('lalalala');
-        dispatch(addSubjectsValues(['math', 'math2', 'math3', 'math4', 'math5', 'math6']));
+        dispatch(addSubjectsValues({
+            subjects: [
+                { id: 1, name: 'math' },
+                { id: 1, name: 'math2' },
+                { id: 1, name: 'math3' },
+                { id: 1, name: 'math4' },
+                { id: 1, name: 'math5' },
+                { id: 1, name: 'math6' },
+            ],
+        }));
     };
 
     return (dispatch) => {

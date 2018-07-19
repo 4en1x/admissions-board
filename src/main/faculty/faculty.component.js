@@ -59,7 +59,7 @@ class Faculty extends Component {
                     {t('faculty.table.requestsSubmitted')} <Label circular>{this.state.faculty.amount_entrant}</Label>
                 </Header>
 
-                <Header className="countTable" as='h4'>
+                <Header as='h4'>
                     {t('faculty.table.deadline')}: {(new Date(this.state.faculty.time)).toISOString().slice(0, 10)}
                 </Header>
 
