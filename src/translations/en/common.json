@@ -135,5 +135,25 @@
       "enrolled": "Enrolled",
       "notEnrolled": "Not enrolled"
     }
+  },
+  "filter": {
+    "statuses": {
+      "first": "Enrollment has already expired",
+      "second": "Enrollment still goes",
+      "all": "All"
+    },
+    "names":{
+      "status": "Status",
+      "subjects": "Subjects",
+      "sort": "Please choose sort order"
+    },
+    "placeholders":{
+      "any": "Any"
+    },
+    "checkbox":{
+      "regular":"Regular",
+      "reverse": "Reverse"
+    },
+    "applyButton": "Apply"
   }
 }

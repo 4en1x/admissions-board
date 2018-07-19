@@ -135,5 +135,25 @@
       "enrolled": "就读",
       "notEnrolled": "没有注册"
     }
+  },
+  "filter": {
+    "statuses": {
+      "first": "报名已经过期",
+      "second": "报名仍然有效",
+      "all": "所有"
+    },
+    "names":{
+      "status": "状态",
+      "subjects": "主题",
+      "sort": "请选择排序顺序"
+    },
+    "placeholders":{
+      "any": "任何"
+    },
+    "checkbox":{
+      "regular":"定期",
+      "reverse": "相反"
+    },
+    "applyButton": "应用"
   }
 }

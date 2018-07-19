@@ -135,5 +135,25 @@
       "enrolled": "Eingeschrieben",
       "notEnrolled": "Nicht eingeschrieben"
     }
+  },
+  "filter": {
+    "statuses": {
+      "first": "Die Anmeldung ist bereits abgelaufen",
+      "second": "Die Anmeldung läuft noch",
+      "all": "Alle"
+    },
+    "names":{
+      "status": "Status",
+      "subjects": "Fächer",
+      "sort": "Bitte wählen Sie die Sortierreihenfolge"
+    },
+    "placeholders":{
+      "any": "Irgendein"
+    },
+    "checkbox":{
+      "regular":"Regulär",
+      "reverse": "Umkehren"
+    },
+    "applyButton": "Sich bewerben"
   }
 }
