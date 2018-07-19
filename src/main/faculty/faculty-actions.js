@@ -3,8 +3,8 @@ import subjectService from '../../service/subject-service';
 
 const ADD_SUBJECT_VALUES = 'ADD_SUBJECT_VALUES';
 const ADD_EDIT_FORM_VALUES_FACULTY = 'ADD_EDIT_FORM_VALUES_FACULTY';
-const ADD_FILTER_VALUES = 'ADD_FILTER_VALUES';
 const ADD_ENTRANT_SHEET_VALUES = 'ADD_ENTRANT_SHEET_VALUES';
+const GET_FACULTIES = 'GET_FACULTIES';
 
 function addSubjectsValues(data) {
     let { subjects } = data;
@@ -30,9 +30,9 @@ function addEditFormValues(data) {
     };
 }
 
-function addFilterValues(data) {
+function addFacultyValues(data) {
     return {
-        type: ADD_FILTER_VALUES,
+        type: GET_FACULTIES,
         data,
     };
 }
@@ -278,37 +278,6 @@ export function sheetGetEntrants(id) {
     };
 }
 
-
-export function getFilter() {
-    /* while server down */
-
-    return (dispatch) => {
-        console.log('lalalala');
-        dispatch(addFilterValues({
-            statuses: [
-                'one',
-                'two',
-                'three',
-            ],
-            subjects: [
-                'one',
-                'two',
-                'three',
-                'one1',
-                'two1',
-                'three1',
-                'one2',
-                'two2',
-                'three2',
-            ],
-        }));
-    };
-
-    return (dispatch) => {
-        facultyService.getFilter().then(res => dispatch(addFilterValues(res.data)));
-    };
-}
-
 export function getEditFormValues(id) {
     /* while server down */
 
@@ -328,5 +297,382 @@ export function getEditFormValues(id) {
 
     return (dispatch) => {
         facultyService.getEditFormValues(id).then(res => dispatch(addEditFormValues(res.data)));
+    };
+}
+
+
+export function getFaculties(page = 1, filter) {
+    /* while server down */
+    console.log(filter);
+
+    if (page === 1) {
+        return (dispatch) => {
+            console.log('lalalala');
+            dispatch(addFacultyValues({
+                totalPages: 3,
+                faculties: [
+                    {
+                        time: 1222222222,
+                        id: 0,
+                        key: 0,
+                        value: '0',
+                        entry_plan: 120,
+                        amount_entrant: 300,
+                        name: 'Faculty of Applied Mathematics and Computer Science',
+                        is_Unavailable: true,
+                        subjects: ['Math', 'Russian language', 'Belarussian language'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 1,
+                        key: 1,
+                        value: '1',
+                        entry_plan: 90,
+                        amount_entrant: 101,
+                        name: 'Faculty of Biology',
+                        is_Unavailable: false,
+                        subjects: ['Math', 'Russian language', 'Belarussian language'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 2,
+                        key: 2,
+                        value: '2',
+                        entry_plan: 150,
+                        amount_entrant: 167,
+                        name: 'Faculty of Radiophysics and Computer Technologies',
+                        is_Unavailable: false,
+                        subjects: ['Math', 'Geography', 'Belarussian language'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 3,
+                        key: 3,
+                        value: '3',
+                        entry_plan: 40,
+                        amount_entrant: 20,
+                        name: 'Faculty of Mathematics and Mechanics',
+                        is_Unavailable: true,
+                        subjects: ['Math', 'Russian language', 'Belarussian language'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 4,
+                        key: 4,
+                        value: '4',
+                        entry_plan: 90,
+                        amount_entrant: 130,
+                        name: 'Faculty of International relations',
+                        is_Unavailable: true,
+                        subjects: ['Math', 'Chemistry'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 5,
+                        key: 5,
+                        value: '5',
+                        entry_plan: 80,
+                        amount_entrant: 70,
+                        name: 'Faculty of History',
+                        is_Unavailable: false,
+                        subjects: ['Math', 'Chemistry', 'Belarussian language'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 6,
+                        key: 6,
+                        value: '6',
+                        entry_plan: 120,
+                        amount_entrant: 300,
+                        name: 'Faculty of Applied Mathematics and Computer Science',
+                        is_Unavailable: true,
+                        subjects: ['Math', 'Russian language', 'Belarussian language'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 7,
+                        key: 7,
+                        value: '7',
+                        entry_plan: 90,
+                        amount_entrant: 101,
+                        name: 'Faculty of Biology',
+                        is_Unavailable: false,
+                        subjects: ['Math', 'Russian language', 'Belarussian language'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 8,
+                        key: 8,
+                        value: '8',
+                        entry_plan: 150,
+                        amount_entrant: 167,
+                        name: 'Faculty of Radiophysics and Computer Technologies',
+                        is_Unavailable: false,
+                        subjects: ['Math', 'Geography', 'Belarussian language'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 9,
+                        key: 9,
+                        value: '9',
+                        entry_plan: 40,
+                        amount_entrant: 20,
+                        name: 'Faculty of Mathematics and Mechanics',
+                        is_Unavailable: true,
+                        subjects: ['Math', 'Russian language', 'Belarussian language'],
+                    },
+
+                ],
+            }));
+        };
+    }
+
+    if (page === 2) {
+        return (dispatch) => {
+            console.log('lalalala');
+            dispatch(addFacultyValues({
+                totalPages: 3,
+                faculties: [
+
+                    {
+                        time: 1222222222,
+                        id: 10,
+                        key: 10,
+                        value: '10',
+                        entry_plan: 90,
+                        amount_entrant: 130,
+                        name: 'Faculty of International relations',
+                        is_Unavailable: true,
+                        subjects: ['Math', 'Chemistry'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 11,
+                        key: 11,
+                        value: '11',
+                        entry_plan: 80,
+                        amount_entrant: 70,
+                        name: 'Faculty of History',
+                        is_Unavailable: false,
+                        subjects: ['Math', 'Chemistry', 'Belarussian language'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 12,
+                        key: 12,
+                        value: '12',
+                        entry_plan: 120,
+                        amount_entrant: 300,
+                        name: 'Faculty of Applied Mathematics and Computer Science',
+                        is_Unavailable: true,
+                        subjects: ['Math', 'Russian language', 'Belarussian language'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 13,
+                        key: 13,
+                        value: '13',
+                        entry_plan: 90,
+                        amount_entrant: 101,
+                        name: 'Faculty of Biology',
+                        is_Unavailable: false,
+                        subjects: ['Math', 'Russian language', 'Belarussian language'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 14,
+                        key: 14,
+                        value: '14',
+                        entry_plan: 150,
+                        amount_entrant: 167,
+                        name: 'Faculty of Radiophysics and Computer Technologies',
+                        is_Unavailable: false,
+                        subjects: ['Math', 'Geography', 'Belarussian language'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 15,
+                        key: 15,
+                        value: '15',
+                        entry_plan: 40,
+                        amount_entrant: 20,
+                        name: 'Faculty of Mathematics and Mechanics',
+                        is_Unavailable: true,
+                        subjects: ['Math', 'Russian language', 'Belarussian language'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 16,
+                        key: 16,
+                        value: '16',
+                        entry_plan: 90,
+                        amount_entrant: 130,
+                        name: 'Faculty of International relations',
+                        is_Unavailable: true,
+                        subjects: ['Math', 'Chemistry'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 17,
+                        key: 17,
+                        value: '17',
+                        entry_plan: 80,
+                        amount_entrant: 70,
+                        name: 'Faculty of History',
+                        is_Unavailable: false,
+                        subjects: ['Math', 'Chemistry', 'Belarussian language'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 18,
+                        key: 18,
+                        value: '18',
+                        entry_plan: 120,
+                        amount_entrant: 300,
+                        name: 'Faculty of Applied Mathematics and Computer Science',
+                        is_Unavailable: true,
+                        subjects: ['Math', 'Russian language', 'Belarussian language'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 19,
+                        key: 19,
+                        value: '19',
+                        entry_plan: 90,
+                        amount_entrant: 101,
+                        name: 'Faculty of Biology',
+                        is_Unavailable: false,
+                        subjects: ['Math', 'Russian language', 'Belarussian language'],
+                    },
+
+                ],
+            }));
+        };
+    }
+
+    if (page === 3) {
+        return (dispatch) => {
+            console.log('lalalala');
+            dispatch(addFacultyValues({
+                totalPages: 3,
+                faculties: [
+
+                    {
+                        time: 1222222222,
+                        id: 20,
+                        key: 20,
+                        value: '20',
+                        entry_plan: 150,
+                        amount_entrant: 167,
+                        name: 'Faculty of Radiophysics and Computer Technologies',
+                        is_Unavailable: false,
+                        subjects: ['Math', 'Geography', 'Belarussian language'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 21,
+                        key: 21,
+                        value: '21',
+                        entry_plan: 40,
+                        amount_entrant: 20,
+                        name: 'Faculty of Mathematics and Mechanics',
+                        is_Unavailable: true,
+                        subjects: ['Math', 'Russian language', 'Belarussian language'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 22,
+                        key: 22,
+                        value: '22',
+                        entry_plan: 90,
+                        amount_entrant: 130,
+                        name: 'Faculty of International relations',
+                        is_Unavailable: true,
+                        subjects: ['Math', 'Chemistry'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 23,
+                        key: 23,
+                        value: '23',
+                        entry_plan: 80,
+                        amount_entrant: 70,
+                        name: 'Faculty of History',
+                        is_Unavailable: false,
+                        subjects: ['Math', 'Chemistry', 'Belarussian language'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 24,
+                        key: 24,
+                        value: '24',
+                        entry_plan: 120,
+                        amount_entrant: 300,
+                        name: 'Faculty of Applied Mathematics and Computer Science',
+                        is_Unavailable: true,
+                        subjects: ['Math', 'Russian language', 'Belarussian language'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 25,
+                        key: 25,
+                        value: '25',
+                        entry_plan: 90,
+                        amount_entrant: 101,
+                        name: 'Faculty of Biology',
+                        is_Unavailable: false,
+                        subjects: ['Math', 'Russian language', 'Belarussian language'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 26,
+                        key: 26,
+                        value: '26',
+                        entry_plan: 150,
+                        amount_entrant: 167,
+                        name: 'Faculty of Radiophysics and Computer Technologies',
+                        is_Unavailable: false,
+                        subjects: ['Math', 'Geography', 'Belarussian language'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 27,
+                        key: 27,
+                        value: '27',
+                        entry_plan: 40,
+                        amount_entrant: 20,
+                        name: 'Faculty of Mathematics and Mechanics',
+                        is_Unavailable: true,
+                        subjects: ['Math', 'Russian language', 'Belarussian language'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 28,
+                        key: 28,
+                        value: '28',
+                        entry_plan: 90,
+                        amount_entrant: 130,
+                        name: 'Faculty of International relations',
+                        is_Unavailable: true,
+                        subjects: ['Math', 'Chemistry'],
+                    },
+                    {
+                        time: 1222222222,
+                        id: 29,
+                        key: 29,
+                        value: '29',
+                        entry_plan: 80,
+                        amount_entrant: 70,
+                        name: 'Faculty of History',
+                        is_Unavailable: false,
+                        subjects: ['Math', 'Chemistry', 'Belarussian language'],
+                    },
+                ],
+            }));
+        };
+    }
+
+    return (dispatch) => {
+        facultyService.getFaculty(page, filter).then(res => dispatch(addFacultyValues(res.data)));
     };
 }

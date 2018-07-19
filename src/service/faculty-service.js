@@ -30,6 +30,10 @@ function addFaculty(data) {
     return axios.post('http://localhost:8888/committee/faculty/add', data);
 }
 
+function getFaculty(page = 1, filter = {}) {
+    return axios.get(`http://localhost:8888/committee/faculty?page=${page}&filter=${filter}`);
+}
+
 const facultyService = {
     getSubjectsList,
     getEditFormValues,
@@ -38,6 +42,7 @@ const facultyService = {
     deleteFaculty,
     registerToFaculty,
     getSheet,
+    getFaculty,
 };
 
 export default facultyService;

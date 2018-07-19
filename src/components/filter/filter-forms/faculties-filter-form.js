@@ -10,6 +10,13 @@ class FacultiesFilterForm extends React.Component {
 
         this.state = {
             sortValue: true,
+            subjects: this.prepareDataForDropDown(this.props.subjects),
+            statuses: this.prepareDataForDropDown([
+                'Enrollment has already expired',
+                'Enrollment still goes',
+            ]),
+            newStatuses: [],
+            newSubjects: [],
         };
     }
 
@@ -17,31 +24,48 @@ class FacultiesFilterForm extends React.Component {
         sortValue: !prevState.sortValue,
     }));
 
-    render() {
-        const { handleSubmit, onSubmit, data } = this.props;
-        const clone = Object.assign({}, data);
-        Object.keys(clone).forEach((prop) => {
-            const items = clone[prop];
-            clone[prop] = items.map(item => ({
-                key: item,
-                value: item,
-                text: item,
-            }));
-        });
+    prepareDataForDropDown = (data) => {
+        if (!data) {
+            return [];
+        }
 
+        return data.map((item, index) => ({ key: index, value: index, text: item }));
+    };
+
+    getSubjectsByKeys(keys) {
+        return keys.map(key => this.state.subjects.find(subject => subject.key === key).text);
+    }
+
+    getStatusesByKeys(keys) {
+        return keys.map(key => this.state.statuses.find(subject => subject.key === key).text);
+    }
+
+    prepareForSubmit = () => {
+        const data = {
+            subjects: this.state.newSubjects,
+            statuses: this.state.newStatuses,
+            order: this.state.sortValue,
+        };
+
+        this.props.onSubmit(data);
+    };
+
+    render() {
         return (
-            <Form className="filter-form" onSubmit={handleSubmit(onSubmit)}>
+            <Form className="filter-form" onSubmit={this.prepareForSubmit}>
                 <Field
                     name="status"
                     label="Status"
-                    items={clone.statuses || []}
+                    items={this.state.statuses}
                     component={DropdownComponent}
+                    onChange={(event, obj) => this.setState({ newStatuses: this.getStatusesByKeys(obj) })}
                 />
                 <Field
                     name="subjects"
                     label="Subjects"
-                    items={clone.subjects || []}
+                    items={this.state.subjects}
                     component={DropdownComponent}
+                    onChange={(event, obj) => this.setState({ newSubjects: this.getSubjectsByKeys(obj) })}
                 />
                 <Form.Field>
                     Please choose sort order:
@@ -80,10 +104,7 @@ FacultiesFilterForm.defaultProps = {
 FacultiesFilterForm.propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
-    data: PropTypes.shape({
-        statuses: PropTypes.arrayOf(PropTypes.string),
-
-    }),
+    subjects: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default reduxForm({ form: 'CandidatesFilterForm' })(FacultiesFilterForm);
