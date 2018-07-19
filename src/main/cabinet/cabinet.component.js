@@ -5,11 +5,11 @@ import { Redirect } from 'react-router-dom';
 import { Button, Header, Segment } from 'semantic-ui-react';
 import { translate } from 'react-i18next';
 import { connect } from 'react-redux';
+import { withAlert } from 'react-alert';
 import EditEntrant from '../entrant/edit/edit-entrant.component';
 import AdminPanel from './admin-panel/admin-panel.component';
 import Faculty from '../faculty/faculty.component';
 import entrantService from '../../service/entrant-service';
-
 
 import SemanticLoader from '../../components/loaders/semantic-loader';
 import * as actionCreators from '../entrant/entrant-actions';
@@ -43,12 +43,21 @@ class CabinetPage extends Component {
             entrantFaculty: PropTypes.shape({
                 is_Unavailable: PropTypes.bool,
             }),
+            alert: PropTypes.shape({
+                error: PropTypes.func,
+                success: PropTypes.func,
+            }),
         };
     }
 
-    onSubmit = (data) => {
-        entrantService.editEntrant(data, this.props.user.id);
-        this.setState({ submitted: true });
+    onSubmit = (values) => {
+        entrantService.editEntrant(values, this.props.user.id).then(
+            (data) => {
+                this.props.alert.success(data.toString());
+                this.setState({ submitted: true });
+            },
+            (error) => { this.props.alert.error(error.toString()); },
+        );
     };
 
     componentDidMount() {
@@ -58,8 +67,13 @@ class CabinetPage extends Component {
     }
 
     unsubscribe = () => {
-        entrantService.unsubscribe(this.props.user.id);
-        this.setState({ submitted: true });
+        entrantService.unsubscribe(this.props.user.id).then(
+            (data) => {
+                this.props.alert.success(data.toString());
+                this.setState({ submitted: true });
+            },
+            (error) => { this.props.alert.error(error.toString()); },
+        );
     };
 
     render() {
@@ -114,4 +128,4 @@ const mapStateToProps = state => ({
     entrantFaculty: state.entrant.entrantFaculty,
 });
 
-export default translate('common')(connect(mapStateToProps, actionCreators)(CabinetPage));
+export default withAlert(translate('common')(connect(mapStateToProps, actionCreators)(CabinetPage)));

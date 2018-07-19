@@ -8,7 +8,6 @@
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-alert": "^4.0.4",
-    "react-alert-template-basic": "^1.0.0",
     "react-dom": "^16.4.1",
     "react-i18next": "^7.8.0",
     "react-redux": "^5.0.7",

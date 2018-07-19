@@ -20,7 +20,6 @@ import checkAuth from './main/auth/auth-component';
 import authReducer from './main/auth/auth-reducer';
 import facultyReducer from './main/faculty/faculty-reducer';
 import entrantReducer from './main/entrant/entrant-reducer';
-import cabinetReducer from './main/cabinet/cabinet-reducer';
 
 import commonDe from './translations/de/common.json';
 import commonEn from './translations/en/common.json';
@@ -37,7 +36,6 @@ const reducer = combineReducers({
     faculty: facultyReducer,
     entrant: entrantReducer,
     form: reduxFormReducer,
-    cabinet: cabinetReducer,
 });
 
 i18next.init({

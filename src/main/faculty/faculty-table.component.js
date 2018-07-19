@@ -9,12 +9,12 @@ import {
 import { translate } from 'react-i18next';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { withAlert } from 'react-alert';
 import roles from '../../configs/roles';
 import './faculty-table.css';
 import FacultyFilter from './filter/candidates-filter.container';
 import Faculty from './faculty.component';
 import facultyService from '../../service/faculty-service';
-import { withAlert } from 'react-alert';
 
 class FacultyTable extends Component {
     constructor(props) {
@@ -149,7 +149,12 @@ class FacultyTable extends Component {
 
     onElementClick = obj => this.setPager(obj.activePage);
 
-    onDeleteElementClick = id => facultyService.deleteFaculty(id);
+    onDeleteElementClick = (id) => {
+        facultyService.deleteFaculty(id).then(
+            (data) => { this.props.alert.success(data.toString()); },
+            (error) => { this.props.alert.error(error.toString()); },
+        );
+    };
 
     onFacultyRegister = (id) => {
         facultyService.registerToFaculty(

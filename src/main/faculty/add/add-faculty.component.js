@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { withAlert } from 'react-alert';
 import AddFacultyForm from './add-faculty-form.component';
 import SemanticLoader from '../../../components/loaders/semantic-loader';
 import * as actionCreators from '../faculty-actions';
@@ -27,12 +28,21 @@ class AddFaculty extends React.Component {
                     id: PropTypes.string,
                 }),
             }),
+            alert: PropTypes.shape({
+                error: PropTypes.func,
+                success: PropTypes.func,
+            }),
         };
     }
 
-    onSubmit = (data) => {
-        facultyService.addFaculty(data);
-        this.setState({ submitted: true });
+    onSubmit = (values) => {
+        facultyService.addFaculty(values).then(
+            (data) => {
+                this.props.alert.success(data.toString());
+                this.setState({ submitted: true });
+            },
+            (error) => { this.props.alert.error(error.toString()); },
+        );
     };
 
     componentDidMount() {
@@ -60,4 +70,4 @@ const mapStateToProps = state => ({
     subjects: state.faculty.subjects,
 });
 
-export default connect(mapStateToProps, actionCreators)(AddFaculty);
+export default withAlert(connect(mapStateToProps, actionCreators)(AddFaculty));

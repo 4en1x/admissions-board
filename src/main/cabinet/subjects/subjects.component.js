@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { withAlert } from 'react-alert';
 import PropTypes from 'prop-types';
 import SemanticLoader from '../../../components/loaders/semantic-loader';
 
 import SubjectsForm from './subjects-form.component';
-import { editSubjects } from '../cabinet-actions';
+import subjectService from '../../../service/subject-service';
 import { getSubjectsList } from '../../faculty/faculty-actions';
 
 
@@ -18,9 +19,14 @@ class SubjectsComponent extends React.Component {
         };
     }
 
-    onSubmit = (data) => {
-        this.props.editSubjects(data);
-        this.setState({ submitted: true });
+    onSubmit = (values) => {
+        subjectService.editSubjects(values).then(
+            (data) => {
+                this.props.alert.success(data.toString());
+                this.setState({ submitted: true });
+            },
+            (error) => { this.props.alert.error(error.toString()); },
+        );
     };
 
     static get propTypes() {
@@ -28,6 +34,10 @@ class SubjectsComponent extends React.Component {
             subjects: PropTypes.arrayOf(PropTypes.string),
             editSubjects: PropTypes.func,
             getSubjectsList: PropTypes.func,
+            alert: PropTypes.shape({
+                error: PropTypes.func,
+                success: PropTypes.func,
+            }),
         };
     }
 
@@ -52,4 +62,4 @@ const mapStateToProps = state => ({
     subjects: state.faculty.subjects,
 });
 
-export default connect(mapStateToProps, { editSubjects, getSubjectsList })(SubjectsComponent);
+export default withAlert(connect(mapStateToProps, { getSubjectsList })(SubjectsComponent));
