@@ -59,10 +59,6 @@ class Faculty extends Component {
                     {t('faculty.table.requestsSubmitted')} <Label circular>{this.state.faculty.amount_entrant}</Label>
                 </Header>
 
-                <Header as='h4'>
-                    {t('faculty.table.deadline')}: {(new Date(this.state.faculty.time)).toISOString().slice(0, 10)}
-                </Header>
-
                 {
                     this.props.role === roles.ADMIN.ROLE ? (
                         <List.Content floated='right'>
@@ -82,6 +78,9 @@ class Faculty extends Component {
                     ) : null
                 }
 
+                <Header as='h4'>
+                    {t('faculty.table.deadline')}: {(new Date(this.state.faculty.time)).toISOString().slice(0, 10)}
+                </Header>
             </div>
         );
     }
