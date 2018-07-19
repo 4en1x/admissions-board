@@ -21,7 +21,6 @@ body {
 
 .page {
   width: 95%;
-  max-width: 1200px;
   padding: 1em 0;
 }
 
@@ -37,14 +36,19 @@ body {
   width: calc(70% - 0.5em);
 }
 
+.content-all {
+  width: calc(100% - 2em);
+}
+
 .content-thin {
-  width: calc(30% - 0.5em);
+  width: calc(30% - 1em);
+  right: 0;
+  position: absolute;
 }
 
 .content-tab {
   width: 100%;
   margin-bottom: 1em;
-
 }
 
 .content-tab.background {

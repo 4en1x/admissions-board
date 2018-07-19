@@ -1,76 +1,68 @@
-import React from "react";
-import EmailInputForm from "../components/email-input";
-import PasswordInputForm from "../components/password-input";
-import { Image } from "semantic-ui-react";
-import logos from "../../../assets/images";
-import { Redirect } from "react-router-dom";
-import { connect } from "react-redux";
+import React from 'react';
+import { Image } from 'semantic-ui-react';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { withAlert } from 'react-alert';
 import * as actionCreators from '../auth-actions';
-import userService from '../../../service/user-service';
-import "./sign-in.css";
-
-const EMAIL = "EMAIL";
-const PASSWORD = "PASSWORD";
+import logos from '../../../assets/images';
+import InputForm from '../components/login-input';
+import LanguageDropDown from '../../../components/languageDropDown/languageDropDown.component';
+import './sign-in.css';
 
 class SignInComponent extends React.Component {
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.state = {
-      currentState: EMAIL,
-      isLoading: false
+        this.state = {
+            isLoading: false,
+        };
+    }
+
+    inputHandle = (login, password) => {
+        this.login = login;
+        this.password = password;
+
+        this.setState({
+            isLoading: true,
+        });
+
+        this.props.login({ login: this.login, password: this.password }, this.props.alert.error);
     };
-  }
 
-  emailInputHandle = value => {
-    this.email = value;
-
-    this.setState({
-      isLoading: true
-    });
-
-    /** Until server up*/
-    if (value === 'email') {
-        this.setState({ currentState: PASSWORD, isLoading: false })
+    static get propTypes() {
+        return {
+            login: PropTypes.func,
+            auth: PropTypes.shape({
+                isAuthError: PropTypes.bool,
+            }),
+            alert: PropTypes.shape({
+                error: PropTypes.func,
+            }),
+        };
     }
 
-    /** Until server up*/
-    /*
-    userService.checkEmail({email: value}).then(res => {
-        this.setState({ currentState: PASSWORD, isLoading: false });
-    });
-    */
-  };
+    render() {
+        if (!this.props.auth.isAuthError) {
+            return <Redirect to={{ pathname: '/' }}/>;
+        }
 
-  passwordInputHandle = value => {
-    this.props.login({ email: this.email, password: value });
-  };
-
-  render() {
-    let form = <EmailInputForm inputHandle={this.emailInputHandle} />;
-
-    if (this.state.currentState !== EMAIL) {
-      form = <PasswordInputForm inputHandle={this.passwordInputHandle} />;
+        return (
+            <div className="auth-container parent-size">
+                <LanguageDropDown/>
+                <div className="auth-form">
+                    <div className="auth-form-header">
+                        <Image src={logos.logo1} height="40px" verticalAlign="bottom" />
+                    </div>
+                    <InputForm inputHandle={this.inputHandle} />
+                </div>
+            </div>
+        );
     }
-
-    if (!this.props.auth.isAuthError)
-      return <Redirect to={{ pathname: "/" }} />;
-
-    return (
-      <div className="auth-container parent-size">
-          <div className="auth-form">
-              <div className="auth-form-header">
-                  <Image src={logos.logo1} height="40px" verticalAlign="bottom" />
-              </div>
-              {form}
-          </div>
-      </div>
-    );
-  }
 }
 
 const mapStateToProps = state => ({
-  auth: state.auth
+    auth: state.auth,
 });
 
-export default connect(mapStateToProps, actionCreators)(SignInComponent);
+export default withAlert(connect(mapStateToProps, actionCreators)(SignInComponent));

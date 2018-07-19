@@ -2,4 +2,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Admissions Board
 
-#####HomePage: https://admissions-board.firebaseapp.com
+HomePage: https://admissions-board.firebaseapp.com

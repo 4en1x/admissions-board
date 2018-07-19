@@ -1,26 +1,21 @@
 import axios from 'axios';
 
 function login(user) {
-  return axios.post(`/rest/login`, user);
+    return axios.post('h8/committee/login', user);
 }
 
-function checkEmail(email) {
-  return axios.post('/rest/email', email);
-}
-
-function isAuthorized() {
-  return axios.get('/rest/username');
+function register(user) {
+    return axios.post('http://localhost:8888/committee/register', user);
 }
 
 function logout() {
-  return axios.post(`/rest/logout`);
+    return axios.post('http://localhost:8888/committee/logout');
 }
 
 const userService = {
-  login,
-  checkEmail,
-  isAuthorized,
-  logout
+    login,
+    logout,
+    register,
 };
 
 export default userService;

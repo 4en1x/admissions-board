@@ -1,0 +1,159 @@
+{
+  "dropDownMenu": {
+    "selectLan": "选择语言",
+    "closeBtn": "关",
+    "signOut": "登出",
+    "cabinet": "个人内阁",
+    "mainPage": "主页"
+  },
+  "faculty": {
+    "table": {
+      "register": "注册教师",
+      "reqSubjects": "所需科目",
+      "recruitmentPlan": "招聘计划",
+      "requestsSubmitted": "招聘计划.",
+      "deadline":"请求截止日期",
+      "getSheet": "获取表格"
+    },
+    "edit": {
+      "name": "编辑教师",
+      "placeholders":{
+        "name": "学院名称",
+        "recruitmentPlan": "0"
+      },
+      "labels":{
+        "name": "请输入新的教员姓名",
+        "deleteCheckbox": "选择是否要删除已申请此教师的所有用户",
+        "recruitmentPlan": "请输入招聘计划",
+        "requestsSubmitted": "提交的请求数",
+        "subjects": "主题"
+      },
+      "editButton": "编辑",
+      "errorSubmittingMessageSubjects": "你应该准确添加3个科目",
+      "errorMessage": "行动被禁止"
+    },
+    "add": {
+      "name": "添加教师",
+      "placeholders":{
+        "name": "学院名称",
+        "recruitmentPlan": "0"
+      },
+      "labels":{
+        "name": "请输入新的教员姓名",
+        "recruitmentPlan": "请输入招聘计划",
+        "subjects": "主题",
+        "date": "请输入提交截止日期"
+      },
+      "addButton": "加",
+      "errorSubmittingMessageSubjects": "你应该准确添加3个科目",
+      "errorMessage": "禁止行动"
+    }
+  },
+  "entrant": {
+    "edit": {
+      "name": "在这里，您可以编辑您的信息",
+      "placeholders":{
+        "email": "something@something.else",
+        "username": "用户名",
+        "name": "名字",
+        "surname": "姓",
+        "password": "密码",
+        "repeatPassword":"密码"
+      },
+      "labels":{
+        "email": "电子邮件",
+        "username": "用户名",
+        "name": "名字",
+        "surname": "姓",
+        "password": "密码",
+        "repeatPassword":"密码",
+        "subjects": "然后选择三个科目:"
+      },
+      "editButton": "编辑",
+      "errorSubmittingMessageSubjects": "你应该准确添加3个科目",
+      "errorSubmittingMessagePasswords": "密码不匹配",
+      "errorMessage": "行动被禁止",
+      "averageScoreMessage": "请指定您的平均分数",
+      "scoreMessage": "请指定您的分数"
+    }
+  },
+  "languageDropDown": {
+    "name": "选择语言"
+  },
+  "login-input": {
+    "placeholders":{
+      "username": "用户名",
+      "password": "密码"
+    },
+    "nextButton": "下一个",
+    "createAccount": "创建帐号"
+  },
+  "registration": {
+    "name": "报名表格",
+    "placeholders":{
+      "username": "用户名",
+      "password": "密码",
+      "repeatPassword":"密码",
+      "email": "something@something.else"
+    },
+    "labels":{
+      "username": "用户名",
+      "password": "输入密码",
+      "repeatPassword":"重复输入密码",
+      "email": "电子邮件"
+    },
+    "agreeCheckbox": "我同意这条款和条件",
+    "errorMessage": "行动被禁止",
+    "registerButton": "寄存器",
+    "errorSubmittingMessagePasswords": "密码不匹配",
+    "errorSubmittingMessageTerms": "您不同意条款和条件"
+  },
+  "admin-panel": {
+    "name": "管理面板",
+    "addFacultyButton": "添加教师",
+    "changeListOfSubjectsButton": "更改主题列表"
+  },
+  "subjects-edit":{
+    "name": "编辑主题",
+    "submitButton": "提交",
+    "addButton": "添加新主题到列表"
+  },
+  "entrant-faculty": {
+    "name": "你目前申请了这个系",
+    "unsubscribeButton":"退订"
+  },
+  "sheet": {
+    "name": "进入过程的结果",
+    "id": "编号",
+    "email": "电子邮件",
+    "username": "用户名",
+    "first_name": "名字",
+    "second_name": "姓",
+    "score": "得分了",
+    "enrolled": "已注册/未注册",
+    "labels": {
+      "enrolled": "就读",
+      "notEnrolled": "没有注册"
+    }
+  },
+  "filter": {
+    "statuses": {
+      "first": "报名已经过期",
+      "second": "报名仍然有效",
+      "all": "所有"
+    },
+    "names":{
+      "status": "状态",
+      "subjects": "主题",
+      "sort": "请选择排序顺序"
+    },
+    "placeholders":{
+      "any": "任何"
+    },
+    "checkbox":{
+      "regular":"定期",
+      "reverse": "相反"
+    },
+    "applyButton": "应用"
+  }
+}
