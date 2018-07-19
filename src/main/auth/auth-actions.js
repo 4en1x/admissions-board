@@ -27,7 +27,7 @@ function removeUser() {
     };
 }
 
-export function login(user) {
+export function login(user, handler) {
     /** Until server up */
     if (user.login === 'admin' && user.password === 'password') {
         return (dispatch) => {
@@ -44,11 +44,13 @@ export function login(user) {
     return (dispatch) => {
         userService.login(user).then((response) => {
             dispatch(addUser(response.data));
+        }, (error) => {
+            handler(error.toString());
         });
     };
 }
 
-export function logout() {
+export function logout(handler) {
     /** Until server up */
     return (dispatch) => {
         dispatch(removeUser());
@@ -57,14 +59,18 @@ export function logout() {
     return (dispatch) => {
         userService.logout().then(() => {
             dispatch(removeUser());
+        }, (error) => {
+            handler(error.toString());
         });
     };
 }
 
-export function register(user) {
+export function register(user, handler) {
     return (dispatch) => {
         userService.register(user).then(() => {
             dispatch(registerUser());
+        }, (error) => {
+            handler(error.toString());
         });
     };
 }

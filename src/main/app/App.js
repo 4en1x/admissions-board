@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { withAlert } from 'react-alert';
 import { Route, Switch } from 'react-router-dom';
 import Header from '../../components/header/header.components';
 import FacultyTable from '../faculty/faculty-table.component';
@@ -16,7 +17,7 @@ import './App.css';
 
 class App extends Component {
     itemSelected = () => {
-        store.dispatch(logout());
+        store.dispatch(logout(this.props.alert.error));
     };
 
     static get propTypes() {
@@ -24,6 +25,9 @@ class App extends Component {
             user: PropTypes.shape({
                 login: PropTypes.string,
                 role: PropTypes.string,
+            }),
+            alert: PropTypes.shape({
+                error: PropTypes.func,
             }),
         };
     }
@@ -51,4 +55,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default withAlert(App);

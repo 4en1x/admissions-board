@@ -3,6 +3,7 @@ import { Image } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withAlert } from 'react-alert';
 import * as actionCreators from '../auth-actions';
 import logos from '../../../assets/images';
 import InputForm from '../components/login-input';
@@ -26,7 +27,7 @@ class SignInComponent extends React.Component {
             isLoading: true,
         });
 
-        this.props.login({ login: this.login, password: this.password });
+        this.props.login({ login: this.login, password: this.password }, this.props.alert.error);
     };
 
     static get propTypes() {
@@ -34,6 +35,9 @@ class SignInComponent extends React.Component {
             login: PropTypes.func,
             auth: PropTypes.shape({
                 isAuthError: PropTypes.bool,
+            }),
+            alert: PropTypes.shape({
+                error: PropTypes.func,
             }),
         };
     }
@@ -61,4 +65,4 @@ const mapStateToProps = state => ({
     auth: state.auth,
 });
 
-export default connect(mapStateToProps, actionCreators)(SignInComponent);
+export default withAlert(connect(mapStateToProps, actionCreators)(SignInComponent));

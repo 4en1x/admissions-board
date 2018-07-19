@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Provider } from 'react-redux';
+import { Provider as ReduxProvider } from 'react-redux';
+import { Provider } from 'react-alert';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import { reducer as reduxFormReducer } from 'redux-form';
@@ -9,6 +10,7 @@ import { reducer as reduxFormReducer } from 'redux-form';
 import thunk from 'redux-thunk';
 import { I18nextProvider } from 'react-i18next';
 import i18next from 'i18next';
+import AlertTemplate from './components/alert/alert.component';
 
 import SignInComponent from './main/auth/sign-in/sign-in.component';
 import RegistrationComponent from './main/auth/registration/registration.component';
@@ -60,16 +62,23 @@ store.subscribe(() => {
     saveState(store.getState());
 });
 
+const options = {
+    timeout: 5000,
+    position: 'top center',
+};
+
 ReactDOM.render(
     <I18nextProvider i18n={i18next}>
-        <Provider store={store}>
-            <Router>
-                <Switch>
-                    <Route path="/login" component={SignInComponent} />
-                    <Route path="/registration" component={RegistrationComponent} />
-                    <Route path="/" component={checkAuth(App)} />
-                </Switch>
-            </Router>
+        <Provider template={AlertTemplate} {...options}>
+            <ReduxProvider store={store}>
+                <Router>
+                    <Switch>
+                        <Route path="/login" component={SignInComponent} />
+                        <Route path="/registration" component={RegistrationComponent} />
+                        <Route path="/" component={checkAuth(App)} />
+                    </Switch>
+                </Router>
+            </ReduxProvider>
         </Provider>
     </I18nextProvider>,
     document.getElementById('root'),

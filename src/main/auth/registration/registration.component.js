@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { withAlert } from 'react-alert';
 
 import PropTypes from 'prop-types';
 import RegistrationForm from './registration-form.component';
@@ -8,27 +9,26 @@ import { register } from '../auth-actions';
 
 
 class RegistrationComponent extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            submitted: false,
-        };
-    }
-
     onSubmit = (data) => {
-        this.props.register(data);
-        this.setState({ submitted: true });
+        this.props.register(data, this.props.alert.error);
     };
 
     static get propTypes() {
         return {
             register: PropTypes.func,
+            alert: PropTypes.shape({
+                error: PropTypes.func,
+            }),
+            auth: PropTypes.shape({
+                isRegisterError: PropTypes.bool,
+            }),
         };
     }
 
     render() {
-        if (this.state.submitted) return <Redirect to={'/login'} />;
+        if (!this.props.auth.isRegisterError) {
+            return <Redirect to={'/login'} />;
+        }
 
         return (
             <RegistrationForm onSubmit={this.onSubmit}/>
@@ -36,8 +36,8 @@ class RegistrationComponent extends React.Component {
     }
 }
 
-const mapStateToProps = () => ({
-
+const mapStateToProps = state => ({
+    auth: state.auth,
 });
 
-export default connect(mapStateToProps, { register })(RegistrationComponent);
+export default withAlert(connect(mapStateToProps, { register })(RegistrationComponent));

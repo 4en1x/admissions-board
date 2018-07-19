@@ -14,6 +14,7 @@ import './faculty-table.css';
 import FacultyFilter from './filter/candidates-filter.container';
 import Faculty from './faculty.component';
 import facultyService from '../../service/faculty-service';
+import { withAlert } from 'react-alert';
 
 class FacultyTable extends Component {
     constructor(props) {
@@ -135,6 +136,10 @@ class FacultyTable extends Component {
             role: PropTypes.string,
             id: PropTypes.number,
             t: PropTypes.func,
+            alert: PropTypes.shape({
+                error: PropTypes.func,
+                success: PropTypes.func,
+            }),
         };
     }
 
@@ -147,10 +152,15 @@ class FacultyTable extends Component {
     onDeleteElementClick = id => facultyService.deleteFaculty(id);
 
     onFacultyRegister = (id) => {
-        facultyService.registerToFaculty({
-            entrant_id: this.props.id,
-            faculty_id: id,
-        });
+        facultyService.registerToFaculty(
+            {
+                entrant_id: this.props.id,
+                faculty_id: id,
+            },
+        ).then(
+            (data) => { this.props.alert.success(data.toString()); },
+            (error) => { this.props.alert.error(error.toString()); },
+        );
     };
 
     setPager = (currentPage) => {
@@ -264,4 +274,4 @@ const mapStateToProps = state => ({
     id: state.auth.id,
 });
 
-export default connect(mapStateToProps)(translate('common')(FacultyTable));
+export default withAlert(connect(mapStateToProps)(translate('common')(FacultyTable)));

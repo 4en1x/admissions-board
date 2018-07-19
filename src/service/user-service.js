@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 function login(user) {
-    return axios.post('http://localhost:8888/committee/login', user);
+    return axios.post('h8/committee/login', user);
 }
 
 function register(user) {
