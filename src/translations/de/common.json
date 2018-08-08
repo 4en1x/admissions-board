@@ -106,7 +106,8 @@
     "errorMessage": "Aktion verboten",
     "registerButton": "Registrieren",
     "errorSubmittingMessagePasswords": "Passwörter stimmen nicht überein",
-    "errorSubmittingMessageTerms": "Sie haben den Allgemeinen Geschäftsbedingungen nicht zugestimmt"
+    "errorSubmittingMessageTerms": "Sie haben den Allgemeinen Geschäftsbedingungen nicht zugestimmt",
+    "errorSubmittingMessagePasswordLength": "Die Passwortlänge muss zwischen 8 und 20 Zeichen liegen"
   },
   "admin-panel": {
     "name": "Administrationsmenü",

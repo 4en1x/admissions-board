@@ -31,7 +31,10 @@ function addFaculty(data) {
 }
 
 function getFaculty(page = 1, filter = {}) {
-    return axios.get(`http://localhost:8888/committee/faculty?page=${page}&filter=${filter}`);
+    return axios.post('http://localhost:8888/committee/faculty', {
+        page,
+        filter,
+    });
 }
 
 const facultyService = {

@@ -106,7 +106,8 @@
     "errorMessage": "Action Forbidden",
     "registerButton": "Register",
     "errorSubmittingMessagePasswords": "Passwords do not match",
-    "errorSubmittingMessageTerms": "You didn't agree to the Terms and Conditions"
+    "errorSubmittingMessageTerms": "You didn't agree to the Terms and Conditions",
+    "errorSubmittingMessagePasswordLength": "Password length must be from 8 to 20 symbols"
   },
   "admin-panel": {
     "name": "Admin Panel",

@@ -106,7 +106,8 @@
     "errorMessage": "行动被禁止",
     "registerButton": "寄存器",
     "errorSubmittingMessagePasswords": "密码不匹配",
-    "errorSubmittingMessageTerms": "您不同意条款和条件"
+    "errorSubmittingMessageTerms": "您不同意条款和条件",
+    "errorSubmittingMessagePasswordLength": "密码长度必须为8到20个符号"
   },
   "admin-panel": {
     "name": "管理面板",
