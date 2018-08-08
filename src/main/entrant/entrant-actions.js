@@ -29,7 +29,7 @@ function addEditFormValues(data) {
     };
 }
 
-export function getEntrantFaculty(id) {
+export function getEntrantFaculty() {
     /* while server down */
 
     return (dispatch) => {
@@ -46,7 +46,7 @@ export function getEntrantFaculty(id) {
     };
 
     return (dispatch) => {
-        entrantService.getEntrantFaculty(id).then(
+        entrantService.getEntrantFaculty().then(
             res => dispatch(addEntrantFacultyValues(res.data)),
             () => dispatch(addEntrantFacultyValues(null)),
         );
@@ -77,7 +77,7 @@ export function getSubjectsList() {
     };
 }
 
-export function getEditFormValues(id) {
+export function getEditFormValues() {
     /* while server down */
 
     return (dispatch) => {
@@ -97,7 +97,7 @@ export function getEditFormValues(id) {
     };
 
     return (dispatch) => {
-        entrantService.getEditFormValues(id).then((res) => {
+        entrantService.getEditFormValues().then((res) => {
             dispatch(addEditFormValues(res.data));
         });
     };

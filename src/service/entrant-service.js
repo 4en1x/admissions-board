@@ -2,20 +2,20 @@ import axios from 'axios';
 
 axios.defaults.withCredentials = true;
 
-function getEditFormValues(id) {
-    return axios.get(`http://localhost:8888/committee/entrant/${id}`);
+function getEditFormValues() {
+    return axios.get('http://localhost:8888/committee/entrant');
 }
 
-function getEntrantFaculty(id) {
-    return axios.get(`http://localhost:8888/committee/entrant/${id}/faculty`);
+function getEntrantFaculty() {
+    return axios.get('http://localhost:8888/committee/entrant/faculty');
 }
 
-function unsubscribe(id) {
-    return axios.get(`http://localhost:8888/committee/entrant/${id}/unsubscribe`);
+function unsubscribe() {
+    return axios.get('http://localhost:8888/committee/entrant/unsubscribe');
 }
 
-function editEntrant(data, id) {
-    return axios.post(`http://localhost:8888/committee/entrant/edit/${id}`, data);
+function editEntrant(data) {
+    return axios.post('http://localhost:8888/committee/entrant/edit', data);
 }
 
 const entrantService = {
