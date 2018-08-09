@@ -15,8 +15,8 @@ class Footer extends React.Component {
 
     componentDidMount() {
         footerService.getFooter().then(
-            (data) => {
-                this.setState({ footerHtml: data.toString() });
+            (result) => {
+                this.setState({ footerHtml: result.data });
             },
             (error) => { this.props.alert.error(error.toString()); },
         );

@@ -1,15 +1,15 @@
 import axios from 'axios';
 
 function login(user) {
-    return axios.post('http://localhost:8888/committee/login', user);
+    return axios.post('http://localhost:8888/login', user);
 }
 
 function register(user) {
-    return axios.post('http://localhost:8888/committee/register', user);
+    return axios.post('http://localhost:8888/register', user);
 }
 
 function logout() {
-    return axios.post('http://localhost:8888/committee/logout');
+    return axios.post('http://localhost:8888/logout');
 }
 
 const userService = {
