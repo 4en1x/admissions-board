@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { withAlert } from 'react-alert';
 import { Route, Switch } from 'react-router-dom';
 import Header from '../../components/header/header.components';
+import Footer from '../../components/footer/footer.component';
 import FacultyTable from '../faculty/faculty-table.component';
 import CabinetPage from '../cabinet/cabinet.component';
 import FacultyEdit from '../faculty/edit/edit-faculty.component';
@@ -50,6 +51,8 @@ class App extends Component {
                     <Route path="/faculties/add" component={FacultyAdd}/>
                     <Route path="/" component={FacultyTable} />
                 </Switch>
+
+                <Footer/>
             </div>
         );
     }
