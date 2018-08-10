@@ -18,6 +18,8 @@ class EditEntrantForm extends React.Component {
             allSubjects: this.prepareDataForDropDown(this.props.subjects),
             subjects: this.props.formValues.marks || [],
             email: this.props.formValues.email || '',
+            password: '',
+            repeated_password: '',
             name: this.props.formValues.first_name || '',
             surname: this.props.formValues.surname || '',
             username: this.props.formValues.login || '',
@@ -135,6 +137,7 @@ class EditEntrantForm extends React.Component {
         const data = {
             email: this.state.email,
             login: this.state.username,
+            password: this.state.password,
         };
 
         if (this.props.role === roles.USER.ROLE) {
@@ -142,10 +145,6 @@ class EditEntrantForm extends React.Component {
             data.marks = this.state.subjects;
             data.first_name = this.state.name;
             data.surname = this.state.surname;
-        }
-
-        if (this.state.password) {
-            data.password = this.state.password;
         }
 
         this.props.onSubmit(data);
