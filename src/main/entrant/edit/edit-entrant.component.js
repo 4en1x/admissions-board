@@ -143,9 +143,7 @@ class EditEntrantForm extends React.Component {
             data.marks = this.state.subjects;
         }
 
-        if (this.state.password) {
-            data.password = this.state.password;
-        }
+        data.password = this.state.password;
 
         this.props.onSubmit(data);
     };
