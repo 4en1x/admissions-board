@@ -18,6 +18,7 @@ class EditEntrantForm extends React.Component {
             allSubjects: this.prepareDataForDropDown(this.props.subjects),
             subjects: this.props.formValues.marks || [],
             email: this.props.formValues.email || '',
+            password: '',
             name: this.props.formValues.first_name || '',
             surname: this.props.formValues.surname || '',
             username: this.props.formValues.login || '',
