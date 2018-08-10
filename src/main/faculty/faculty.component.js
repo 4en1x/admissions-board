@@ -12,18 +12,17 @@ import './faculty-table.css';
 import roles from '../../configs/roles';
 
 class Faculty extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            faculty: this.props.faculty,
-        };
-    }
-
     static get propTypes() {
         return {
             t: PropTypes.func,
-            faculty: PropTypes.shape({}),
+            faculty: PropTypes.shape({
+                name: PropTypes.string,
+                subjects: PropTypes.arrayOf(PropTypes.string),
+                entry_plan: PropTypes.number,
+                amount_entrant: PropTypes.number,
+                id: PropTypes.number,
+                time: PropTypes.number,
+            }),
             role: PropTypes.string,
             onEditPageClick: PropTypes.func,
             onDeleteElementClick: PropTypes.func,
@@ -35,12 +34,12 @@ class Faculty extends Component {
 
         return (
             <div>
-                <Header size='medium' textAlign="left">{this.state.faculty.name}</Header>
+                <Header size='medium' textAlign="left">{this.props.faculty.name}</Header>
                 <Header as='h4' textAlign="left">{t('faculty.table.reqSubjects')}:</Header>
 
                 <List>
                     {
-                        this.state.faculty.subjects.map(subject => <List.Item key ={subject}>
+                        this.props.faculty.subjects.map(subject => <List.Item key ={subject}>
                             <List.Icon name='marker' />
                             <List.Content>
                                 <List.Header>{subject}</List.Header>
@@ -52,24 +51,24 @@ class Faculty extends Component {
                 <Divider section />
 
                 <Header className="countTable" as='h4' color='green'>
-                    {t('faculty.table.recruitmentPlan')} <Label circular>{this.state.faculty.entry_plan}</Label>
+                    {t('faculty.table.recruitmentPlan')} <Label circular>{this.props.faculty.entry_plan}</Label>
                 </Header>
 
                 <Header className="countTable" as='h4' color='red'>
-                    {t('faculty.table.requestsSubmitted')} <Label circular>{this.state.faculty.amount_entrant}</Label>
+                    {t('faculty.table.requestsSubmitted')} <Label circular>{this.props.faculty.amount_entrant}</Label>
                 </Header>
 
                 {
                     this.props.role === roles.ADMIN.ROLE ? (
                         <List.Content floated='right'>
                             <Icon
-                                onClick={() => this.props.onEditPageClick(this.state.faculty.id)}
+                                onClick={() => this.props.onEditPageClick(this.props.faculty.id)}
                                 name="edit"
                                 size="large"
                                 color="green"
                             />
                             <Icon
-                                onClick={() => this.props.onDeleteElementClick(this.state.faculty.id)}
+                                onClick={() => this.props.onDeleteElementClick(this.props.faculty.id)}
                                 name="delete"
                                 size="large"
                                 color="red"
@@ -79,7 +78,7 @@ class Faculty extends Component {
                 }
 
                 <Header as='h4'>
-                    {t('faculty.table.deadline')}: {(new Date(this.state.faculty.time)).toISOString().slice(0, 10)}
+                    {t('faculty.table.deadline')}: {(new Date(this.props.faculty.time)).toISOString().slice(0, 10)}
                 </Header>
             </div>
         );

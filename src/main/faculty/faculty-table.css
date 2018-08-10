@@ -14,3 +14,8 @@
     display: inline !important;
     margin-right:1% !important;
 }
+
+.left-float {
+    float: left;
+    position: relative;
+}

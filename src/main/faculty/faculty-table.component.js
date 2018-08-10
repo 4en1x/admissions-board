@@ -109,7 +109,7 @@ class FacultyTable extends Component {
             <div>
                 {
                     this.props.role === roles.ADMIN.ROLE ? (
-                        <div className="content-thin">
+                        <div className="sticky">
                             <FacultyFilter onFilter={this.onFilter}/>
                         </div>
                     ) : null

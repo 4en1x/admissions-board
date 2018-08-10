@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withAlert } from 'react-alert';
 import footerService from '../../service/footer-service';
-import SemanticLoader from '../loaders/semantic-loader';
 
 class Footer extends React.Component {
     constructor(props) {
@@ -33,7 +32,7 @@ class Footer extends React.Component {
 
     render() {
         if (!this.state.footerHtml) {
-            return <SemanticLoader />;
+            return <div />;
         }
 
         return (
