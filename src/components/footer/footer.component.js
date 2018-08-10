@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withAlert } from 'react-alert';
 import footerService from '../../service/footer-service';
+import './footer.css';
 
 class Footer extends React.Component {
     constructor(props) {
@@ -17,7 +18,14 @@ class Footer extends React.Component {
             (result) => {
                 this.setState({ footerHtml: result.data });
             },
-            (error) => { this.props.alert.error(error.toString()); },
+            (error) => { // TODO delete from here
+                this.setState({
+                    footerHtml: '<footer name="page-footer" > \n'
+                        + 'Epam Project by <a href="mailto:pishalova.14@gmail.com">Agatha Pishchalova<a/> \n'
+                        + '</footer>',
+                });
+                this.props.alert.error(error.toString());
+            },
         );
     }
 
@@ -36,10 +44,17 @@ class Footer extends React.Component {
         }
 
         return (
-            <div
-                className="FooterContainer"
-                dangerouslySetInnerHTML={{ __html: this.state.footerHtml }}>
-            </div>
+            <footer className="footer-distributed">
+                <div className="footer-right">
+                    <a href="https://www.facebook.com/agatha.pishchalova"><i className="fa fa-facebook"/></a>
+                    <a href="https://vk.com/igatty14"><i className="fa fa-vk"/></a>
+                    <a href="https://www.instagram.com/gatty_lm/"><i className="fa fa-instagram"/></a>
+                    <a href="https://github.com/PishchalovaAgata"><i className="fa fa-github"/></a>
+                </div>
+
+                <div className="footer-left" dangerouslySetInnerHTML={{ __html: this.state.footerHtml }}/>
+            </footer>
+
         );
     }
 }

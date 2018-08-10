@@ -3,6 +3,9 @@ body {
   padding: 0;
 }
 
+.full-width {
+  min-height: 100%;
+}
 /* root styles */
 
 .root-class {
