@@ -19,6 +19,7 @@ class EditEntrantForm extends React.Component {
             subjects: this.props.formValues.marks || [],
             email: this.props.formValues.email || '',
             password: '',
+            repeated_password: '',
             name: this.props.formValues.first_name || '',
             surname: this.props.formValues.surname || '',
             username: this.props.formValues.login || '',
