@@ -60,6 +60,7 @@ class EditEntrantForm extends React.Component {
                 })),
             }),
             role: PropTypes.string,
+            isFull: PropTypes.bool,
         };
     }
 
@@ -151,9 +152,14 @@ class EditEntrantForm extends React.Component {
 
     render() {
         const { t } = this.props;
+        let editClassName = 'entrant-edit-form';
+
+        if (!this.props.isFull) {
+            editClassName = 'entrant-edit-form-full';
+        }
 
         return (
-            <div className="entrant-edit-form">
+            <div className={editClassName}>
                 <Form size="large" onSubmit={this.prepareData}>
                     <Header size='huge' textAlign="center">{t('entrant.edit.name')}</Header>
 

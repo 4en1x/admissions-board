@@ -115,6 +115,7 @@ class CabinetPage extends Component {
                     subjects={this.props.subjects}
                     formValues={this.props.formValues}
                     role={this.props.user.role}
+                    isFull={!!this.props.entrantFaculty}
                 />
             </div>
         );
