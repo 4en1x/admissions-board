@@ -78,24 +78,6 @@ export function getSubjectsList() {
 }
 
 export function getEditFormValues() {
-    /* while server down */
-
-    return (dispatch) => {
-        console.log('lalalala');
-        dispatch(addEditFormValues({
-            certificate: 100,
-            first_name: 'some name',
-            surname: 'some surname',
-            login: 'user',
-            email: 'my@mail',
-            marks: [
-                { subject: 'math', value: 45 },
-                { subject: 'math2', value: 49 },
-                { subject: 'math3', value: 74 },
-            ],
-        }));
-    };
-
     return (dispatch) => {
         entrantService.getEditFormValues().then((res) => {
             dispatch(addEditFormValues(res.data));

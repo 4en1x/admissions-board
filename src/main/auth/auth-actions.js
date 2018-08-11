@@ -53,11 +53,13 @@ export function login(user, handler) {
 export function logout(handler) {
     /** Until server up */
     return (dispatch) => {
+        localStorage.removeItem('state');
         dispatch(removeUser());
     };
 
     return (dispatch) => {
         userService.logout().then(() => {
+            localStorage.removeItem('state');
             dispatch(removeUser());
         }, (error) => {
             handler(error.toString());
