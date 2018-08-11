@@ -18,6 +18,8 @@ class EditEntrantForm extends React.Component {
             allSubjects: this.prepareDataForDropDown(this.props.subjects),
             subjects: this.props.formValues.marks || [],
             email: this.props.formValues.email || '',
+            password: '',
+            repeated_password: '',
             name: this.props.formValues.first_name || '',
             surname: this.props.formValues.surname || '',
             username: this.props.formValues.login || '',
@@ -58,6 +60,7 @@ class EditEntrantForm extends React.Component {
                 })),
             }),
             role: PropTypes.string,
+            isFull: PropTypes.bool,
         };
     }
 
@@ -134,17 +137,14 @@ class EditEntrantForm extends React.Component {
         const data = {
             email: this.state.email,
             login: this.state.username,
-            first_name: this.state.name,
-            surname: this.state.surname,
+            password: this.state.password,
         };
 
         if (this.props.role === roles.USER.ROLE) {
             data.certificate = this.state.averageRating;
             data.marks = this.state.subjects;
-        }
-
-        if (this.state.password) {
-            data.password = this.state.password;
+            data.first_name = this.state.name;
+            data.surname = this.state.surname;
         }
 
         this.props.onSubmit(data);
@@ -152,9 +152,14 @@ class EditEntrantForm extends React.Component {
 
     render() {
         const { t } = this.props;
+        let editClassName = 'entrant-edit-form';
+
+        if (!this.props.isFull) {
+            editClassName = 'entrant-edit-form-full';
+        }
 
         return (
-            <div className="entrant-edit-form">
+            <div className={editClassName}>
                 <Form size="large" onSubmit={this.prepareData}>
                     <Header size='huge' textAlign="center">{t('entrant.edit.name')}</Header>
 
@@ -178,24 +183,6 @@ class EditEntrantForm extends React.Component {
 
                     <Form.Group>
                         <Form.Input
-                            label={t('entrant.edit.labels.name')}
-                            placeholder={t('entrant.edit.placeholders.name')}
-                            width={8}
-                            defaultValue={this.state.name}
-                            onChange={(event, obj) => this.setState({ name: obj.value })}
-                        />
-
-                        <Form.Input
-                            label={t('entrant.edit.labels.surname')}
-                            placeholder={t('entrant.edit.placeholders.surname')}
-                            width={8}
-                            defaultValue={this.state.surname}
-                            onChange={(event, obj) => this.setState({ surname: obj.value })}
-                        />
-                    </Form.Group>
-
-                    <Form.Group>
-                        <Form.Input
                             label={t('entrant.edit.labels.password')}
                             type='password'
                             placeholder={t('entrant.edit.placeholders.password')}
@@ -214,6 +201,24 @@ class EditEntrantForm extends React.Component {
 
                     {
                         this.props.role === roles.USER.ROLE ? (<div>
+                            <Form.Group>
+                                <Form.Input
+                                    label={t('entrant.edit.labels.name')}
+                                    placeholder={t('entrant.edit.placeholders.name')}
+                                    width={8}
+                                    defaultValue={this.state.name}
+                                    onChange={(event, obj) => this.setState({ name: obj.value })}
+                                />
+
+                                <Form.Input
+                                    label={t('entrant.edit.labels.surname')}
+                                    placeholder={t('entrant.edit.placeholders.surname')}
+                                    width={8}
+                                    defaultValue={this.state.surname}
+                                    onChange={(event, obj) => this.setState({ surname: obj.value })}
+                                />
+                            </Form.Group>
+
                             <Form.Input
                                 label={`${t('entrant.edit.averageScoreMessage')}: ${this.state.averageRating}`}
                                 type='range'

@@ -44,7 +44,7 @@ class AdminPanel extends React.Component {
                 <Button basic fluid color='teal' onClick={this.onAddFacultyClicked}>
                     {t('admin-panel.addFacultyButton')}
                 </Button>
-                <br></br>
+                <br/>
                 <Button basic fluid color='teal' onClick={this.onEditListOfSubjectsClicked}>
                     {t('admin-panel.changeListOfSubjectsButton')}
                 </Button>

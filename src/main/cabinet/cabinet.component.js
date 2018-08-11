@@ -51,7 +51,7 @@ class CabinetPage extends Component {
     }
 
     onSubmit = (values) => {
-        entrantService.editEntrant(values, this.props.user.id).then(
+        entrantService.editEntrant(values).then(
             (data) => {
                 this.props.alert.success(data.toString());
                 this.setState({ submitted: true });
@@ -62,12 +62,12 @@ class CabinetPage extends Component {
 
     componentDidMount() {
         this.props.getSubjectsList();
-        this.props.getEditFormValues(this.props.user.id);
-        this.props.getEntrantFaculty(this.props.user.id);
+        this.props.getEditFormValues();
+        this.props.getEntrantFaculty();
     }
 
     unsubscribe = () => {
-        entrantService.unsubscribe(this.props.user.id).then(
+        entrantService.unsubscribe().then(
             (data) => {
                 this.props.alert.success(data.toString());
                 this.setState({ submitted: true });
@@ -86,7 +86,7 @@ class CabinetPage extends Component {
         }
 
         return (
-            <div>
+            <div className="full-height">
                 {
                     this.props.user.role === roles.ADMIN.ROLE
                         ? <AdminPanel/>
@@ -115,6 +115,7 @@ class CabinetPage extends Component {
                     subjects={this.props.subjects}
                     formValues={this.props.formValues}
                     role={this.props.user.role}
+                    isFull={!!this.props.entrantFaculty}
                 />
             </div>
         );

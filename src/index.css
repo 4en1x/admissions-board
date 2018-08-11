@@ -3,6 +3,9 @@ body {
   padding: 0;
 }
 
+.full-width {
+  min-height: 100%;
+}
 /* root styles */
 
 .root-class {
@@ -34,6 +37,7 @@ body {
 
 .content-wide {
   width: calc(70% - 0.5em);
+  display: inline-block;
 }
 
 .content-all {
@@ -44,6 +48,22 @@ body {
   width: calc(30% - 1em);
   right: 0;
   position: absolute;
+}
+
+.sticky {
+  z-index: 100;
+  top: 70px;
+  position: sticky;
+  position: -webkit-sticky;
+  width: calc(30% - 1em);
+  float: right;
+}
+
+.sticky-header {
+  z-index: 100;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
 }
 
 .content-tab {

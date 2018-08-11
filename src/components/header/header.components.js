@@ -27,7 +27,7 @@ export default class HeaderComponent extends React.Component {
         const { user } = this.props;
 
         return (
-            <div className="header-component">
+            <div className="header-component sticky-header">
                 <div className="header-content">
                     <div className="header-content-left">
                         <Link to="/" className="logo-container">

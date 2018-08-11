@@ -29,7 +29,7 @@ function addEditFormValues(data) {
     };
 }
 
-export function getEntrantFaculty(id) {
+export function getEntrantFaculty() {
     /* while server down */
 
     return (dispatch) => {
@@ -46,7 +46,7 @@ export function getEntrantFaculty(id) {
     };
 
     return (dispatch) => {
-        entrantService.getEntrantFaculty(id).then(
+        entrantService.getEntrantFaculty().then(
             res => dispatch(addEntrantFacultyValues(res.data)),
             () => dispatch(addEntrantFacultyValues(null)),
         );
@@ -77,27 +77,9 @@ export function getSubjectsList() {
     };
 }
 
-export function getEditFormValues(id) {
-    /* while server down */
-
+export function getEditFormValues() {
     return (dispatch) => {
-        console.log('lalalala');
-        dispatch(addEditFormValues({
-            certificate: 100,
-            first_name: 'some name',
-            surname: 'some surname',
-            login: 'user',
-            email: 'my@mail',
-            marks: [
-                { subject: 'math', value: 45 },
-                { subject: 'math2', value: 49 },
-                { subject: 'math3', value: 74 },
-            ],
-        }));
-    };
-
-    return (dispatch) => {
-        entrantService.getEditFormValues(id).then((res) => {
+        entrantService.getEditFormValues().then((res) => {
             dispatch(addEditFormValues(res.data));
         });
     };

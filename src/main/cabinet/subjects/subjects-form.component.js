@@ -108,7 +108,7 @@ class EditSubjectsForm extends React.Component {
         const { t } = this.props;
 
         return (
-            <div className="registration-container parent-size">
+            <div className="pattern-container parent-size">
                 <div className="registration-form">
                     <Form size="large" onSubmit={this.prepareData}>
                         <Header size='huge' textAlign="center">{t('subjects-edit.name')}</Header>
