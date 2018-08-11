@@ -11,7 +11,7 @@ function getEntrantFaculty() {
 }
 
 function unsubscribe() {
-    return axios.get('http://localhost:8888/committee/entrant/unsubscribe');
+    return axios.post('http://localhost:8888/committee/entrant/unsubscribe');
 }
 
 function editEntrant(data) {
