@@ -25,16 +25,27 @@ class SheetRow extends Component {
 
         return (
             <Table.Row>
-                <Table.Cell>{this.state.entrant.id}</Table.Cell>
                 <Table.Cell>{this.state.entrant.email}</Table.Cell>
                 <Table.Cell>{this.state.entrant.login}</Table.Cell>
                 <Table.Cell>{this.state.entrant.first_name}</Table.Cell>
                 <Table.Cell>{this.state.entrant.surname}</Table.Cell>
                 <Table.Cell>{this.state.entrant.score}</Table.Cell>
                 {
-                    this.state.entrant.enrolled
-                        ? (<Table.Cell positive>{t('sheet.labels.enrolled')}</Table.Cell>)
-                        : (<Table.Cell negative>{t('sheet.labels.notEnrolled')}</Table.Cell>)
+                    this.state.entrant.enrolled === 'cancelled'
+                        ? <Table.Cell negative>{t('sheet.labels.notEnrolled')}</Table.Cell>
+                        : null
+                }
+
+                {
+                    this.state.entrant.enrolled === 'submitted'
+                        ? <Table.Cell positive>{t('sheet.labels.enrolled')}</Table.Cell>
+                        : null
+                }
+
+                {
+                    this.state.entrant.enrolled === 'enlisted'
+                        ? <Table.Cell warning>{t('sheet.labels.enlisted')}</Table.Cell>
+                        : null
                 }
             </Table.Row>
         );

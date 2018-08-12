@@ -154,7 +154,7 @@ class EditEntrantForm extends React.Component {
         const { t } = this.props;
         let editClassName = 'entrant-edit-form';
 
-        if (!this.props.isFull) {
+        if (this.props.isFull) {
             editClassName = 'entrant-edit-form-full';
         }
 

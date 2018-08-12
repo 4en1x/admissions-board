@@ -131,10 +131,11 @@
     "first_name": "Vorname",
     "second_name": "Zweitname",
     "score": "Ergebnis",
-    "enrolled": "Eingeschrieben / nicht angemeldet",
+    "enrolled": "Eingeschrieben / Nicht angemeldet / Angemeldet",
     "labels": {
       "enrolled": "Eingeschrieben",
-      "notEnrolled": "Nicht eingeschrieben"
+      "notEnrolled": "Nicht eingeschrieben",
+      "enlisted": "Angemeldet"
     }
   },
   "filter": {

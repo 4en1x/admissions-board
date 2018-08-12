@@ -131,10 +131,11 @@
     "first_name": "First Name",
     "second_name": "Second name",
     "score": "Score",
-    "enrolled": "Enrolled / not enrolled",
+    "enrolled": "Enrolled / Not enrolled / Enlisted",
     "labels": {
       "enrolled": "Enrolled",
-      "notEnrolled": "Not enrolled"
+      "notEnrolled": "Not enrolled",
+      "enlisted": "Enlisted"
     }
   },
   "filter": {

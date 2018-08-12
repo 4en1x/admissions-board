@@ -52,7 +52,6 @@ class FacultyTable extends Component {
                 <Table celled>
                     <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell>{t('sheet.id')}</Table.HeaderCell>
                             <Table.HeaderCell>{t('sheet.email')}</Table.HeaderCell>
                             <Table.HeaderCell>{t('sheet.username')}</Table.HeaderCell>
                             <Table.HeaderCell>{t('sheet.first_name')}</Table.HeaderCell>

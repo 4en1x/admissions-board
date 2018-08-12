@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import {
-    Button, Form, Checkbox, Header, Dropdown,
+    Button, Form, Checkbox,
 } from 'semantic-ui-react';
 import { translate } from 'react-i18next';
 import DropdownComponent from '../components/dropdown.component';
@@ -14,33 +14,14 @@ class FacultiesFilterForm extends React.Component {
         this.state = {
             sortValue: true,
             subjects: this.prepareDataForDropDown(this.props.subjects),
-            statuses: this.prepareDataForDropDown([
-                this.props.t('filter.statuses.first'),
-                this.props.t('filter.statuses.second'),
-                this.props.t('filter.statuses.all'),
-            ]),
             newStatus: '',
             newSubjects: [],
-            currentLanguage: this.props.i18n.language,
         };
     }
 
     handleChange = () => this.setState(prevState => ({
         sortValue: !prevState.sortValue,
     }));
-
-    componentDidUpdate(prevProps) {
-        if (this.state.currentLanguage !== prevProps.i18n.language) {
-            this.setState({
-                statuses: this.prepareDataForDropDown([
-                    this.props.t('filter.statuses.first'),
-                    this.props.t('filter.statuses.second'),
-                    this.props.t('filter.statuses.all'),
-                ]),
-                currentLanguage: prevProps.i18n.language,
-            });
-        }
-    }
 
     prepareDataForDropDown = (data) => {
         if (!data) {
@@ -76,17 +57,6 @@ class FacultiesFilterForm extends React.Component {
 
         return (
             <Form className="filter-form" onSubmit={this.prepareForSubmit}>
-                <Header as="h3">{t('filter.names.status')}</Header>
-
-                <Dropdown
-                    placeholder={t('filter.placeholders.any')}
-                    fluid
-                    search
-                    selection
-                    options={this.state.statuses}
-                    onChange={(event, obj) => this.setState({ newStatus: obj.value })}
-                />
-
                 <Field
                     name="subjects"
                     label={t('filter.names.subjects')}
@@ -94,6 +64,7 @@ class FacultiesFilterForm extends React.Component {
                     component={DropdownComponent}
                     onChange={(event, obj) => this.setState({ newSubjects: this.getSubjectsByKeys(obj) })}
                 />
+                <br/>
                 <Form.Field>
                     {t('filter.names.sort')}:
                 </Form.Field>
@@ -133,9 +104,6 @@ FacultiesFilterForm.propTypes = {
     onSubmit: PropTypes.func.isRequired,
     subjects: PropTypes.arrayOf(PropTypes.string),
     t: PropTypes.func,
-    i18n: PropTypes.shape({
-        language: PropTypes.string,
-    }),
 };
 
 export default reduxForm({ form: 'CandidatesFilterForm' })(translate('common')(FacultiesFilterForm));

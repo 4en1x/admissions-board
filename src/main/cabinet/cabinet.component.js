@@ -85,6 +85,12 @@ class CabinetPage extends Component {
             return <SemanticLoader />;
         }
 
+        let isFull = false;
+
+        if (!this.props.entrantFaculty && this.props.user.role === roles.USER.ROLE) {
+            isFull = true;
+        }
+
         return (
             <div className="full-height">
                 {
@@ -115,7 +121,7 @@ class CabinetPage extends Component {
                     subjects={this.props.subjects}
                     formValues={this.props.formValues}
                     role={this.props.user.role}
-                    isFull={!!this.props.entrantFaculty}
+                    isFull={isFull}
                 />
             </div>
         );
