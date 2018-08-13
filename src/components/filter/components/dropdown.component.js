@@ -17,7 +17,7 @@ const DropDownComponent = ({
             multiple
             options={items}
             onChange={(event, obj) => input.onChange(obj.value)}
-            defaultValue={defaultItems || []}
+            value={defaultItems || []}
         />
     </div>
 );

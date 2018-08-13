@@ -32,17 +32,17 @@ class EditEntrantForm extends React.Component {
         };
     }
 
-    UNSAFE_componentWillReceiveProps() {
+    UNSAFE_componentWillReceiveProps(newProps) {
         this.setState({
-            allSubjects: this.prepareDataForDropDown(this.props.subjects),
-            subjects: this.props.formValues.marks || [],
-            email: this.props.formValues.email || '',
+            allSubjects: this.prepareDataForDropDown(newProps.subjects),
+            subjects: newProps.formValues.marks || [],
+            email: newProps.formValues.email || '',
             password: '',
             repeated_password: '',
-            name: this.props.formValues.first_name || '',
-            surname: this.props.formValues.surname || '',
-            username: this.props.formValues.login || '',
-            averageRating: this.props.formValues.certificate || 0,
+            name: newProps.formValues.first_name || '',
+            surname: newProps.formValues.surname || '',
+            username: newProps.formValues.login || '',
+            averageRating: newProps.formValues.certificate || 0,
             submitting: true,
         });
     }
@@ -183,7 +183,7 @@ class EditEntrantForm extends React.Component {
                         label={t('entrant.edit.labels.email')}
                         placeholder={t('entrant.edit.placeholders.email')}
                         width={16}
-                        defaultValue={this.state.email}
+                        value={this.state.email}
                         onChange={(event, obj) => this.setState({ email: obj.value })}
                     />
 
@@ -192,7 +192,7 @@ class EditEntrantForm extends React.Component {
                         label={t('entrant.edit.labels.username')}
                         placeholder={t('entrant.edit.placeholders.username')}
                         width={16}
-                        defaultValue={this.state.username}
+                        value={this.state.username}
                         onChange={(event, obj) => this.setState({ username: obj.value })}
                     />
 
@@ -221,7 +221,7 @@ class EditEntrantForm extends React.Component {
                                     label={t('entrant.edit.labels.name')}
                                     placeholder={t('entrant.edit.placeholders.name')}
                                     width={8}
-                                    defaultValue={this.state.name}
+                                    value={this.state.name}
                                     onChange={(event, obj) => this.setState({ name: obj.value })}
                                 />
 
@@ -229,7 +229,7 @@ class EditEntrantForm extends React.Component {
                                     label={t('entrant.edit.labels.surname')}
                                     placeholder={t('entrant.edit.placeholders.surname')}
                                     width={8}
-                                    defaultValue={this.state.surname}
+                                    value={this.state.surname}
                                     onChange={(event, obj) => this.setState({ surname: obj.value })}
                                 />
                             </Form.Group>
@@ -239,7 +239,7 @@ class EditEntrantForm extends React.Component {
                                 type='range'
                                 min={40}
                                 max={100}
-                                defaultValue={this.state.averageRating}
+                                value={this.state.averageRating}
                                 onChange={this.changeAverageRating}
                                 className="ui blue range"
                                 width={12}

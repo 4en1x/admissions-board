@@ -31,16 +31,16 @@ class EditFacultyForm extends React.Component {
         };
     }
 
-    UNSAFE_componentWillReceiveProps() {
+    UNSAFE_componentWillReceiveProps(newProps) {
         this.setState({
             submitting: true,
-            subjects: this.prepareDataForDropDown(this.props.subjects),
-            id: this.props.formValues.id,
-            name: this.props.formValues.name,
-            newSubjects: this.props.formValues.subjects,
-            recruitmentPlan: this.props.formValues.entry_plan,
-            requestsSubmitted: this.props.formValues.amount_entrant,
-            date: this.props.formValues.time,
+            subjects: this.prepareDataForDropDown(newProps.subjects),
+            id: newProps.formValues.id,
+            name: newProps.formValues.name,
+            newSubjects: newProps.formValues.subjects,
+            recruitmentPlan: newProps.formValues.entry_plan,
+            requestsSubmitted: newProps.formValues.amount_entrant,
+            date: newProps.formValues.time,
         });
     }
 
@@ -120,7 +120,7 @@ class EditFacultyForm extends React.Component {
                             label={t('faculty.edit.labels.name')}
                             placeholder={t('faculty.edit.placeholders.name')}
                             width={16}
-                            defaultValue={this.state.name}
+                            value={this.state.name}
                             onChange={(event, obj) => this.setState({ name: obj.value })}
                         />
 
@@ -139,7 +139,7 @@ class EditFacultyForm extends React.Component {
                             label={t('faculty.edit.labels.recruitmentPlan')}
                             placeholder={t('faculty.edit.placeholders.recruitmentPlan')}
                             width={16}
-                            defaultValue={this.state.recruitmentPlan}
+                            value={this.state.recruitmentPlan}
                             onChange={(event, obj) => this.setState({ recruitmentPlan: obj.value })}
                         />
 
@@ -148,7 +148,7 @@ class EditFacultyForm extends React.Component {
                             className="recruitmentPlan"
                             label={t('faculty.add.labels.date')}
                             width={16}
-                            defaultValue={(new Date(this.state.date)).toISOString().slice(0, 10)}
+                            value={(new Date(this.state.date)).toISOString().slice(0, 10)}
                             onChange={(event, obj) => this.setState({ date: obj.value })}
                         />
 
