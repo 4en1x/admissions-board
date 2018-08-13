@@ -40,9 +40,11 @@ class CabinetPage extends Component {
             subjects: PropTypes.arrayOf(PropTypes.string),
             formValues: PropTypes.shape({}),
             getEntrantFaculty: PropTypes.func,
+            getEntrantStatus: PropTypes.func,
             entrantFaculty: PropTypes.shape({
                 is_Unavailable: PropTypes.bool,
             }),
+            entrantStatus: PropTypes.string,
             alert: PropTypes.shape({
                 error: PropTypes.func,
                 success: PropTypes.func,
@@ -64,6 +66,7 @@ class CabinetPage extends Component {
         this.props.getSubjectsList();
         this.props.getEditFormValues();
         this.props.getEntrantFaculty();
+        this.props.getEntrantStatus();
     }
 
     unsubscribe = () => {
@@ -91,6 +94,12 @@ class CabinetPage extends Component {
             isFull = true;
         }
 
+        const statusesColors = {
+            cancelled: 'red',
+            submitted: 'green',
+            enlisted: 'yellow',
+        };
+
         return (
             <div className="full-height">
                 {
@@ -102,17 +111,22 @@ class CabinetPage extends Component {
                                 <Segment>
                                     <Faculty faculty={this.props.entrantFaculty} role={this.props.user.role}/>
                                 </Segment>
-                                {
-                                    !this.props.entrantFaculty.is_Unavailable ? (
-                                        <Button color="google plus" onClick={this.unsubscribe} floated ="right">
-                                            {t('entrant-faculty.unsubscribeButton')}
-                                        </Button>
-                                    ) : (
-                                        <Button color="google plus" disabled floated ="right">
-                                            {t('entrant-faculty.unsubscribeButton')}
-                                        </Button>
-                                    )
-                                }
+
+                                <Header size='medium' color={statusesColors[this.props.entrantStatus]} >
+                                    {t('entrant-faculty.status')}: {this.props.entrantStatus}
+
+                                    {
+                                        !this.props.entrantFaculty.is_Unavailable ? (
+                                            <Button color="google plus" onClick={this.unsubscribe} floated ="right">
+                                                {t('entrant-faculty.unsubscribeButton')}
+                                            </Button>
+                                        ) : (
+                                            <Button color="google plus" disabled floated ="right">
+                                                {t('entrant-faculty.unsubscribeButton')}
+                                            </Button>
+                                        )
+                                    }
+                                </Header>
                             </div>
                             : null
                 }
@@ -133,6 +147,7 @@ const mapStateToProps = state => ({
     subjects: state.entrant.subjects,
     user: state.auth,
     entrantFaculty: state.entrant.entrantFaculty,
+    entrantStatus: state.entrant.entrantStatus,
 });
 
 export default withAlert(translate('common')(connect(mapStateToProps, actionCreators)(CabinetPage)));

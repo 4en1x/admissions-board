@@ -10,6 +10,10 @@ function getEntrantFaculty() {
     return axios.get('http://localhost:8888/committee/entrant/faculty');
 }
 
+function getEntrantStatus() {
+    return axios.get('http://localhost:8888/committee/entrant/status');
+}
+
 function unsubscribe() {
     return axios.post('http://localhost:8888/committee/entrant/unsubscribe');
 }
@@ -23,6 +27,7 @@ const entrantService = {
     editEntrant,
     getEntrantFaculty,
     unsubscribe,
+    getEntrantStatus,
 };
 
 export default entrantService;

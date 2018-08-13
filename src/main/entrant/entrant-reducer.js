@@ -9,6 +9,9 @@ const entrantReducer = (state = {}, action) => {
     case 'GET_ENTRANT_FACULTY':
         return { ...state, entrantFaculty: action.faculty };
 
+    case 'GET_ENTRANT_STATUS':
+        return { ...state, entrantStatus: action.status };
+
     default:
         return state;
     }

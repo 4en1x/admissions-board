@@ -4,6 +4,7 @@ import entrantService from '../../service/entrant-service';
 const ADD_SUBJECT_VALUES = 'ADD_SUBJECT_VALUES';
 const ADD_EDIT_FORM_VALUES = 'ADD_EDIT_FORM_VALUES';
 const GET_ENTRANT_FACULTY = 'GET_ENTRANT_FACULTY';
+const GET_ENTRANT_STATUS = 'GET_ENTRANT_STATUS';
 
 function addSubjectsValues(data) {
     let { subjects } = data;
@@ -19,6 +20,14 @@ function addEntrantFacultyValues(faculty) {
     return {
         type: GET_ENTRANT_FACULTY,
         faculty,
+    };
+}
+
+function addEntrantStatusValues(status) {
+    console.log(status)
+    return {
+        type: GET_ENTRANT_STATUS,
+        status,
     };
 }
 
@@ -49,6 +58,22 @@ export function getEntrantFaculty() {
         entrantService.getEntrantFaculty().then(
             res => dispatch(addEntrantFacultyValues(res.data)),
             () => dispatch(addEntrantFacultyValues(null)),
+        );
+    };
+}
+
+export function getEntrantStatus() {
+    /* while server down */
+
+    return (dispatch) => {
+        console.log('lalalala');
+        dispatch(addEntrantStatusValues('enlisted'));
+    };
+
+    return (dispatch) => {
+        entrantService.getEntrantStatus().then(
+            res => dispatch(addEntrantStatusValues(res.data.status)),
+            () => dispatch(addEntrantStatusValues(null)),
         );
     };
 }

@@ -121,7 +121,8 @@
   },
   "entrant-faculty": {
     "name": "你目前申请了这个系",
-    "unsubscribeButton":"退订"
+    "unsubscribeButton":"退订",
+    "status": "状态"
   },
   "sheet": {
     "name": "进入过程的结果",

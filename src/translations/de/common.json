@@ -121,7 +121,8 @@
   },
   "entrant-faculty": {
     "name": "Sie bewerben sich derzeit für diese Fakultät",
-    "unsubscribeButton":"Abmelden"
+    "unsubscribeButton":"Abmelden",
+    "status": "Status"
   },
   "sheet": {
     "name": "Ergebnisse des Eingangsprozesses für",

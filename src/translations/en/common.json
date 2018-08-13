@@ -121,7 +121,8 @@
   },
   "entrant-faculty": {
     "name": "You currently applied for this faculty",
-    "unsubscribeButton":"Unsubscribe"
+    "unsubscribeButton":"Unsubscribe",
+    "status": "Status"
   },
   "sheet": {
     "name": "Results of entrance process for",
