@@ -18,6 +18,13 @@ class EditSubjectsForm extends React.Component {
         };
     }
 
+    UNSAFE_componentWillReceiveProps(newProps) {
+        this.setState({
+            subjects: this.prepareDataForDropDown(newProps.subjects),
+            oldSubjects: this.prepareDataForDropDown(newProps.subjects),
+        });
+    }
+
     static get propTypes() {
         return {
             onSubmit: PropTypes.func,

@@ -19,6 +19,12 @@ class FacultiesFilterForm extends React.Component {
         };
     }
 
+    UNSAFE_componentWillReceiveProps(newProps) {
+        this.setState({
+            subjects: this.prepareDataForDropDown(newProps.subjects),
+        });
+    }
+
     handleChange = () => this.setState(prevState => ({
         sortValue: !prevState.sortValue,
     }));
