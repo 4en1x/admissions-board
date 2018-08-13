@@ -31,6 +31,19 @@ class EditFacultyForm extends React.Component {
         };
     }
 
+    UNSAFE_componentWillReceiveProps() {
+        this.setState({
+            submitting: true,
+            subjects: this.prepareDataForDropDown(this.props.subjects),
+            id: this.props.formValues.id,
+            name: this.props.formValues.name,
+            newSubjects: this.props.formValues.subjects,
+            recruitmentPlan: this.props.formValues.entry_plan,
+            requestsSubmitted: this.props.formValues.amount_entrant,
+            date: this.props.formValues.time,
+        });
+    }
+
     static get propTypes() {
         return {
             onSubmit: PropTypes.func,
