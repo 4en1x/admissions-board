@@ -38,6 +38,14 @@ const reducer = combineReducers({
     form: reduxFormReducer,
 });
 
+const rootReducer = (state, action) => {
+    if (action.type === 'REMOVE_USER') {
+        state = undefined;
+    }
+
+    return reducer(state, action);
+};
+
 i18next.init({
     interpolation: { escapeValue: false },
     lng: 'en',
@@ -54,7 +62,7 @@ i18next.init({
     },
 });
 
-const store = createStore(reducer, persistedState, applyMiddleware(thunk));
+const store = createStore(rootReducer, persistedState, applyMiddleware(thunk));
 
 store.subscribe(() => {
     saveState(store.getState());

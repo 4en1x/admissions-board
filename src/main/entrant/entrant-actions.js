@@ -24,7 +24,6 @@ function addEntrantFacultyValues(faculty) {
 }
 
 function addEntrantStatusValues(status) {
-    console.log(status)
     return {
         type: GET_ENTRANT_STATUS,
         status,
@@ -39,21 +38,6 @@ function addEditFormValues(data) {
 }
 
 export function getEntrantFaculty() {
-    /* while server down */
-
-    return (dispatch) => {
-        console.log('lalalala');
-        dispatch(addEntrantFacultyValues({
-            time: 1222222222,
-            id: 0,
-            entry_plan: 120,
-            amount_entrant: 300,
-            name: 'Faculty of Applied Mathematics and Computer Science',
-            is_Unavailable: true,
-            subjects: ['Math', 'Russian language', 'Belarussian language'],
-        }));
-    };
-
     return (dispatch) => {
         entrantService.getEntrantFaculty().then(
             res => dispatch(addEntrantFacultyValues(res.data)),
@@ -63,13 +47,6 @@ export function getEntrantFaculty() {
 }
 
 export function getEntrantStatus() {
-    /* while server down */
-
-    return (dispatch) => {
-        console.log('lalalala');
-        dispatch(addEntrantStatusValues('enlisted'));
-    };
-
     return (dispatch) => {
         entrantService.getEntrantStatus().then(
             res => dispatch(addEntrantStatusValues(res.data.status)),
@@ -79,22 +56,6 @@ export function getEntrantStatus() {
 }
 
 export function getSubjectsList() {
-    /* while server down */
-
-    return (dispatch) => {
-        console.log('lalalala');
-        dispatch(addSubjectsValues({
-            subjects: [
-                { id: 1, name: 'math' },
-                { id: 1, name: 'math2' },
-                { id: 1, name: 'math3' },
-                { id: 1, name: 'math4' },
-                { id: 1, name: 'math5' },
-                { id: 1, name: 'math6' },
-            ],
-        }));
-    };
-
     return (dispatch) => {
         subjectService.getSubjectsList().then((res) => {
             dispatch(addSubjectsValues(res.data));

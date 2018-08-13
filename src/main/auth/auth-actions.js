@@ -28,19 +28,6 @@ function removeUser() {
 }
 
 export function login(user, handler) {
-    /** Until server up */
-    if (user.login === 'admin' && user.password === 'password') {
-        return (dispatch) => {
-            dispatch(addUser({ login: 'admin', role: 'ADMIN', id: 1 }));
-        };
-    }
-
-    if (user.login === 'entrant' && user.password === 'password') {
-        return (dispatch) => {
-            dispatch(addUser({ login: 'entrant', role: 'ENTRANT', id: 1 }));
-        };
-    }
-
     return (dispatch) => {
         userService.login(user).then((response) => {
             dispatch(addUser(response.data));
@@ -51,15 +38,8 @@ export function login(user, handler) {
 }
 
 export function logout(handler) {
-    /** Until server up */
-    return (dispatch) => {
-        localStorage.removeItem('state');
-        dispatch(removeUser());
-    };
-
     return (dispatch) => {
         userService.logout().then(() => {
-            localStorage.removeItem('state');
             dispatch(removeUser());
         }, (error) => {
             handler(error.toString());

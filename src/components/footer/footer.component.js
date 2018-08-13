@@ -18,12 +18,7 @@ class Footer extends React.Component {
             (result) => {
                 this.setState({ footerHtml: result.data });
             },
-            (error) => { // TODO delete from here
-                this.setState({
-                    footerHtml: '<footer name="page-footer" > \n'
-                        + 'Epam Project by <a href="mailto:pishalova.14@gmail.com">Agatha Pishchalova<a/> \n'
-                        + '</footer>',
-                });
+            (error) => {
                 this.props.alert.error(error.toString());
             },
         );
