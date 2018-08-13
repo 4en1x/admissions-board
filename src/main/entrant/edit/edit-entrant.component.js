@@ -32,6 +32,21 @@ class EditEntrantForm extends React.Component {
         };
     }
 
+    UNSAFE_componentWillReceiveProps() {
+        this.setState({
+            allSubjects: this.prepareDataForDropDown(this.props.subjects),
+            subjects: this.props.formValues.marks || [],
+            email: this.props.formValues.email || '',
+            password: '',
+            repeated_password: '',
+            name: this.props.formValues.first_name || '',
+            surname: this.props.formValues.surname || '',
+            username: this.props.formValues.login || '',
+            averageRating: this.props.formValues.certificate || 0,
+            submitting: true,
+        });
+    }
+
     prepareDataForDropDown = (data) => {
         if (!data) {
             return [];
