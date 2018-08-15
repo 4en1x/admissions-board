@@ -106,7 +106,7 @@ class FacultyTable extends Component {
         }
 
         return (
-            <div>
+            <div className="full-height">
                 {
                     this.props.role === roles.ADMIN.ROLE ? (
                         <div className="sticky">

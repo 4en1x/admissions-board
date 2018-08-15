@@ -124,3 +124,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.full-height {
+  min-height: 600px;
+}

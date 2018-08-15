@@ -53,7 +53,7 @@ class SubjectsComponent extends React.Component {
         }
 
         return (
-            <SubjectsForm onSubmit={this.onSubmit} subjects={this.props.subjects}/>
+            <SubjectsForm className="full-height" onSubmit={this.onSubmit} subjects={this.props.subjects}/>
         );
     }
 }
