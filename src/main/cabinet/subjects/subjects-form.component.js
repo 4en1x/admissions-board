@@ -116,7 +116,7 @@ class EditSubjectsForm extends React.Component {
 
         return (
             <div className="pattern-container parent-size">
-                <div className="registration-form">
+                <div className="registration-form full-height">
                     <Form size="large" onSubmit={this.prepareData}>
                         <Header size='huge' textAlign="center">{t('subjects-edit.name')}</Header>
                         {

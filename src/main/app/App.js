@@ -42,15 +42,16 @@ class App extends Component {
                     user={{ login: user.login, role: user.role }}
                     itemSelected={this.itemSelected}
                 />
-
-                <Switch>
-                    <Route path="/cabinet" component={CabinetPage}/>
-                    <Route path="/editSubjects" component={EditSubjects}/>
-                    <Route path="/faculties/edit/:id" component={FacultyEdit}/>
-                    <Route path="/faculties/:id/sheet" component={EntrantSheet}/>
-                    <Route path="/faculties/add" component={FacultyAdd}/>
-                    <Route path="/" component={FacultyTable} />
-                </Switch>
+                <div className="full-height">
+                    <Switch>
+                        <Route path="/cabinet" component={CabinetPage}/>
+                        <Route path="/editSubjects" component={EditSubjects}/>
+                        <Route path="/faculties/edit/:id" component={FacultyEdit}/>
+                        <Route path="/faculties/:id/sheet" component={EntrantSheet}/>
+                        <Route path="/faculties/add" component={FacultyAdd}/>
+                        <Route path="/" component={FacultyTable} />
+                    </Switch>
+                </div>
 
                 <Footer/>
             </div>

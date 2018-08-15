@@ -101,7 +101,7 @@ class CabinetPage extends Component {
         };
 
         return (
-            <div className="full-height">
+            <div>
                 {
                     this.props.user.role === roles.ADMIN.ROLE
                         ? <AdminPanel/>

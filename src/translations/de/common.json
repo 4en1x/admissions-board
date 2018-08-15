@@ -13,7 +13,11 @@
       "recruitmentPlan": "Einstellungsplan",
       "requestsSubmitted": "Anzahl der eingereichten Anträge.",
       "deadline":"Frist für Anfragen",
-      "getSheet": "Holen Sie sich ein Blatt"
+      "getSheet": "Holen Sie sich ein Blatt",
+      "warning": {
+        "header":"Sieht hier wie nichts aus",
+        "title": "Das tut mir leid"
+      }
     },
     "edit": {
       "name": "Fakultät bearbeiten",

@@ -59,6 +59,13 @@ body {
   float: right;
 }
 
+.sticky-position {
+  position: fixed;
+  top: 70px;
+  right:0;
+  left: calc(70% + 1em)
+}
+
 .sticky-header {
   z-index: 100;
   position: sticky;

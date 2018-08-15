@@ -13,7 +13,11 @@
       "recruitmentPlan": "招聘计划",
       "requestsSubmitted": "招聘计划.",
       "deadline":"请求截止日期",
-      "getSheet": "获取表格"
+      "getSheet": "获取表格",
+      "warning": {
+        "header":"这里看起来没什么",
+        "title": "对不起"
+      }
     },
     "edit": {
       "name": "编辑教师",

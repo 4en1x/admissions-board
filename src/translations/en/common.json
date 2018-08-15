@@ -13,7 +13,11 @@
       "recruitmentPlan": "Recruitment plan",
       "requestsSubmitted": "Number of requests submitted.",
       "deadline":"Deadline for requests",
-      "getSheet": "Get Sheet"
+      "getSheet": "Get Sheet",
+      "warning": {
+        "header":"Looks like nothing here",
+        "title": "Sorry for that"
+      }
     },
     "edit": {
       "name": "Edit Faculty",

@@ -105,16 +105,29 @@ class FacultyTable extends Component {
             mainClassName = 'content-wide';
         }
 
+        let stickyClassName = 'sticky';
+        if (this.props.faculties.length === 1) {
+            stickyClassName = 'sticky-position';
+        }
+
         return (
-            <div className="full-height">
+            <div>
                 {
-                    this.props.role === roles.ADMIN.ROLE ? (
-                        <div className="sticky">
+                    this.props.role === roles.ADMIN.ROLE && this.props.faculties.length !== 0 ? (
+                        <div className={stickyClassName}>
                             <FacultyFilter onFilter={this.onFilter}/>
                         </div>
                     ) : null
                 }
 
+                {
+                    this.props.faculties.length === 0 ? (
+                        <div className='ui warning message'>
+                            <div className='header'>{t('faculty.table.warning.header')}</div>
+                            <p>{t('faculty.table.warning.title')}</p>
+                        </div>
+                    ) : null
+                }
                 <div className={mainClassName} >
                     <div className="faculty-tab background padded ">
                         <List verticalAlign='middle'>
@@ -162,20 +175,39 @@ class FacultyTable extends Component {
                             }
                         </List>
                     </div>
-                    <div className="faculty-pagination">
-                        <Segment>
-                            <Pagination
-                                defaultActivePage={1}
-                                ellipsisItem={{ content: <Icon name='ellipsis horizontal' />, icon: true }}
-                                firstItem={{ content: <Icon name='angle double left' />, icon: true }}
-                                lastItem={{ content: <Icon name='angle double right' />, icon: true }}
-                                prevItem={{ content: <Icon name='angle left' />, icon: true }}
-                                nextItem={{ content: <Icon name='angle right' />, icon: true }}
-                                totalPages={this.props.totalPages}
-                                onPageChange={(event, obj) => this.onElementClick(obj)}
-                            />
-                        </Segment>
-                    </div>
+                    {
+                        this.props.totalPages !== 1 ? (
+                            <div className="faculty-pagination">
+                                <Segment>
+                                    <Pagination
+                                        defaultActivePage={1}
+                                        ellipsisItem={{
+                                            content: <Icon name='ellipsis horizontal'/>,
+                                            icon: true,
+                                        }}
+                                        firstItem={{
+                                            content: <Icon name='angle double left'/>,
+                                            icon: true,
+                                        }}
+                                        lastItem={{
+                                            content: <Icon name='angle double right'/>,
+                                            icon: true,
+                                        }}
+                                        prevItem={{
+                                            content: <Icon name='angle left'/>,
+                                            icon: true,
+                                        }}
+                                        nextItem={{
+                                            content: <Icon name='angle right'/>,
+                                            icon: true,
+                                        }}
+                                        totalPages={this.props.totalPages}
+                                        onPageChange={(event, obj) => this.onElementClick(obj)}
+                                    />
+                                </Segment>
+                            </div>
+                        ) : null
+                    }
                 </div>
             </div>
         );
