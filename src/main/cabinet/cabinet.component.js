@@ -116,7 +116,7 @@ class CabinetPage extends Component {
                                     {t('entrant-faculty.status')}: {this.props.entrantStatus}
 
                                     {
-                                        !this.props.entrantFaculty.is_Unavailable ? (
+                                        this.props.entrantStatus === 'enlisted' ? (
                                             <Button color="google plus" onClick={this.unsubscribe} floated ="right">
                                                 {t('entrant-faculty.unsubscribeButton')}
                                             </Button>
