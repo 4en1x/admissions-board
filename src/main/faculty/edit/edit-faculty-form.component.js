@@ -149,7 +149,11 @@ class EditFacultyForm extends React.Component {
                             label={t('faculty.add.labels.date')}
                             width={16}
                             value={(new Date(this.state.date)).toISOString().slice(0, 10)}
-                            onChange={(event, obj) => this.setState({ date: obj.value })}
+                            onChange={(event, obj) => {
+                                if (obj.value) {
+                                    this.setState({ date: obj.value });
+                                }
+                            }}
                         />
 
                         <Form.Input

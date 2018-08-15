@@ -18,7 +18,9 @@ footer{
 }
 
 
-/* Footer links */
+.footer-left {
+    max-width: 50%;
+}
 
 .footer-distributed p.footer-links{
     font-size:18px;
