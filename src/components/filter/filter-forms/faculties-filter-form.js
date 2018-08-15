@@ -41,6 +41,10 @@ class FacultiesFilterForm extends React.Component {
         return keys.map(key => this.state.subjects.find(subject => subject.key === key).text);
     }
 
+    getKeysByNames(names) {
+        return names.map(name => this.state.subjects.find(subject => subject.text === name).key);
+    }
+
     prepareForSubmit = () => {
         const data = {
             subjects: this.state.newSubjects,
@@ -67,6 +71,7 @@ class FacultiesFilterForm extends React.Component {
                     name="subjects"
                     label={t('filter.names.subjects')}
                     items={this.state.subjects}
+                    defaultItems={this.getKeysByNames(this.state.newSubjects)}
                     component={DropdownComponent}
                     onChange={(event, obj) => this.setState({ newSubjects: this.getSubjectsByKeys(obj) })}
                 />
