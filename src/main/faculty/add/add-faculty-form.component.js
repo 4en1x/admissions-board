@@ -75,6 +75,10 @@ class AddFacultyForm extends React.Component {
         return keys.map(key => this.state.subjects.find(subject => subject.key === key).text);
     }
 
+    getKeysByNames(names) {
+        return names.map(name => this.state.subjects.find(subject => subject.text === name).key);
+    }
+
     render() {
         const { t } = this.props;
 
@@ -95,6 +99,7 @@ class AddFacultyForm extends React.Component {
                             name="subjects"
                             label={t('faculty.add.labels.subjects')}
                             items={this.state.subjects}
+                            defaultItems={this.getKeysByNames(this.state.newSubjects)}
                             onChange={(event, obj) => this.setState({ newSubjects: this.getSubjectsByKeys(obj) })}
                             component={DropdownComponent}
                         />
