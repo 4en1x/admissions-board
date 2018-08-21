@@ -21,7 +21,6 @@ export default class AlertTemplate extends React.Component {
             <div className="customAlert">
                 <Message positive>
                     <Message.Header>Success</Message.Header>
-                    <p>{message}</p>
                 </Message>
             </div>
 
