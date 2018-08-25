@@ -84,7 +84,7 @@ class CabinetPage extends Component {
 
         if (this.state.submitted) return <Redirect to={'/'} />;
 
-        if (!this.props.formValues || !this.props.subjects) {
+        if (!this.props.formValues || !this.props.subjects || !this.props.entrantFaculty || !this.props.entrantStatus) {
             return <SemanticLoader />;
         }
 

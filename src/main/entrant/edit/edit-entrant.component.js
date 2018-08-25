@@ -33,18 +33,20 @@ class EditEntrantForm extends React.Component {
     }
 
     UNSAFE_componentWillReceiveProps(newProps) {
-        this.setState({
-            allSubjects: this.prepareDataForDropDown(newProps.subjects),
-            subjects: newProps.formValues.marks || [],
-            email: newProps.formValues.email || '',
-            password: '',
-            repeated_password: '',
-            name: newProps.formValues.first_name || '',
-            surname: newProps.formValues.surname || '',
-            username: newProps.formValues.login || '',
-            averageRating: newProps.formValues.certificate || 0,
-            submitting: true,
-        });
+        if (!newProps.dirty) {
+            this.setState({
+                allSubjects: this.prepareDataForDropDown(newProps.subjects),
+                subjects: newProps.formValues.marks || [],
+                email: newProps.formValues.email || '',
+                password: '',
+                repeated_password: '',
+                name: newProps.formValues.first_name || '',
+                surname: newProps.formValues.surname || '',
+                username: newProps.formValues.login || '',
+                averageRating: newProps.formValues.certificate || 0,
+                submitting: true,
+            });
+        }
     }
 
     prepareDataForDropDown = (data) => {
