@@ -37,31 +37,59 @@ function addFacultyValues(data) {
     };
 }
 
-export function getSubjectsList() {
+export function getSubjectsList(handler, t) {
     return (dispatch) => {
-        subjectService.getSubjectsList().then((res) => {
-            dispatch(addSubjectsValues(res.data));
-        });
+        subjectService.getSubjectsList()
+            .then((res) => { dispatch(addSubjectsValues(res.data)); })
+            .catch((error) => {
+                if (error.response) {
+                    handler(t(`error.${error.response.status}`));
+                } else {
+                    handler(error.message);
+                }
+            });
     };
 }
 
-export function sheetGetEntrants(id) {
+export function sheetGetEntrants(id, handler, t) {
     return (dispatch) => {
-        facultyService.getSheet(id).then((res) => {
-            dispatch(addEntrantSheetValues(res.data));
-        });
+        facultyService.getSheet(id)
+            .then((res) => { dispatch(addEntrantSheetValues(res.data)); })
+            .catch((error) => {
+                if (error.response) {
+                    handler(t(`error.${error.response.status}`));
+                } else {
+                    handler(error.message);
+                }
+            });
     };
 }
 
-export function getEditFormValues(id) {
+export function getEditFormValues(id, handler, t) {
     return (dispatch) => {
-        facultyService.getEditFormValues(id).then(res => dispatch(addEditFormValues(res.data)));
+        facultyService.getEditFormValues(id)
+            .then(res => dispatch(addEditFormValues(res.data)))
+            .catch((error) => {
+                if (error.response) {
+                    handler(t(`error.${error.response.status}`));
+                } else {
+                    handler(error.message);
+                }
+            });
     };
 }
 
 
-export function getFaculties(page = 1, filter) {
+export function getFaculties(page = 1, filter, handler, t) {
     return (dispatch) => {
-        facultyService.getFaculty(page, filter).then(res => dispatch(addFacultyValues(res.data)));
+        facultyService.getFaculty(page, filter)
+            .then(res => dispatch(addFacultyValues(res.data)))
+            .catch((error) => {
+                if (error.response) {
+                    handler(t(`error.${error.response.status}`));
+                } else {
+                    handler(error.message);
+                }
+            });
     };
 }

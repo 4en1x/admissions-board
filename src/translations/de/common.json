@@ -162,5 +162,24 @@
       "reverse": "Umkehren"
     },
     "applyButton": "Sich bewerben"
+  },
+  "error": {
+    "404": "Nicht gefunden",
+    "1001": "Benutzer nicht gefunden",
+    "1002": "Teilnehmer nicht gefunden",
+    "1003": "Fakultät nicht gefunden",
+    "1004": "Betreff nicht gefunden",
+    "1005": "Problem mit Benutzervalidierung",
+    "1006": "Problem mit der Validierung des Teilnehmers",
+    "1007": "Problem mit Fakultätsvalidierung",
+    "1008": "Problem mit der Validierung des Themas",
+    "1009": "Nicht erlaubter Zugang",
+    "1010": "Fakultative Fächer können nicht bearbeitet werden",
+    "1011": "Teilnehmer wird bereits eingetragen oder eingereicht",
+    "1012": "Einschreibung für Fakultät ist vorbei",
+    "1013": "Problem beim Aktualisieren der Benutzerinformationen",
+    "1014": "Problem bei der Aktualisierung der Teilnehmerinformationen",
+    "1015": "Problem beim Aktualisieren der Fakultätsinformationen",
+    "1016": "Problem mit dem Aktualisieren von Subjektinformationen"
   }
 }

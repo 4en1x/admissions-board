@@ -27,32 +27,44 @@ function removeUser() {
     };
 }
 
-export function login(user, handler) {
+export function login(user, handler, t) {
     return (dispatch) => {
-        userService.login(user).then((response) => {
-            dispatch(addUser(response.data));
-        }, (error) => {
-            handler(error.toString());
-        });
+        userService.login(user)
+            .then((response) => { dispatch(addUser(response.data)); })
+            .catch((error) => {
+                if (error.response) {
+                    handler(t(`error.${error.response.status}`));
+                } else {
+                    handler(error.message);
+                }
+            });
     };
 }
 
-export function logout(handler) {
+export function logout(handler, t) {
     return (dispatch) => {
-        userService.logout().then(() => {
-            dispatch(removeUser());
-        }, (error) => {
-            handler(error.toString());
-        });
+        userService.logout()
+            .then(() => { dispatch(removeUser()); })
+            .catch((error) => {
+                if (error.response) {
+                    handler(t(`error.${error.response.status}`));
+                } else {
+                    handler(error.message);
+                }
+            });
     };
 }
 
-export function register(user, handler) {
+export function register(user, handler, t) {
     return (dispatch) => {
-        userService.register(user).then(() => {
-            dispatch(registerUser());
-        }, (error) => {
-            handler(error.toString());
-        });
+        userService.register(user)
+            .then(() => { dispatch(registerUser()); })
+            .catch((error) => {
+                if (error.response) {
+                    handler(t(`error.${error.response.status}`));
+                } else {
+                    handler(error.message);
+                }
+            });
     };
 }

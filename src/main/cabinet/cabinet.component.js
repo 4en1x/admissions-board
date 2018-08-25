@@ -53,32 +53,46 @@ class CabinetPage extends Component {
     }
 
     onSubmit = (values) => {
-        entrantService.editEntrant(values).then(
-            (data) => {
-                this.props.alert.success(data.toString());
-                this.setState({ submitted: true });
-            },
-            (error) => { this.props.alert.error(error.toString()); },
-        );
+        entrantService.editEntrant(values)
+            .then(
+                (data) => {
+                    this.props.alert.success(data.toString());
+                    this.setState({ submitted: true });
+                },
+            )
+            .catch((error) => {
+                if (error.response) {
+                    this.props.alert.error(this.props.t(`error.${error.response.status}`));
+                } else {
+                    this.props.alert.error(error.message);
+                }
+            });
     };
 
     componentDidMount() {
-        this.props.getSubjectsList();
+        this.props.getSubjectsList(this.props.alert.error, this.props.t);
         this.props.getEditFormValues(this.props.alert.error, this.props.t);
         if (!this.props.user.role === roles.USER.ROLE) {
-            this.props.getEntrantFaculty();
-            this.props.getEntrantStatus();
+            this.props.getEntrantFaculty(this.props.alert.error, this.props.t);
+            this.props.getEntrantStatus(this.props.alert.error, this.props.t);
         }
     }
 
     unsubscribe = () => {
-        entrantService.unsubscribe().then(
-            (data) => {
-                this.props.alert.success(data.toString());
-                this.setState({ submitted: true });
-            },
-            (error) => { this.props.alert.error(error.toString()); },
-        );
+        entrantService.unsubscribe()
+            .then(
+                (data) => {
+                    this.props.alert.success(data.toString());
+                    this.setState({ submitted: true });
+                },
+            )
+            .catch((error) => {
+                if (error.response) {
+                    this.props.alert.error(this.props.t(`error.${error.response.status}`));
+                } else {
+                    this.props.alert.error(error.message);
+                }
+            });
     };
 
     render() {

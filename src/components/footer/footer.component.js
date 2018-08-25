@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withAlert } from 'react-alert';
 import footerService from '../../service/footer-service';
 import './footer.css';
+import { translate } from 'react-i18next';
 
 class Footer extends React.Component {
     constructor(props) {
@@ -14,18 +15,20 @@ class Footer extends React.Component {
     }
 
     componentDidMount() {
-        footerService.getFooter().then(
-            (result) => {
-                this.setState({ footerHtml: result.data });
-            },
-            (error) => {
-                this.props.alert.error(error.toString());
-            },
-        );
+        footerService.getFooter()
+            .then((result) => { this.setState({ footerHtml: result.data }); })
+            .catch((error) => {
+                if (error.response) {
+                    this.props.alert.error(this.props.t(`error.${error.response.status}`));
+                } else {
+                    this.props.alert.error(error.message);
+                }
+            });
     }
 
     static get propTypes() {
         return {
+            t: PropTypes.func,
             alert: PropTypes.shape({
                 error: PropTypes.func,
                 success: PropTypes.func,
@@ -54,4 +57,4 @@ class Footer extends React.Component {
     }
 }
 
-export default withAlert(Footer);
+export default withAlert(translate('common')(Footer));

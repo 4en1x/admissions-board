@@ -9,6 +9,7 @@ import logos from '../../../assets/images';
 import InputForm from '../components/login-input';
 import LanguageDropDown from '../../../components/languageDropDown/languageDropDown.component';
 import './sign-in.css';
+import { translate } from 'react-i18next';
 
 class SignInComponent extends React.Component {
     constructor(props) {
@@ -27,11 +28,12 @@ class SignInComponent extends React.Component {
             isLoading: true,
         });
 
-        this.props.login({ login: this.login, password: this.password }, this.props.alert.error);
+        this.props.login({ login: this.login, password: this.password }, this.props.alert.error, this.props.t);
     };
 
     static get propTypes() {
         return {
+            t: PropTypes.func,
             login: PropTypes.func,
             auth: PropTypes.shape({
                 isAuthError: PropTypes.bool,
@@ -65,4 +67,4 @@ const mapStateToProps = state => ({
     auth: state.auth,
 });
 
-export default withAlert(connect(mapStateToProps, actionCreators)(SignInComponent));
+export default withAlert(connect(mapStateToProps, actionCreators)(translate('common')(SignInComponent)));

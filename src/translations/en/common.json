@@ -178,8 +178,8 @@
     "1011": "Entrant is already enlisted or submitted",
     "1012": "Enrollment for faculty is over",
     "1013": "Problem with updating user information",
-    "1014": "Problem with updating user information",
-    "1015": "Problem with updating user information",
+    "1014": "Problem with updating entrant information",
+    "1015": "Problem with updating faculty information",
     "1016": "Problem with updating subjects information"
   }
 }

@@ -37,29 +37,47 @@ function addEditFormValues(data) {
     };
 }
 
-export function getEntrantFaculty() {
+export function getEntrantFaculty(handler, t) {
     return (dispatch) => {
-        entrantService.getEntrantFaculty().then(
-            res => dispatch(addEntrantFacultyValues(res.data)),
-            () => dispatch(addEntrantFacultyValues(null)),
-        );
+        entrantService.getEntrantFaculty()
+            .then(res => dispatch(addEntrantFacultyValues(res.data)))
+            .catch((error) => {
+                dispatch(addEntrantFacultyValues(null));
+                if (error.response) {
+                    handler(t(`error.${error.response.status}`));
+                } else {
+                    handler(error.message);
+                }
+            });
     };
 }
 
-export function getEntrantStatus() {
+export function getEntrantStatus(handler, t) {
     return (dispatch) => {
-        entrantService.getEntrantStatus().then(
-            res => dispatch(addEntrantStatusValues(res.data.status)),
-            () => dispatch(addEntrantStatusValues(null)),
-        );
+        entrantService.getEntrantStatus()
+            .then(res => dispatch(addEntrantStatusValues(res.data.status)))
+            .catch((error) => {
+                dispatch(addEntrantStatusValues(null));
+                if (error.response) {
+                    handler(t(`error.${error.response.status}`));
+                } else {
+                    handler(error.message);
+                }
+            });
     };
 }
 
-export function getSubjectsList() {
+export function getSubjectsList(handler, t) {
     return (dispatch) => {
-        subjectService.getSubjectsList().then((res) => {
-            dispatch(addSubjectsValues(res.data));
-        });
+        subjectService.getSubjectsList()
+            .then((res) => { dispatch(addSubjectsValues(res.data)); })
+            .catch((error) => {
+                if (error.response) {
+                    handler(t(`error.${error.response.status}`));
+                } else {
+                    handler(error.message);
+                }
+            });
     };
 }
 

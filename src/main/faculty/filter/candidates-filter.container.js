@@ -1,16 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withAlert } from 'react-alert';
 
 import * as actionCreators from '../faculty-actions';
 
 import FacultiesFilterForm from '../../../components/filter/filter-forms/faculties-filter-form';
 import SemanticLoader from '../../../components/loaders/semantic-loader';
 import './filter.css';
+import { translate } from 'react-i18next';
 
 class FilterComponent extends React.Component {
     componentDidMount() {
-        this.props.getSubjectsList();
+        this.props.getSubjectsList(this.props.alert.error, this.props.t);
     }
 
     onSubmitClicked = (filter) => {
@@ -19,6 +21,11 @@ class FilterComponent extends React.Component {
 
     static get propTypes() {
         return {
+            t: PropTypes.func,
+            alert: PropTypes.shape({
+                error: PropTypes.func,
+                success: PropTypes.func,
+            }),
             onSubmit: PropTypes.func,
             getSubjectsList: PropTypes.func,
             subjects: PropTypes.arrayOf(PropTypes.string),
@@ -47,4 +54,4 @@ const mapStateToProps = state => ({
     subjects: state.faculty.subjects,
 });
 
-export default connect(mapStateToProps, actionCreators)(FilterComponent);
+export default withAlert(connect(mapStateToProps, actionCreators)(translate('common')(FilterComponent)));

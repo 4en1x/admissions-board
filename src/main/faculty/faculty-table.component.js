@@ -54,16 +54,16 @@ class FacultyTable extends Component {
 
     onElementClick = (obj) => {
         this.setState({ activePage: obj.activePage });
-        this.props.getFaculties(obj.activePage, this.state.filter);
+        this.props.getFaculties(obj.activePage, this.state.filter, this.props.alert.error, this.props.t);
     };
 
     onFilter = (filter) => {
         this.setState({ filter });
-        this.props.getFaculties(this.state.activePage, filter);
+        this.props.getFaculties(this.state.activePage, filter, this.props.alert.error, this.props.t);
     };
 
     componentDidMount() {
-        this.props.getFaculties(1);
+        this.props.getFaculties(1, undefined, this.props.alert.error, this.props.t);
     }
 
     onDeleteElementClick = (id) => {

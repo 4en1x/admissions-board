@@ -18,7 +18,7 @@ import './App.css';
 
 class App extends Component {
     itemSelected = () => {
-        store.dispatch(logout(this.props.alert.error));
+        store.dispatch(logout(this.props.alert.error, this.props.t));
     };
 
     static get propTypes() {

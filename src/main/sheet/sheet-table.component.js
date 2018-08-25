@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withAlert } from 'react-alert';
 import { Table, Header } from 'semantic-ui-react';
 import { translate } from 'react-i18next';
 import { connect } from 'react-redux';
@@ -10,21 +11,17 @@ import * as actionCreators from '../faculty/faculty-actions';
 
 
 class FacultyTable extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-
-        };
-    }
-
     componentDidMount() {
-        this.props.sheetGetEntrants(this.props.match.params.id);
+        this.props.sheetGetEntrants(this.props.match.params.id, this.props.alert.error, this.props.t);
     }
 
     static get propTypes() {
         return {
             t: PropTypes.func,
+            alert: PropTypes.shape({
+                error: PropTypes.func,
+                success: PropTypes.func,
+            }),
             entrants: PropTypes.arrayOf(PropTypes.shape({})),
             match: PropTypes.shape({
                 params: PropTypes.shape({
@@ -77,4 +74,4 @@ const mapStateToProps = state => ({
     facultyName: state.faculty.facultyName,
 });
 
-export default connect(mapStateToProps, actionCreators)(translate('common')(FacultyTable));
+export default withAlert(connect(mapStateToProps, actionCreators)(translate('common')(FacultyTable)));
