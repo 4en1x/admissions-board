@@ -67,10 +67,15 @@ class FacultyTable extends Component {
     }
 
     onDeleteElementClick = (id) => {
-        facultyService.deleteFaculty(id).then(
-            (data) => { this.props.alert.success(data.toString()); },
-            (error) => { this.props.alert.error(error.toString()); },
-        );
+        facultyService.deleteFaculty(id)
+            .then((data) => { this.props.alert.success(data.toString()); })
+            .catch((error) => {
+                if (error.response) {
+                    this.props.alert.error(error.response.status);
+                } else {
+                    this.props.alert.error(error.message);
+                }
+            });
     };
 
     onFacultyRegister = (id) => {
@@ -96,7 +101,7 @@ class FacultyTable extends Component {
             return <Redirect to={`/faculties/${this.state.sheetPageClickedId}/sheet`} />;
         }
 
-        if (!this.props.faculties || !this.props.totalPages) {
+        if (!this.props.faculties) {
             return <SemanticLoader />;
         }
 
@@ -143,7 +148,10 @@ class FacultyTable extends Component {
                                                 </List.Content>
                                             ) : (
                                                 <List.Content floated='right'>
-                                                    <Button onClick={() => this.onSheetClick(item.id)} color='yellow' >
+                                                    <Button
+                                                        onClick={() => this.onSheetClick(item.id)}
+                                                        color='yellow'
+                                                    >
                                                         {t('faculty.table.getSheet')}
                                                     </Button>
                                                 </List.Content>
@@ -176,7 +184,7 @@ class FacultyTable extends Component {
                         </List>
                     </div>
                     {
-                        this.props.totalPages !== 1 ? (
+                        this.props.totalPages > 1 ? (
                             <div className="faculty-pagination">
                                 <Segment>
                                     <Pagination
