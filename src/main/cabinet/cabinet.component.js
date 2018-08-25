@@ -65,8 +65,10 @@ class CabinetPage extends Component {
     componentDidMount() {
         this.props.getSubjectsList();
         this.props.getEditFormValues(this.props.alert.error, this.props.t);
-        this.props.getEntrantFaculty();
-        this.props.getEntrantStatus();
+        if (!this.props.user.role === roles.USER.ROLE) {
+            this.props.getEntrantFaculty();
+            this.props.getEntrantStatus();
+        }
     }
 
     unsubscribe = () => {
@@ -84,7 +86,7 @@ class CabinetPage extends Component {
 
         if (this.state.submitted) return <Redirect to={'/'} />;
 
-        if (!this.props.formValues || !this.props.subjects || !this.props.entrantFaculty || !this.props.entrantStatus) {
+        if (!this.props.formValues || !this.props.subjects) {
             return <SemanticLoader />;
         }
 
