@@ -71,7 +71,7 @@ class FacultyTable extends Component {
             .then((data) => { this.props.alert.success(data.toString()); })
             .catch((error) => {
                 if (error.response) {
-                    this.props.alert.error(error.response.status);
+                    this.props.alert.error(this.props.t(`error.${error.response.status}`));
                 } else {
                     this.props.alert.error(error.message);
                 }
@@ -84,10 +84,15 @@ class FacultyTable extends Component {
                 entrant_id: this.props.id,
                 faculty_id: id,
             },
-        ).then(
-            (data) => { this.props.alert.success(data.toString()); },
-            (error) => { this.props.alert.error(error.toString()); },
-        );
+        )
+            .then((data) => { this.props.alert.success(data.toString()); })
+            .catch((error) => {
+                if (error.response) {
+                    this.props.alert.error(this.props.t(`error.${error.response.status}`));
+                } else {
+                    this.props.alert.error(error.message);
+                }
+            });
     };
 
     render() {

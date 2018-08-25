@@ -63,10 +63,16 @@ export function getSubjectsList() {
     };
 }
 
-export function getEditFormValues() {
+export function getEditFormValues(handler, t) {
     return (dispatch) => {
-        entrantService.getEditFormValues().then((res) => {
-            dispatch(addEditFormValues(res.data));
-        });
+        entrantService.getEditFormValues()
+            .then((res) => { dispatch(addEditFormValues(res.data)); })
+            .catch((error) => {
+                if (error.response) {
+                    handler(t(`error.${error.response.status}`));
+                } else {
+                    handler(error.message);
+                }
+            });
     };
 }

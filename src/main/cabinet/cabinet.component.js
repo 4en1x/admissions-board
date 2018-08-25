@@ -64,7 +64,7 @@ class CabinetPage extends Component {
 
     componentDidMount() {
         this.props.getSubjectsList();
-        this.props.getEditFormValues();
+        this.props.getEditFormValues(this.props.alert.error, this.props.t);
         this.props.getEntrantFaculty();
         this.props.getEntrantStatus();
     }
