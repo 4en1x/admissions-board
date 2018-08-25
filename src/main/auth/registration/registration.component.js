@@ -10,8 +10,17 @@ import { register } from '../auth-actions';
 
 
 class RegistrationComponent extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            complete: false,
+        };
+    }
+
     onSubmit = (data) => {
         this.props.register(data, this.props.alert.error, this.props.t);
+        this.setState({ complete: true });
     };
 
     static get propTypes() {
@@ -28,7 +37,8 @@ class RegistrationComponent extends React.Component {
     }
 
     render() {
-        if (!this.props.auth.isRegisterError) {
+        if (!this.props.auth.isRegisterError && this.state.complete) {
+            this.setState({ complete: false });
             return <Redirect to={'/login'} />;
         }
 
