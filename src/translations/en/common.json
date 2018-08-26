@@ -121,7 +121,8 @@
   "subjects-edit":{
     "name": "Edit subjects",
     "submitButton": "Submit",
-    "addButton": "Add new Subject to list"
+    "addButton": "Add new Subject to list",
+    "sorry": "You don't have any subjects yet, sorry (／人 ◕ ‿‿ ◕ 人＼)"
   },
   "entrant-faculty": {
     "name": "You currently applied for this faculty",

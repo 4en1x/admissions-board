@@ -59,9 +59,9 @@ class EditSubjectsForm extends React.Component {
 
             if (index === -1 && subject.content === 'delete') {
                 data.add.push(subject.text);
-            } else if (subject.content === 'add') {
+            } else if (index !== -1 && subject.content === 'add') {
                 data.delete.push(this.state.oldSubjects[index].text);
-            } else if (subject.text !== this.state.oldSubjects[index].text) {
+            } else if (index !== -1 && subject.text !== this.state.oldSubjects[index].text) {
                 data.edit.push({
                     old: this.state.oldSubjects[index].text,
                     new: subject.text,
@@ -100,9 +100,13 @@ class EditSubjectsForm extends React.Component {
     onAddNewItem = () => {
         const newSubjects = this.state.subjects;
 
+        const newKey = newSubjects.length > 0
+            ? newSubjects[newSubjects.length - 1].key + 1
+            : 0;
+
         newSubjects.push({
-            key: newSubjects[newSubjects.length - 1].key + 1,
-            value: newSubjects[newSubjects.length - 1].key + 1,
+            key: newKey,
+            value: newKey,
             text: 'some subject',
             color: 'red',
             content: 'delete',
@@ -119,6 +123,11 @@ class EditSubjectsForm extends React.Component {
                 <div className="registration-form full-height">
                     <Form size="large" onSubmit={this.prepareData}>
                         <Header size='huge' textAlign="center">{t('subjects-edit.name')}</Header>
+                        {
+                            this.state.subjects.length === 0
+                                ? <Header size='small' textAlign="center">{t('subjects-edit.sorry')}</Header>
+                                : null
+                        }
                         {
                             this.state.subjects.map(item => <div className = "fullWidth" key ={item.key}>
                                 <Button.Group className = "fullWidth">
