@@ -72,7 +72,7 @@ class CabinetPage extends Component {
     componentDidMount() {
         this.props.getSubjectsList(this.props.alert.error, this.props.t);
         this.props.getEditFormValues(this.props.alert.error, this.props.t);
-        if (!this.props.user.role === roles.USER.ROLE) {
+        if (this.props.user.role === roles.USER.ROLE) {
             this.props.getEntrantFaculty(this.props.alert.error, this.props.t);
             this.props.getEntrantStatus(this.props.alert.error, this.props.t);
         }
